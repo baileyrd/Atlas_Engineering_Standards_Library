@@ -951,7 +951,95 @@ Where a resource's ownership can transfer between components, the transfer point
 
 ## Part V - Ecosystem Principles
 
-Chapters 28 through 33 are reserved for detailed expansion. They will define specification-driven development, automation, validation, compatibility, lifecycle management, and knowledge preservation.
+### Chapter 28 - Specification-Driven Development
+
+`ATLAS-FND-0001` requires a governing specification to exist before a capability becomes official. This chapter states what that specification must actually contain, and what happens when it and the implementation disagree.
+
+#### Requirements
+
+##### ATLAS-SPEC-0001 - Specification Minimum Content
+
+A governing specification MUST state the capability's externally observable behavior, error conditions, and compatibility expectations. A placeholder document is not a specification for the purposes of `ATLAS-FND-0001`.
+
+##### ATLAS-SPEC-0010 - Specification Authority Over Implementation
+
+Where a specification and its implementation disagree, the specification is authoritative until formally amended. The implementation MUST be corrected, not the specification silently reinterpreted to match it.
+
+### Chapter 29 - Automation
+
+#### Requirements
+
+##### ATLAS-AUTO-0001 - Minimum Structural Enforcement
+
+A published Atlas document set MUST have at least one automated check enforcing its own structural rules (identifier uniqueness, internal link validity, and similar), per ATLAS-000 Doctrine D5, rather than relying on review alone.
+
+##### ATLAS-AUTO-0010 - Automation Proportionality
+
+Automation SHOULD be added once a rule has demonstrably needed repeated manual checking, not speculatively before it has been checked by hand even once, per `ATLAS-PHIL-0102`.
+
+### Chapter 30 - Validation
+
+#### Requirements
+
+##### ATLAS-VERIFY-0001 - Verification Method Stated
+
+A normative requirement SHOULD state how its satisfaction can be verified. "Trust" is not a verification method.
+
+##### ATLAS-VERIFY-0010 - Verification Method Taxonomy
+
+Atlas recognizes four verification methods, in increasing order of assurance and cost: automated check, test, review, and formal proof. A requirement SHOULD use the cheapest method sufficient for its risk.
+
+### Chapter 31 - Compatibility
+
+#### Requirements
+
+##### ATLAS-COMPAT-0001 - Compatibility Surface Classification
+
+A component MUST classify each of its public surfaces (API, ABI, protocol, schema, configuration) independently. A change compatible on one surface MAY be breaking on another.
+
+##### ATLAS-COMPAT-0010 - Two-Sided Compatibility
+
+Compatibility classification MUST consider every consumer role a surface has, per `ATLAS-IFACE-0001`, not only the most common one.
+
+### Chapter 32 - Lifecycle Management
+
+Atlas has three independent lifecycle vocabularies, deliberately not conflated: a governing *document's* `Status` field (see `docs/templates/volume-template.md`), an individual *requirement's* `Status` field (see `docs/templates/requirement-template.md`), and — defined here — a shipped *artifact's* lifecycle state. A crate can be `Released` while the specification governing it is still `Draft`; the two track different things.
+
+```text
+Planning
+Development
+Preview
+Released
+Maintained
+Security Fixes
+Deprecated
+Retired
+Archived
+```
+
+#### Requirements
+
+##### ATLAS-LIFE-0001 - Lifecycle State Declaration
+
+A released Atlas artifact (crate, service, protocol, schema) MUST declare its current lifecycle state from the set: Planning, Development, Preview, Released, Maintained, Security Fixes, Deprecated, Retired, Archived.
+
+##### ATLAS-LIFE-0010 - Lifecycle Distinctness
+
+An artifact's lifecycle state, its governing document's `Status`, and any individual requirement's `Status` are independent and MUST NOT be conflated.
+
+### Chapter 33 - Knowledge Preservation
+
+`ATLAS-FND-0020` requires important knowledge to be preserved in durable artifacts. This chapter states the two concrete forms that takes.
+
+#### Requirements
+
+##### ATLAS-KNOW-0001 - Decision Records
+
+Significant, non-obvious engineering decisions MUST be recorded as an Architecture Decision Record per Chapter 36, not left to commit messages or memory.
+
+##### ATLAS-KNOW-0010 - Learning Notes
+
+Debugging discoveries and hard-won operational lessons SHOULD be recorded as short, numbered, standalone notes discoverable independently of the code that prompted them, not buried in a pull request description.
 
 ## Part VI - Governance
 

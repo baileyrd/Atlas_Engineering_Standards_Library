@@ -43,6 +43,12 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `STATE` | ATLAS-001 | Ch. 25 — State Management | 0010 | 0020 |
 | `FAIL` | ATLAS-001 | Ch. 26 — Failure Handling | 0010 | 0020 |
 | `RES` | ATLAS-001 | Ch. 27 — Resource Management | 0010 | 0020 |
+| `SPEC` | ATLAS-001 | Ch. 28 — Specification-Driven Development | 0010 | 0020 |
+| `AUTO` | ATLAS-001 | Ch. 29 — Automation | 0010 | 0020 |
+| `VERIFY` | ATLAS-001 | Ch. 30 — Validation | 0010 | 0020 |
+| `COMPAT` | ATLAS-001 | Ch. 31 — Compatibility | 0010 | 0020 |
+| `LIFE` | ATLAS-001 | Ch. 32 — Lifecycle Management | 0010 | 0020 |
+| `KNOW` | ATLAS-001 | Ch. 33 — Knowledge Preservation | 0010 | 0020 |
 
 ## Shared Domain Families
 
