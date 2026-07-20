@@ -7,6 +7,7 @@
 | Short Name | EVS |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Version domains, compatibility rules, and lifecycle policy for specifications, crates, components, APIs, ABIs, protocols, schemas, and artifacts |
 | Parent | ATLAS-001 |
 
 ## Purpose

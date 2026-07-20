@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-800 |
 | Title | Volume IX - Ecosystem Standards |
+| Short Name | STD |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Cross-cutting conventions for naming, logging, errors, configuration, serialization, networking, telemetry, documentation, internationalization, accessibility, and testing |
 | Parent | ATLAS-001 |
 
 ## Purpose

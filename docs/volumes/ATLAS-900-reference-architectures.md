@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-900 |
 | Title | Volume X - Reference Architectures |
+| Short Name | REF |
 | Status | Planned |
 | Classification | Informative unless otherwise stated |
+| Scope | Illustrative reference implementations of platform, CLI, terminal, networking, storage, plugin host, service, and deployment models |
 | Parent | ATLAS-001 |
 
 ## Purpose

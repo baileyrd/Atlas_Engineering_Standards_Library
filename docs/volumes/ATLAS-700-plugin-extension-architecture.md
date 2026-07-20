@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-700 |
 | Title | Volume VIII - Plugin and Extension Architecture |
+| Short Name | PLUG |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Plugin lifecycle, discovery, loading, communication, ABI, sandboxing, permissions, and marketplace architecture |
 | Parent | ATLAS-001 |
 
 ## Purpose

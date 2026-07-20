@@ -47,6 +47,10 @@ These concerns appear across all volumes:
 - Lifecycle management
 - Rust ecosystem alignment
 
+## Requirement Identifiers
+
+Each volume allocates requirement identifiers under a short-name prefix (e.g. `FND`, `EVS`). Prefixes, shared domain families, and the next free number block per chapter are tracked in the [Requirement ID Registry](reference/requirement-registry.md) — check it before publishing any new requirement.
+
 ## Future Volume Reservations
 
 Future volumes may be assigned from `ATLAS-1000` onward. Reserved areas include distributed systems, AI integration architecture, embedded systems, edge computing, formal verification, and hardware integration.
