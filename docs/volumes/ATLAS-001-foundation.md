@@ -1123,5 +1123,53 @@ Review depth SHOULD scale with the change classification from `ATLAS-GOV-CHANGE-
 
 ## Part VII - Reference
 
-Chapters 39 through 42 are reserved for detailed expansion. They will define requirement language, terminology, document conventions, and future evolution.
+Most of what this part governs already exists in practice (the README's normative-language section, `docs/reference/terminology.md`, the two document templates). This part's job is narrow: make each of those canonical and state the one or two rules that were only ever implicit.
+
+### Chapter 39 - Requirement Language
+
+#### Requirements
+
+##### ATLAS-LANG-0001 - RFC 2119 Baseline
+
+Atlas requirement language follows RFC 2119: `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY`, as defined in [README.md](../../README.md#normative-language).
+
+##### ATLAS-LANG-0010 - Single Requirement Per Statement
+
+A requirement statement SHOULD express exactly one constraint. A statement combining multiple unrelated constraints under one identifier SHOULD be split.
+
+### Chapter 40 - Terminology
+
+#### Requirements
+
+##### ATLAS-TERM-0001 - Canonical Glossary
+
+[`docs/reference/terminology.md`](../reference/terminology.md) is the canonical glossary for terms used across the library. A term used with a specific technical meaning in a normative requirement MUST be defined there.
+
+##### ATLAS-TERM-0010 - No Silent Redefinition
+
+A term already defined in the glossary MUST NOT be silently redefined with a different meaning in a specific volume. A volume needing a narrower or different sense MUST say so explicitly and reference the general definition.
+
+### Chapter 41 - Document Conventions
+
+#### Requirements
+
+##### ATLAS-DOC-0001 - Template Conformance
+
+A new volume MUST start from [`docs/templates/volume-template.md`](../templates/volume-template.md). A new requirement MUST follow the heading and identifier conventions in [`docs/templates/requirement-template.md`](../templates/requirement-template.md).
+
+##### ATLAS-DOC-0010 - Heading Levels
+
+Within a volume, Parts use `##`, Chapters use `###`, and requirement headings use `#####` beneath a `####` "Requirements" heading, consistently across all volumes.
+
+### Chapter 42 - Future Evolution
+
+#### Requirements
+
+##### ATLAS-FUTURE-0001 - Foundation Amendment
+
+Amendments to ATLAS-000 or ATLAS-001 follow the RFC process in Chapter 35 regardless of the foundational exemption from consumer-gating in `ATLAS-GOV-STD-0020`. Exemption from "don't draft speculatively" is not exemption from review.
+
+##### ATLAS-FUTURE-0010 - Reserved Future Volumes
+
+Volumes reserved at `ATLAS-1000` and above (see [`docs/library-map.md`](../library-map.md)) are subject to the same Seed discipline as ATLAS-100 through ATLAS-900. Reserving a number is not drafting.
 

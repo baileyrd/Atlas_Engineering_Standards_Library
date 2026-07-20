@@ -54,6 +54,10 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `GOV-ADR` | ATLAS-001 | Ch. 36 — Architecture Decision Records | 0010 | 0020 |
 | `GOV-CHANGE` | ATLAS-001 | Ch. 37 — Change Management | 0010 | 0020 |
 | `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0010 | 0020 |
+| `LANG` | ATLAS-001 | Ch. 39 — Requirement Language | 0010 | 0020 |
+| `TERM` | ATLAS-001 | Ch. 40 — Terminology | 0010 | 0020 |
+| `DOC` | ATLAS-001 | Ch. 41 — Document Conventions | 0010 | 0020 |
+| `FUTURE` | ATLAS-001 | Ch. 42 — Future Evolution | 0010 | 0020 |
 
 ## Shared Domain Families
 
