@@ -8,7 +8,7 @@ Atlas standards are durable engineering artifacts. Changes to them should be del
 
 - Changes land only through pull requests. Direct pushes to `main` are blocked.
 - Force-pushes and branch deletion are blocked on `main`.
-- A `validate-docs` CI check runs on every PR (requirement-ID uniqueness and prefix registration, SUMMARY.md reachability, internal link validity — see `tools/validate_docs.py`). It is not yet a required check, so a red run doesn't block merging, but treat a failure as something to fix, not ignore.
+- A `validate-docs` CI check runs on every PR (requirement-ID uniqueness and prefix registration, SUMMARY.md reachability, internal link validity — see `tools/validate_docs.py`) and **must pass before a PR can merge**.
 
 ## Workflow
 
