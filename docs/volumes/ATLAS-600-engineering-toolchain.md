@@ -5,29 +5,15 @@
 | Document ID | ATLAS-600 |
 | Title | Volume VII - Engineering Toolchain |
 | Short Name | TOOL |
-| Status | Planned |
+| Status | Seed |
 | Classification | Normative |
 | Scope | Development environments, build systems, testing frameworks, static analysis, CI/CD, release automation, and compliance tooling |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VII defines the Atlas engineering toolchain, including development environments, build systems, testing frameworks, static analysis, linting, formatting, documentation generation, CI/CD, release automation, artifact signing, and compliance automation.
+Volume VII will define the Atlas engineering toolchain — CI/CD, linting, release automation, artifact signing — once there's a real, recurring toolchain need to standardize rather than a plausible list of categories.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Chapter 1 Toolchain Philosophy
-Chapter 2 Development Environment
-Chapter 3 Build System
-Chapter 4 Testing Framework
-Chapter 5 Static Analysis
-Chapter 6 Linting Standards
-Chapter 7 Formatting Standards
-Chapter 8 Documentation Generation
-Chapter 9 CI/CD Architecture
-Chapter 10 Release Automation
-Chapter 11 Artifact Signing
-Chapter 12 Compliance Automation
-```
-
+When Atlas has enough real, recurring toolchain friction — a manual process performed by hand more than a couple of times, per `ATLAS-AUTO-0010` — to justify standardizing it. This standards library's own `tools/validate_docs.py` and `validate-docs` CI workflow are the first real instance of Atlas toolchain automation; this volume formalizes the pattern once there's more than one instance of it.

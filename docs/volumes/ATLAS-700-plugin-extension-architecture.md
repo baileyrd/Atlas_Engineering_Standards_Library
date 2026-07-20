@@ -5,28 +5,15 @@
 | Document ID | ATLAS-700 |
 | Title | Volume VIII - Plugin and Extension Architecture |
 | Short Name | PLUG |
-| Status | Planned |
+| Status | Seed |
 | Classification | Normative |
 | Scope | Plugin lifecycle, discovery, loading, communication, ABI, sandboxing, permissions, and marketplace architecture |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VIII defines the Atlas extension model, including plugin lifecycle, discovery, loading, communication, ABI, sandboxing, permissions, marketplace architecture, and extension security.
+Volume VIII will define the Atlas extension model — plugin lifecycle, ABI, sandboxing, permissions — once a real plugin exists to design the model around, rather than guessing at an ABI no consumer has tested yet.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Chapter 1 Extension Philosophy
-Chapter 2 Plugin Model
-Chapter 3 Plugin Lifecycle
-Chapter 4 Plugin Discovery
-Chapter 5 Plugin Loading
-Chapter 6 Plugin Communication
-Chapter 7 Plugin ABI
-Chapter 8 Sandboxing
-Chapter 9 Permissions
-Chapter 10 Marketplace Architecture
-Chapter 11 Extension Security
-```
-
+When Atlas has a first real plugin or extension point that a component outside the core workspace needs to load dynamically. Plugin ABI design decided speculatively, before any real dynamic-loading case exists, is exactly the kind of unjustified complexity `ATLAS-PHIL-0102` exists to prevent — it would need to be redesigned anyway once a real case arrived.

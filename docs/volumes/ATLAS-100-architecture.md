@@ -5,51 +5,15 @@
 | Document ID | ATLAS-100 |
 | Title | Volume II - Architecture |
 | Short Name | ARCH |
-| Status | Planned |
+| Status | Seed |
 | Classification | Normative |
 | Scope | Runtime, communication, data, and platform architecture for Atlas components and services |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume II defines the architectural model of Atlas systems: layers, components, runtime structure, communication, data ownership, platform services, and ecosystem boundaries.
+Volume II will define the architectural model of Atlas systems beyond what ATLAS-001 Part IV states in general terms: concrete layering, runtime structure, communication patterns, data ownership, and platform services for real Atlas components.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Part I - Architectural Model
-Chapter 1 System Architecture Overview
-Chapter 2 Architectural Layers
-Chapter 3 Component Model
-Chapter 4 Subsystem Boundaries
-Chapter 5 Dependency Architecture
-
-Part II - Runtime Architecture
-Chapter 6 Execution Model
-Chapter 7 Process Architecture
-Chapter 8 Threading Model
-Chapter 9 Async Runtime Model
-Chapter 10 Resource Ownership Model
-
-Part III - Communication Architecture
-Chapter 11 Internal Communication
-Chapter 12 External Communication
-Chapter 13 Message Model
-Chapter 14 Event Architecture
-Chapter 15 Protocol Design
-
-Part IV - Data Architecture
-Chapter 16 Data Ownership
-Chapter 17 Serialization
-Chapter 18 Schema Evolution
-Chapter 19 Storage Architecture
-Chapter 20 Caching Architecture
-
-Part V - Platform Architecture
-Chapter 21 Configuration Architecture
-Chapter 22 Identity Architecture
-Chapter 23 Deployment Architecture
-Chapter 24 Environment Model
-Chapter 25 Platform Services
-```
-
+When Atlas has two or more real components that must depend on each other — one consuming another's public interface across a process, service, or crate boundary — forcing an actual choice about layering and dependency direction beyond ATLAS-001 Part IV's general principles. Until then, those general principles already govern; this volume would only restate them speculatively.
