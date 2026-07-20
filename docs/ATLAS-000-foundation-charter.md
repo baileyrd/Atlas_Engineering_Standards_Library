@@ -36,6 +36,8 @@ Atlas seeks to become a reference architecture for full software ecosystems buil
 
 ## Article III - Foundational Principles
 
+These principles are co-equal foundational properties, not a ranked list — a design should satisfy all of them. ATLAS-001 Chapter 7 derives an explicit tradeoff order from this set for resolving conflicts between engineering goals; that order lives there, not here, so it has exactly one authoritative source.
+
 ### Correctness
 
 Correctness takes precedence over convenience, optimization, feature velocity, or novelty.
@@ -63,6 +65,14 @@ Systems should expose enough diagnostic information to explain what happened, wh
 ### Longevity
 
 Atlas designs should be evaluated against a ten-year horizon. The future maintainer is a first-class stakeholder.
+
+### Composability
+
+Prefer small, focused components with narrow, well-documented interfaces that combine to solve problems no single component anticipated, over monolithic ones that try to do everything. A component should do one thing and do it well; new capability belongs in a new component composed with the old ones, not accreted onto an existing one. This principle is Atlas's direct debt to Unix design philosophy (McIlroy; Raymond's *The Art of Unix Programming*): small sharp tools with explicit contracts outlast monoliths because they are testable, replaceable, and recombinable.
+
+### Economy
+
+Engineering time is the ecosystem's scarcest resource, scarcer than machine time. Prefer the simplest design that solves the demonstrated problem. Add process, tooling, ceremony, or abstraction only when a real, current need justifies its ongoing cost — never speculatively, and never because a "complete" specification seems to call for it. A component, process, or document that has nothing to report should report nothing; silence is a valid and preferred output.
 
 ## Article IV - Engineering Doctrine
 
@@ -105,6 +115,10 @@ Security must be considered during architecture and specification. Security cont
 ### D10 - Evolution Without Fragmentation
 
 Atlas should support change through versioning, migration, compatibility policy, deprecation policy, and documentation.
+
+### D11 - Mechanism, Not Policy
+
+Components should provide capability and let the caller decide how to apply it. Atlas designs must not hardcode workflows, assume a specific caller intent, or bake a business decision into infrastructure that should remain reusable for decisions Atlas has not anticipated.
 
 ## Article V - Governance Principles
 

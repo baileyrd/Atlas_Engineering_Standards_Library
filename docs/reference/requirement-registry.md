@@ -21,7 +21,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 |---|---|---|---|---|
 | `CHARTER` | ATLAS-000 | Charter-level normative requirements | 0007 | 0010 |
 | `FND` | ATLAS-001 | Ch. 1-3 — Purpose, Vision, Mission | 0022 | 0030 |
-| `PHIL` | ATLAS-001 | Ch. 6 — Engineering Philosophy | 0090 | 0100 |
+| `PHIL` | ATLAS-001 | Ch. 6 — Engineering Philosophy | 0103 | 0110 |
 | `VAL` | ATLAS-001 | Ch. 7 — Core Values | 0091 | 0100 |
 | `GOAL` | ATLAS-001 | Ch. 8 — Design Goals | 0111 | 0120 |
 | `NONGOAL` | ATLAS-001 | Ch. 9 — Non-Goals | 0090 | 0100 |
