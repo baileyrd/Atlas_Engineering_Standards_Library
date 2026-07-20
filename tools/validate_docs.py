@@ -5,8 +5,9 @@ Checks:
   1. Every ATLAS-<PREFIX>-<NNNN> requirement identifier is unique.
   2. Every requirement identifier's prefix is registered in
      docs/reference/requirement-registry.md (skipped if that file is absent).
-  3. Every Markdown file under docs/, plus README.md and CONTRIBUTING.md, is
-     reachable from SUMMARY.md.
+  3. Every Markdown file under docs/ (other than templates) is reachable from
+     docs/SUMMARY.md. README.md and CONTRIBUTING.md are deliberately outside
+     the mdBook (see docs/SUMMARY.md) and are excluded from this check.
   4. Every relative Markdown link in a tracked .md file resolves to a file
      that exists.
 
@@ -85,9 +86,9 @@ def check_registered_prefixes(seen):
 
 
 def check_summary_reachability(files):
-    summary_path = ROOT / "SUMMARY.md"
+    summary_path = ROOT / "docs" / "SUMMARY.md"
     if not summary_path.exists():
-        return [f"SUMMARY.md not found at {summary_path}"]
+        return [f"docs/SUMMARY.md not found at {summary_path}"]
 
     summary_text = summary_path.read_text(encoding="utf-8")
     referenced = set()
@@ -99,7 +100,7 @@ def check_summary_reachability(files):
     must_be_reachable = {
         p for p in files
         if p != summary_path
-        and p.name not in {"requirement-template.md", "volume-template.md"}
+        and "docs" in p.relative_to(ROOT).parts
         and "templates" not in p.relative_to(ROOT).parts
     }
 
