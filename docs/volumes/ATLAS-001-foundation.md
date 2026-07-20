@@ -235,9 +235,9 @@ Atlas designs SHOULD leverage Rust strengths without becoming unnecessarily coup
 
 Atlas components SHOULD optimize for developer comprehension as well as runtime behavior.
 
-##### ATLAS-PHIL-0070 - Knowledge Preservation
+##### ATLAS-PHIL-0070 - Knowledge Preservation (Retired)
 
-Important architectural knowledge MUST be preserved in durable artifacts.
+Retired; superseded by `ATLAS-FND-0020`, which states the same requirement. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
 ##### ATLAS-PHIL-0080 - No-Surprise Interfaces
 
@@ -247,32 +247,43 @@ Public Atlas interfaces SHOULD minimize surprising behavior.
 
 Infrastructure components SHOULD prioritize reliability and predictability over unnecessary novelty.
 
+#### Unix Design Heritage
+
+Atlas's engineering philosophy is a direct descendant of Unix design philosophy: Doug McIlroy's "do one thing and do it well," composability through narrow interfaces, "silence is golden," and "mechanism, not policy." ATLAS-000 Article III names Composability and Economy as foundational principles for this reason — they are not additions borrowed from elsewhere, they are load-bearing.
+
+The practical consequence: a specification-driven ecosystem can drift toward the opposite of this heritage if left unchecked, accumulating process and ceremony because a "complete" specification seems to call for it rather than because a real need justifies it. This subsection exists to make that failure mode checkable, not just aspirational.
+
+##### ATLAS-PHIL-0100 - Single Responsibility
+
+Components SHOULD have one clearly stated purpose. New capability SHOULD become a new component composed with existing ones rather than accreted onto an existing component's scope.
+
+##### ATLAS-PHIL-0101 - Mechanism Over Policy
+
+Atlas components SHOULD provide capability and leave policy decisions to the caller, per ATLAS-000 Doctrine D11.
+
+##### ATLAS-PHIL-0102 - Justified Complexity
+
+New process, tooling, or abstraction MUST be justified by a demonstrated, current need. Introducing it speculatively, or because a specification's structure implies it should exist, is not sufficient justification.
+
+##### ATLAS-PHIL-0103 - Quiet Success
+
+Components and tools SHOULD produce output only when reporting a requested result or an error. Success that has nothing further to report SHOULD remain silent.
+
 ### Chapter 7 - Core Values
 
-Atlas values are ordered. Lower values matter, but they must not casually override higher values.
+This chapter derives its ordering from the co-equal principles in ATLAS-000 Article III — it is the one place that ordering is stated, so later documents cite this chapter rather than inventing their own. Atlas values are ordered: lower values matter, but they must not casually override higher values. Composability and Economy sit above raw Convenience because they are about total, long-term engineering cost; Convenience is short-term implementer ease, which is deliberately the tiebreaker of last resort.
 
-```text
-Correctness
-Security
-Clarity
-Stability
-Maintainability
-Performance
-Convenience
-```
-
-| Value | Purpose |
-|---|---|
-| Correctness | Build systems that behave properly |
-| Integrity | Preserve alignment with principles |
-| Transparency | Make behavior understandable |
-| Consistency | Reduce cognitive overhead |
-| Sustainability | Enable decades of operation |
-| Security | Protect users and systems |
-| Stewardship | Respect future maintainers |
-| Excellence | Improve continuously |
-| Efficiency | Use resources responsibly |
-| Evolution | Change without fragmentation |
+| Rank | Value | Purpose | Where it's covered |
+|---|---|---|---|
+| 1 | Correctness | Build systems that behave according to specification | Chapter 10; `ATLAS-VAL-0001`-`0003` |
+| 2 | Security | Protect users, data, and systems from harm | Chapter 17; `ATLAS-VAL-0050`-`0052` |
+| 3 | Clarity | Make behavior, intent, and rationale understandable | Chapter 11; `ATLAS-VAL-0010`-`0022` |
+| 4 | Composability | Prefer small, focused parts that combine over monolithic ones | Chapter 14 |
+| 5 | Economy | Spend engineering time on demonstrated need, not speculative generality | `ATLAS-VAL-0030`-`0031`, `0070`-`0071` |
+| 6 | Stability | Treat public contracts as commitments | Chapter 20; `ATLAS-VAL-0090` |
+| 7 | Maintainability | Design for the engineer who maintains this after you | Chapter 19; `ATLAS-VAL-0040`-`0041`, `0060`-`0061` |
+| 8 | Performance | Be efficient, but only once correct | Chapter 18; `ATLAS-VAL-0080`-`0081` |
+| 9 | Convenience | Short-term ease matters least when it conflicts with the above | — |
 
 #### Requirements
 
@@ -364,9 +375,9 @@ Optimization SHOULD be guided by measurement.
 
 All major evolving components MUST define an evolution strategy.
 
-##### ATLAS-VAL-0091 - Migration Paths
+##### ATLAS-VAL-0091 - Migration Paths (Retired)
 
-Breaking changes MUST include migration paths where practical.
+Retired; superseded by `ATLAS-CHARTER-0007`, which states the same requirement at charter authority. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
 ### Chapter 8 - Design Goals
 
@@ -543,17 +554,17 @@ Performance improvements MUST consider correctness and maintainability.
 
 Complexity SHOULD be managed, isolated, and documented.
 
-##### ATLAS-NONGOAL-0070 - Managed Breaking Changes
+##### ATLAS-NONGOAL-0070 - Managed Breaking Changes (Retired)
 
-Breaking changes MUST be intentional and managed.
+Retired; superseded by `ATLAS-CHARTER-0007`, which states the same requirement at charter authority. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
-##### ATLAS-NONGOAL-0071 - Breaking Change Migration
+##### ATLAS-NONGOAL-0071 - Breaking Change Migration (Retired)
 
-Breaking changes MUST provide migration guidance where practical.
+Retired; superseded by `ATLAS-CHARTER-0007`, which states the same requirement at charter authority. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
-##### ATLAS-NONGOAL-0080 - Durable Knowledge
+##### ATLAS-NONGOAL-0080 - Durable Knowledge (Retired)
 
-Important knowledge MUST be preserved in durable artifacts.
+Retired; superseded by `ATLAS-FND-0020`, which states the same requirement. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
 ##### ATLAS-NONGOAL-0090 - Purposeful Tooling
 
@@ -826,17 +837,17 @@ Evolvability is the ability to change without fragmentation. Atlas evolves throu
 
 #### Requirements
 
-##### ATLAS-EVOL-0001 - Evolution Strategy
+##### ATLAS-EVOL-0001 - Evolution Strategy (Retired)
 
-Major public contracts MUST define an evolution strategy.
+Retired; superseded by `ATLAS-VAL-0090`, which states the same requirement. This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
 ##### ATLAS-EVOL-0010 - Deprecation Path
 
 Deprecated capabilities SHOULD include replacement guidance.
 
-##### ATLAS-EVOL-0020 - Migration Support
+##### ATLAS-EVOL-0020 - Migration Support (Retired)
 
-Breaking changes SHOULD include migration support where practical.
+Retired; superseded by `ATLAS-CHARTER-0007`, which states the same requirement at charter authority and controlling strength (`MUST` vs. this requirement's weaker `SHOULD`). This identifier remains reserved and MUST NOT be reused (`ATLAS-CHARTER-0006`).
 
 ## Part IV - Architectural Principles
 
