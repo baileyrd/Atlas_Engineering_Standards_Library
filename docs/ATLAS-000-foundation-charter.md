@@ -4,6 +4,7 @@
 |---|---|
 | Document ID | ATLAS-000 |
 | Title | Atlas Foundation Charter |
+| Short Name | CHARTER |
 | Status | Draft 0.1 |
 | Classification | Foundational, Normative |
 | Scope | Entire Atlas Ecosystem |

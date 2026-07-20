@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-400 |
 | Title | Volume V - SDK Architecture |
+| Short Name | SDK |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Design standards for Atlas-provided SDKs across core, networking, storage, security, terminal, UI, plugin, testing, and documentation domains |
 | Parent | ATLAS-001 |
 
 ## Purpose

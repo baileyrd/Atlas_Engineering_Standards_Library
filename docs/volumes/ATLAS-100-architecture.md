@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-100 |
 | Title | Volume II - Architecture |
+| Short Name | ARCH |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Runtime, communication, data, and platform architecture for Atlas components and services |
 | Parent | ATLAS-001 |
 
 ## Purpose

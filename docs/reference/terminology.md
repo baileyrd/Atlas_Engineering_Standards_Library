@@ -4,7 +4,11 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Architecture`: The structure of a system, including boundaries, responsibilities, dependencies, communication patterns, and evolution constraints.
 
+`Architecture Decision Record (ADR)`: A durable record of a significant architectural decision, including the context, the options considered, and the rationale for the choice made.
+
 `Artifact`: A produced output such as a binary, crate, container image, SBOM, document, schema, generated SDK, test report, or release bundle.
+
+`Chapter`: A numbered subdivision of a Part within a Volume, typically the unit at which requirements are grouped.
 
 `Compatibility`: The degree to which a consumer can continue to use a provider across changes without modification.
 
@@ -18,11 +22,17 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Normative`: Binding for official Atlas work.
 
+`Part`: A numbered subdivision of a Volume that groups related Chapters (e.g. "Part II - Philosophy").
+
 `Public Interface`: An interface intended for use outside its defining component, crate, process, service, or administrative boundary.
 
 `Requirement`: A specific statement that constrains or permits behavior.
 
+`RFC (Request for Comments)`: A proposal document used to solicit review and reach consensus on a significant change before it is adopted into a specification.
+
 `Specification`: A document that defines behavior, structure, interfaces, processes, or governance rules.
 
 `Traceability`: The ability to connect requirements, decisions, implementations, tests, artifacts, and releases.
+
+`Volume`: A top-level, independently numbered division of the Atlas Engineering Standards Library (e.g. ATLAS-001 Volume I - Foundation), composed of Parts and Chapters.
 

@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-500 |
 | Title | Volume VI - Security Architecture |
+| Short Name | SEC |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Threat modeling, identity, authentication, authorization, cryptography, key/secret management, supply chain security, and secure development lifecycle for the Atlas ecosystem |
 | Parent | ATLAS-001 |
 
 ## Purpose
