@@ -15,4 +15,5 @@
 - [ATLAS-900 - Volume X - Reference Architectures](docs/volumes/ATLAS-900-reference-architectures.md)
 - [Requirement Template](docs/templates/requirement-template.md)
 - [Terminology](docs/reference/terminology.md)
+- [Contributing](CONTRIBUTING.md)
 
