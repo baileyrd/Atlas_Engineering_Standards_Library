@@ -55,6 +55,16 @@ Atlas uses RFC-style requirement language:
 - `SHOULD NOT` indicates a discouraged practice with possible exceptions.
 - `MAY` indicates an explicitly permitted option.
 
+## Documentation Site
+
+`SUMMARY.md` is an [mdBook](https://rust-lang.github.io/mdBook/) table of contents. Preview it locally with:
+
+```sh
+mdbook serve
+```
+
+The build output (`book/`) is gitignored and not currently published anywhere.
+
 ## Working Model
 
 Atlas evolves from specification to implementation:
