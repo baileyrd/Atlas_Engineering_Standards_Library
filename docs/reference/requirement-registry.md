@@ -36,6 +36,13 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `PERF` | ATLAS-001 | Ch. 18 — Performance | 0020 | 0030 |
 | `MAINT` | ATLAS-001 | Ch. 19 — Maintainability | 0020 | 0030 |
 | `EVOL` | ATLAS-001 | Ch. 20 — Evolvability | 0020 | 0030 |
+| `LAYER` | ATLAS-001 | Ch. 21 — Layered Architecture | 0010 | 0020 |
+| `BOUND` | ATLAS-001 | Ch. 22 — Boundary Design | 0010 | 0020 |
+| `DEP` | ATLAS-001 | Ch. 23 — Dependency Direction | 0010 | 0020 |
+| `IFACE` | ATLAS-001 | Ch. 24 — Interface Design | 0010 | 0020 |
+| `STATE` | ATLAS-001 | Ch. 25 — State Management | 0010 | 0020 |
+| `FAIL` | ATLAS-001 | Ch. 26 — Failure Handling | 0010 | 0020 |
+| `RES` | ATLAS-001 | Ch. 27 — Resource Management | 0010 | 0020 |
 
 ## Shared Domain Families
 
