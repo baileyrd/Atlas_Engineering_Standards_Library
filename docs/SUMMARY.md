@@ -16,3 +16,4 @@
 - [Volume Template](templates/volume-template.md)
 - [Terminology](reference/terminology.md)
 - [Requirement ID Registry](reference/requirement-registry.md)
+- [Architecture Decision Records](decisions/README.md)

@@ -1043,7 +1043,83 @@ Debugging discoveries and hard-won operational lessons SHOULD be recorded as sho
 
 ## Part VI - Governance
 
-Chapters 34 through 38 are reserved for detailed expansion. They will define the standards process, RFC process, architecture decision records, change management, and review process.
+This part is the most load-bearing in the volume: `ATLAS-FND-0003`, `ATLAS-CHARTER-0005`, and `ATLAS-KNOW-0001` all already require traceability to RFCs and Architecture Decision Records, and CONTRIBUTING.md already describes a review process — none of it was defined anywhere until now.
+
+### Chapter 34 - Standards Process
+
+Per `ATLAS-PHIL-0102` (Justified Complexity) and ATLAS-000 Article III (Economy), a volume is not drafted in full speculatively. It exists as a **Seed** — a title, a one-paragraph statement of what it will eventually govern, and an explicit trigger condition — until a real, current consumer in the ecosystem (an actual crate, service, or subsystem) needs the standard it would provide. ATLAS-000 and ATLAS-001 are the deliberate exception: foundational philosophy and governance are needed regardless of how much of the ecosystem exists yet, which is why they're written in full while the rest of the library is not.
+
+#### Requirements
+
+##### ATLAS-GOV-STD-0001 - Consumer-Gated Standards
+
+A volume or chapter MUST NOT be drafted in full until a real, current consumer needs the standard it would provide. Before that trigger, it exists only as a Seed: title, purpose statement, and trigger condition.
+
+##### ATLAS-GOV-STD-0010 - Seed to Draft Promotion
+
+A volume promotes from Seed to Draft when its stated trigger condition is met. Promotion MUST be recorded by updating the volume's own `Status` field and MAY require an RFC per Chapter 35 if the promotion itself involves a non-obvious design decision.
+
+##### ATLAS-GOV-STD-0020 - Foundational Exemption
+
+ATLAS-000 and ATLAS-001 are exempt from consumer-gating.
+
+### Chapter 35 - RFC Process
+
+An RFC is how a substantive change to a normative document gets proposed and reviewed before it exists. Per Economy, Atlas does not maintain a separate RFC-tracking system: the pull request *is* the RFC. A dedicated RFC repository or numbering scheme is itself a standard subject to `ATLAS-GOV-STD-0001` — it gets built if and when a real need (e.g. multiple independent maintainers needing async proposal review) demonstrates it, not by default.
+
+#### Requirements
+
+##### ATLAS-GOV-RFC-0001 - RFC Trigger
+
+A change to a normative requirement in ATLAS-000 or ATLAS-001, the introduction of a new requirement-ID prefix, or a Seed-to-Draft promotion involving a non-obvious design decision MUST be proposed as an RFC before merging. Purely editorial changes (typos, formatting, cross-reference fixes) MUST NOT require one.
+
+##### ATLAS-GOV-RFC-0010 - RFC Format
+
+An RFC is a pull request whose description states the problem, the proposed change, alternatives considered, and the impact on existing requirements. No separate document is required.
+
+##### ATLAS-GOV-RFC-0020 - RFC Acceptance
+
+An RFC is accepted when its pull request merges under Chapter 38's review requirements. There is no separate acceptance vote or status.
+
+### Chapter 36 - Architecture Decision Records
+
+An RFC proposes a change and is discarded once resolved — its content lives on in the merged pull request and the document it changed. An ADR is different: it records *why* a significant decision was made, as a standalone, permanent artifact, because that reasoning is worth finding without knowing which PR to look in. Not every RFC produces an ADR — only decisions significant enough to need that standalone discoverability.
+
+#### Requirements
+
+##### ATLAS-GOV-ADR-0001 - ADR Trigger
+
+A significant, non-obvious architectural decision, per `ATLAS-KNOW-0001`, MUST be recorded as an ADR when the decision is made, not reconstructed retroactively.
+
+##### ATLAS-GOV-ADR-0010 - ADR Location and Format
+
+ADRs live under `docs/decisions/` as numbered, permanent files (`NNNN-title.md`). Each MUST record context, the decision, consequences, and alternatives rejected. An ADR is never deleted or renumbered; a superseding decision gets a new ADR that references the one it supersedes.
+
+### Chapter 37 - Change Management
+
+#### Requirements
+
+##### ATLAS-GOV-CHANGE-0001 - Change Classification
+
+Every change to a normative document MUST be classified as editorial (no requirement text or ID affected), clarifying (requirement text changed, meaning and compatibility unaffected), or substantive (meaning changed, a requirement added or retired, or a new prefix introduced) before merge. The classification determines whether Chapter 35's RFC trigger applies.
+
+##### ATLAS-GOV-CHANGE-0010 - No Silent Substantive Changes
+
+A substantive change MUST be identifiable from the pull request title or description alone, without requiring a line-by-line diff read to discover it.
+
+### Chapter 38 - Review Process
+
+This chapter states, as a specification, the review mechanism CONTRIBUTING.md already describes and this repository's branch protection already enforces — closing the loop D1 (Specification Before Implementation) requires, applied to the standards library's own tooling.
+
+#### Requirements
+
+##### ATLAS-GOV-REVIEW-0001 - Minimum Review Gate
+
+A normative change MUST pass the repository's automated structural checks (Chapter 29) and merge only through the pull-request workflow in CONTRIBUTING.md. Direct pushes to the governing branch MUST NOT be permitted.
+
+##### ATLAS-GOV-REVIEW-0010 - Review Depth Proportional to Classification
+
+Review depth SHOULD scale with the change classification from `ATLAS-GOV-CHANGE-0001`: editorial changes need a light pass; substantive changes need the full review named in ATLAS-000 Article V (correctness, security, compatibility, maintainability, ecosystem impact).
 
 ## Part VII - Reference
 

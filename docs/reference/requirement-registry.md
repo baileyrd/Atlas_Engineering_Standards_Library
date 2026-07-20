@@ -49,6 +49,11 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `COMPAT` | ATLAS-001 | Ch. 31 — Compatibility | 0010 | 0020 |
 | `LIFE` | ATLAS-001 | Ch. 32 — Lifecycle Management | 0010 | 0020 |
 | `KNOW` | ATLAS-001 | Ch. 33 — Knowledge Preservation | 0010 | 0020 |
+| `GOV-STD` | ATLAS-001 | Ch. 34 — Standards Process | 0020 | 0030 |
+| `GOV-RFC` | ATLAS-001 | Ch. 35 — RFC Process | 0020 | 0030 |
+| `GOV-ADR` | ATLAS-001 | Ch. 36 — Architecture Decision Records | 0010 | 0020 |
+| `GOV-CHANGE` | ATLAS-001 | Ch. 37 — Change Management | 0010 | 0020 |
+| `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0010 | 0020 |
 
 ## Shared Domain Families
 
