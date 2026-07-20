@@ -74,3 +74,11 @@ Operations
 
 No official ecosystem capability should become stable without a governing specification, an ownership model, compatibility expectations, lifecycle status, and verification strategy.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the PR workflow and authoring conventions.
+
+## License
+
+This library is licensed under [CC BY 4.0](LICENSE) (Creative Commons Attribution 4.0 International). You may use, adapt, and redistribute these standards, including commercially, as long as you give appropriate credit to Atlas.
+

@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-600 |
 | Title | Volume VII - Engineering Toolchain |
+| Short Name | TOOL |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Development environments, build systems, testing frameworks, static analysis, CI/CD, release automation, and compliance tooling |
 | Parent | ATLAS-001 |
 
 ## Purpose

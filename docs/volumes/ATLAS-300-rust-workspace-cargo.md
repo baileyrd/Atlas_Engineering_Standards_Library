@@ -4,8 +4,10 @@
 |---|---|
 | Document ID | ATLAS-300 |
 | Title | Volume IV - Rust Workspace and Cargo Architecture |
+| Short Name | RWC |
 | Status | Planned |
 | Classification | Normative |
+| Scope | Rust workspace layout, crate organization, Cargo manifests, build profiles, and toolchain policy |
 | Parent | ATLAS-001 |
 
 ## Purpose
