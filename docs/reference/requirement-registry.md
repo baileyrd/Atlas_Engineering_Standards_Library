@@ -58,6 +58,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `TERM` | ATLAS-001 | Ch. 40 — Terminology | 0010 | 0020 |
 | `DOC` | ATLAS-001 | Ch. 41 — Document Conventions | 0010 | 0020 |
 | `FUTURE` | ATLAS-001 | Ch. 42 — Future Evolution | 0010 | 0020 |
+| `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
 
 ## Shared Domain Families
 
@@ -67,18 +68,17 @@ A shared family is a prefix that multiple documents allocate under, each with it
 |---|---|---|---|
 | `SEC` | `SEC-FND` | ATLAS-001 Ch. 17 | Active |
 | `SEC` | `SEC-CRYPTO`, `SEC-AUTH`, `SEC-IDENTITY`, `SEC-KEY`, `SEC-SUPPLY` | ATLAS-500 (planned) | Reserved, not yet in use |
-| `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA`, `EVS-PROTOCOL` | ATLAS-200 (planned) | Reserved, not yet in use |
+| `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA`, `EVS-PROTOCOL` | ATLAS-200 (Draft — see its Deferred section) | Reserved, not yet in use |
 
 When a new volume needs a security- or versioning-adjacent requirement group, it MUST extend the `SEC` or `EVS` family with a new subdomain registered here rather than inventing an unrelated prefix.
 
-## Reserved Prefixes for Planned Volumes
+## Reserved Prefixes for Seed Volumes
 
-These volumes have no published requirements yet (`Status: Planned`). The short names below are proposed in each volume's metadata table and reserved here to prevent collision as volumes are drafted. They are not normative until the owning volume reaches Draft status and actually allocates numbers under them.
+These volumes have no published requirements yet (`Status: Seed` — see `ATLAS-GOV-STD-0001`). The short names below are proposed in each volume's metadata table and reserved here to prevent collision once a real trigger promotes the volume to Draft. They are not normative until then.
 
 | Prefix | Volume | Title |
 |---|---|---|
 | `ARCH` | ATLAS-100 | Volume II — Architecture |
-| `EVS` | ATLAS-200 | Volume III — Ecosystem Versioning Standard |
 | `RWC` | ATLAS-300 | Volume IV — Rust Workspace and Cargo Architecture |
 | `SDK` | ATLAS-400 | Volume V — SDK Architecture |
 | `SEC` | ATLAS-500 | Volume VI — Security Architecture |
