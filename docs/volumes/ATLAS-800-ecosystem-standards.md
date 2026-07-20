@@ -5,30 +5,15 @@
 | Document ID | ATLAS-800 |
 | Title | Volume IX - Ecosystem Standards |
 | Short Name | STD |
-| Status | Planned |
+| Status | Seed |
 | Classification | Normative |
 | Scope | Cross-cutting conventions for naming, logging, errors, configuration, serialization, networking, telemetry, documentation, internationalization, accessibility, and testing |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume IX defines cross-cutting Atlas standards for naming, logging, errors, configuration, serialization, networking, telemetry, metrics, tracing, documentation, internationalization, accessibility, and testing.
+Volume IX will define cross-cutting Atlas conventions — logging format, error shape, config schema — for the specific concerns two or more real components actually need to agree on to interoperate.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Chapter 1 Naming Standards
-Chapter 2 Logging Standards
-Chapter 3 Error Standards
-Chapter 4 Configuration Standards
-Chapter 5 Serialization Standards
-Chapter 6 Networking Standards
-Chapter 7 Telemetry Standards
-Chapter 8 Metrics Standards
-Chapter 9 Tracing Standards
-Chapter 10 Documentation Standards
-Chapter 11 Internationalization
-Chapter 12 Accessibility
-Chapter 13 Testing Standards
-```
-
+When Atlas has two or more components that need to agree on a cross-cutting convention to interoperate — e.g. a shared log format so operators can correlate output across them. A single component has no interoperability convention to standardize; each concern in this volume's scope gets its own chapter once its own trigger fires, rather than the whole volume being drafted at once.

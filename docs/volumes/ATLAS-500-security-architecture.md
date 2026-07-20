@@ -5,31 +5,15 @@
 | Document ID | ATLAS-500 |
 | Title | Volume VI - Security Architecture |
 | Short Name | SEC |
-| Status | Planned |
+| Status | Seed |
 | Classification | Normative |
 | Scope | Threat modeling, identity, authentication, authorization, cryptography, key/secret management, supply chain security, and secure development lifecycle for the Atlas ecosystem |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VI defines the Atlas security architecture, including threat modeling, identity, authentication, authorization, cryptography, key management, secrets, secure communication, trust, supply chain security, secure development lifecycle, validation, and incident response.
+Volume VI will define the Atlas security architecture — threat modeling, identity, authentication, cryptography, key/secret management, supply chain security — for real, present threat surfaces, not a hypothetical worst case.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Chapter 1 Security Philosophy
-Chapter 2 Threat Modeling
-Chapter 3 Identity
-Chapter 4 Authentication
-Chapter 5 Authorization
-Chapter 6 Cryptographic Architecture
-Chapter 7 Key Management
-Chapter 8 Secrets Management
-Chapter 9 Secure Communication
-Chapter 10 Trust Model
-Chapter 11 Supply Chain Security
-Chapter 12 Secure Development Lifecycle
-Chapter 13 Security Validation
-Chapter 14 Incident Response
-```
-
+When Atlas has a component that handles untrusted input, credentials, or cryptographic material, making threat modeling and identity/authentication design answerable against a real attack surface. `ATLAS-SEC-FND-*` (ATLAS-001 Chapter 17) already sets the foundational security tenets every component follows in the meantime; this volume goes deeper once there's something concrete to threat-model.

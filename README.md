@@ -10,15 +10,15 @@ Atlas treats engineering standards as first-class artifacts. A standard is not m
 |---|---|---|
 | [ATLAS-000](docs/ATLAS-000-foundation-charter.md) | Foundation Charter | Draft 0.1 |
 | [ATLAS-001](docs/volumes/ATLAS-001-foundation.md) | Volume I - Foundation | Draft 0.1 |
-| [ATLAS-100](docs/volumes/ATLAS-100-architecture.md) | Volume II - Architecture | Planned |
+| [ATLAS-100](docs/volumes/ATLAS-100-architecture.md) | Volume II - Architecture | Seed |
 | [ATLAS-200](docs/volumes/ATLAS-200-versioning.md) | Volume III - Ecosystem Versioning Standard | Planned |
-| [ATLAS-300](docs/volumes/ATLAS-300-rust-workspace-cargo.md) | Volume IV - Rust Workspace and Cargo Architecture | Planned |
-| [ATLAS-400](docs/volumes/ATLAS-400-sdk-architecture.md) | Volume V - SDK Architecture | Planned |
-| [ATLAS-500](docs/volumes/ATLAS-500-security-architecture.md) | Volume VI - Security Architecture | Planned |
-| [ATLAS-600](docs/volumes/ATLAS-600-engineering-toolchain.md) | Volume VII - Engineering Toolchain | Planned |
-| [ATLAS-700](docs/volumes/ATLAS-700-plugin-extension-architecture.md) | Volume VIII - Plugin and Extension Architecture | Planned |
-| [ATLAS-800](docs/volumes/ATLAS-800-ecosystem-standards.md) | Volume IX - Ecosystem Standards | Planned |
-| [ATLAS-900](docs/volumes/ATLAS-900-reference-architectures.md) | Volume X - Reference Architectures | Planned |
+| [ATLAS-300](docs/volumes/ATLAS-300-rust-workspace-cargo.md) | Volume IV - Rust Workspace and Cargo Architecture | Seed |
+| [ATLAS-400](docs/volumes/ATLAS-400-sdk-architecture.md) | Volume V - SDK Architecture | Seed |
+| [ATLAS-500](docs/volumes/ATLAS-500-security-architecture.md) | Volume VI - Security Architecture | Seed |
+| [ATLAS-600](docs/volumes/ATLAS-600-engineering-toolchain.md) | Volume VII - Engineering Toolchain | Seed |
+| [ATLAS-700](docs/volumes/ATLAS-700-plugin-extension-architecture.md) | Volume VIII - Plugin and Extension Architecture | Seed |
+| [ATLAS-800](docs/volumes/ATLAS-800-ecosystem-standards.md) | Volume IX - Ecosystem Standards | Seed |
+| [ATLAS-900](docs/volumes/ATLAS-900-reference-architectures.md) | Volume X - Reference Architectures | Seed |
 
 ## Document Hierarchy
 

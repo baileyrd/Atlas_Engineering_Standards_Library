@@ -5,27 +5,15 @@
 | Document ID | ATLAS-900 |
 | Title | Volume X - Reference Architectures |
 | Short Name | REF |
-| Status | Planned |
+| Status | Seed |
 | Classification | Informative unless otherwise stated |
 | Scope | Illustrative reference implementations of platform, CLI, terminal, networking, storage, plugin host, service, and deployment models |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume X defines reference architectures that demonstrate how Atlas standards can be applied. Reference architectures are not the only permitted implementations, but they provide concrete guidance for platform, CLI, terminal, networking, secure transport, storage, plugin host, service, deployment, and operations models.
+Volume X will document reference architectures distilled from real Atlas implementations, demonstrating how the rest of the library applies in practice. A reference architecture is a description of something built, not a design proposed in its absence.
 
-## Proposed Table of Contents
+## Trigger
 
-```text
-Chapter 1 Reference Platform
-Chapter 2 Reference CLI
-Chapter 3 Reference Terminal
-Chapter 4 Reference Networking Stack
-Chapter 5 Reference Secure Transport
-Chapter 6 Reference Storage System
-Chapter 7 Reference Plugin Host
-Chapter 8 Reference Service Architecture
-Chapter 9 Reference Deployment Model
-Chapter 10 Reference Operations Model
-```
-
+When Atlas has at least one component built end-to-end against the standards in this library, making a reference architecture a distillation of a real implementation rather than a guess at what one might look like. Each chapter (platform, CLI, networking, and so on) gets its own trigger — a real instance of that specific kind of component.
