@@ -30,6 +30,8 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `RFC (Request for Comments)`: A proposal document used to solicit review and reach consensus on a significant change before it is adopted into a specification.
 
+`Seed`: A volume's status before it has a real, current consumer need. A Seed states purpose and trigger only — no chapters, no requirements — until `ATLAS-GOV-STD-0001`'s trigger condition promotes it to Draft.
+
 `Specification`: A document that defines behavior, structure, interfaces, processes, or governance rules.
 
 `Traceability`: The ability to connect requirements, decisions, implementations, tests, artifacts, and releases.
