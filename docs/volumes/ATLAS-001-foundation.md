@@ -851,7 +851,103 @@ Retired; superseded by `ATLAS-CHARTER-0007`, which states the same requirement a
 
 ## Part IV - Architectural Principles
 
-Chapters 21 through 27 are reserved for detailed expansion. They will define layered architecture, boundary design, dependency direction, interface design, state management, failure handling, and resource management.
+Part III states properties every Atlas design should have (correctness, clarity, modularity, and so on). Part IV is narrower: it states how Atlas systems are structured to get those properties. Where a requirement here would just restate a Part III tenet under a new prefix, it doesn't exist — this part cross-references Part III instead of duplicating it.
+
+### Chapter 21 - Layered Architecture
+
+Atlas systems SHOULD be organized into layers with directional dependency: domain logic depends on ports (interfaces), adapters implement ports, and platform-specific backends implement adapters where a platform distinction exists. Nothing above a layer depends on that layer's implementation detail — only on what it declares.
+
+This is not aspirational; it already exists in practice. A `platform` crate can define traits (the port) while `platform-linux`/`platform-windows`/`platform-mock` implement them (the adapters) — everything above depends on the trait alone, never on a specific backend.
+
+#### Requirements
+
+##### ATLAS-LAYER-0001 - Directional Dependency
+
+Higher architectural layers MUST depend on lower layers only through the lower layer's declared interface, never through its implementation detail.
+
+##### ATLAS-LAYER-0010 - Layer Substitutability
+
+A layer's implementation SHOULD be substitutable without changes to the layers that depend on it, provided the interface contract is preserved.
+
+### Chapter 22 - Boundary Design
+
+A boundary is where trusted, internally-consistent state meets something Atlas doesn't control: external input, another process, another crate's public surface, the filesystem, the network. `ATLAS-CORR-0010` already requires validating input at a boundary; this chapter's concern is different — who owns a boundary, and what it must declare, not the act of validating.
+
+#### Requirements
+
+##### ATLAS-BOUND-0001 - Boundary Ownership
+
+Every trust boundary MUST have exactly one component responsible for translating across it. Responsibility MUST NOT be split silently across multiple components.
+
+##### ATLAS-BOUND-0010 - Boundary Failure Contract
+
+A boundary's failure behavior — what happens when translation across it fails — MUST be part of its declared interface, not left to caller inference.
+
+### Chapter 23 - Dependency Direction
+
+Atlas defaults to a modular monolith with clear internal module boundaries. Extracting a separate service or process requires a concrete forcing function — independent scaling, a team or language boundary, or hard fault isolation — not speculative future need; the distributed-systems tax is not paid without one.
+
+#### Requirements
+
+##### ATLAS-DEP-0001 - Dependency Toward Stability
+
+Components SHOULD depend on more stable abstractions (ports, traits) rather than on more volatile concrete implementations.
+
+##### ATLAS-DEP-0010 - Modular Monolith Default
+
+Atlas SHOULD default to a modular monolith with narrow, explicit module boundaries. Extracting a separate service MUST be justified by a concrete forcing function (independent scaling, a team or language boundary, or hard fault isolation), not speculative future need.
+
+### Chapter 24 - Interface Design
+
+A public trait is consumed on two sides: callers and implementers. A change that is additive for callers can still be breaking for implementers — a trait gaining a required method compiles for every existing caller but breaks every existing implementation that doesn't yet have that method. Interface design in Atlas MUST account for both sides, not just the caller's.
+
+#### Requirements
+
+##### ATLAS-IFACE-0001 - Two-Sided Trait Contracts
+
+A public trait's compatibility MUST be evaluated from both the caller's and the implementer's perspective before being classified as additive or breaking.
+
+##### ATLAS-IFACE-0010 - Minimal Surface
+
+Public interfaces SHOULD expose the minimum set of methods and types necessary for their stated purpose.
+
+### Chapter 25 - State Management
+
+#### Requirements
+
+##### ATLAS-STATE-0001 - Single Ownership
+
+Mutable state SHOULD have exactly one component responsible for its consistency at any time. Introducing shared mutable state MUST include an explicit synchronization strategy.
+
+##### ATLAS-STATE-0010 - Immutability Default
+
+Atlas designs SHOULD default to immutable data and explicit, narrow mutation points rather than broadly mutable shared state.
+
+### Chapter 26 - Failure Handling
+
+`ATLAS-CORR-0020` requires that failures be represented explicitly; this chapter states the Rust-specific mechanism for doing so.
+
+#### Requirements
+
+##### ATLAS-FAIL-0001 - Result Over Panic
+
+Atlas Rust library code MUST return `Result` for recoverable failure rather than panicking. `unwrap()`/`expect()` MUST NOT appear outside tests and throwaway prototypes.
+
+##### ATLAS-FAIL-0010 - Error Context
+
+Errors MUST be propagated with enough context to diagnose the failure. An error MUST NOT be silently swallowed or flattened to an opaque type that discards its cause.
+
+### Chapter 27 - Resource Management
+
+#### Requirements
+
+##### ATLAS-RES-0001 - RAII Ownership
+
+External resources (file descriptors, sockets, handles, processes) MUST be owned by a type whose destructor releases them. Manual, non-RAII cleanup MUST NOT be the primary release mechanism.
+
+##### ATLAS-RES-0010 - Ownership Transfer Explicitness
+
+Where a resource's ownership can transfer between components, the transfer point and the post-transfer responsibility MUST be explicit in the interface, not inferred from convention.
 
 ## Part V - Ecosystem Principles
 
