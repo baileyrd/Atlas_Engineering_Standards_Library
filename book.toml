@@ -3,7 +3,7 @@ title = "Atlas Engineering Standards Library"
 description = "A normative standards library for a Rust-based software ecosystem."
 authors = ["Atlas Contributors"]
 language = "en"
-src = "."
+src = "docs"
 
 [build]
 build-dir = "book"

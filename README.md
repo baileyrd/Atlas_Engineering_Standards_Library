@@ -57,13 +57,13 @@ Atlas uses RFC-style requirement language:
 
 ## Documentation Site
 
-`SUMMARY.md` is an [mdBook](https://rust-lang.github.io/mdBook/) table of contents. Preview it locally with:
+[`docs/SUMMARY.md`](docs/SUMMARY.md) is an [mdBook](https://rust-lang.github.io/mdBook/) table of contents covering everything under `docs/`. Preview it locally with:
 
 ```sh
 mdbook serve
 ```
 
-The build output (`book/`) is gitignored and not currently published anywhere.
+`book.toml` points `src` at `docs/` specifically (not the repo root) so the build only ever touches library content — this README and CONTRIBUTING.md are intentionally outside the book and stay as plain GitHub-rendered docs. The build output (`book/`) is gitignored and not currently published anywhere.
 
 ## Working Model
 
