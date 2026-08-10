@@ -1,1 +1,117 @@
-IyBBVExBUy02MDAgLSBWb2x1bWUgVklJIC0gRW5naW5lZXJpbmcgVG9vbGNoYWluCgp8IEZpZWxkIHwgVmFsdWUgfAp8LS0tfC0tLXwKfCBEb2N1bWVudCBJRCB8IEFUTEFTLTYwMCB8CnwgVGl0bGUgfCBWb2x1bWUgVklJIC0gRW5naW5lZXJpbmcgVG9vbGNoYWluIHwKfCBTaG9ydCBOYW1lIHwgVE9PTCB8CnwgU3RhdHVzIHwgRHJhZnQgMC4xIHwKfCBDbGFzc2lmaWNhdGlvbiB8IE5vcm1hdGl2ZSB8CnwgU2NvcGUgfCBWZXJzaW9uIGNvbnRyb2wgd29ya2Zsb3cgKGJyYW5jaGluZywgY29tbWl0cywgcHVsbCByZXF1ZXN0cywgcmV2aWV3LCBtZXJnZSkgYWNyb3NzIEF0bGFzIHJlcG9zaXRvcmllcy4gRGV2ZWxvcG1lbnQgZW52aXJvbm1lbnRzLCBidWlsZCBzeXN0ZW1zLCB0ZXN0aW5nIGZyYW1ld29ya3MsIHN0YXRpYyBhbmFseXNpcywgQ0kvQ0QsIHJlbGVhc2UgYXV0b21hdGlvbiwgYW5kIGNvbXBsaWFuY2UgdG9vbGluZyByZW1haW4gU2VlZCAoc2VlIERlZmVycmVkKS4gfAp8IFBhcmVudCB8IEFUTEFTLTAwMSB8CgojIyBQdXJwb3NlCgpWb2x1bWUgVklJIGRlZmluZXMgdGhlIEF0bGFzIGVuZ2luZWVyaW5nIHRvb2xjaGFpbiAtIENJL0NELCBsaW50aW5nLCByZWxlYXNlIGF1dG9tYXRpb24sIGFydGlmYWN0IHNpZ25pbmcsIGFuZCB2ZXJzaW9uIGNvbnRyb2wgd29ya2Zsb3cuIFRoaXMgZHJhZnQgY292ZXJzIG9ubHkgdGhlIGxhdHRlcjogaG93IEF0bGFzIHJlcG9zaXRvcmllcyB1c2UgZ2l0IC0gYnJhbmNoaW5nLCBjb21taXRzLCBwdWxsIHJlcXVlc3RzLCByZXZpZXcsIGFuZCBtZXJnZSBtZWNoYW5pY3MuIEl0IGV4aXN0cyBhcyBpdHMgb3duIGNoYXB0ZXIgZ3JvdXAgcmF0aGVyIHRoYW4gd2FpdGluZyBmb3IgdGhlIHJlc3Qgb2YgdGhlIHZvbHVtZSBiZWNhdXNlIGl0IGhhcyBpdHMgb3duIGZpcmVkIHRyaWdnZXIsIGluZGVwZW5kZW50IG9mIENJL0NELCBsaW50aW5nLCByZWxlYXNlIGF1dG9tYXRpb24sIG9yIGFydGlmYWN0IHNpZ25pbmcuCgojIyBUcmlnZ2VyCgpUaGlzIHN0YW5kYXJkcyBsaWJyYXJ5J3Mgb3duIGBDT05UUklCVVRJTkcubWRgLCBicmFuY2ggcHJvdGVjdGlvbiBvbiBgbWFpbmAsIGFuZCB0aGUgYHZhbGlkYXRlLWRvY3NgIENJIGNoZWNrIGFyZSBhbHJlYWR5IGEgcmVhbCwgd29ya2luZyBnaXQgd29ya2Zsb3cgLSBub3QgYSBwbGF1c2libGUtc291bmRpbmcgcHJvcG9zYWwuIFBlciBgQVRMQVMtQVVUTy0wMDEwYCwgYSBzZWNvbmQgcmVhbCBpbnN0YW5jZSBvZiB0b29sY2hhaW4gYXV0b21hdGlvbiAoYnJhbmNoIHByb3RlY3Rpb24gZW5mb3JjaW5nIHRoZSBQUiB3b3JrZmxvdywgYWxvbmdzaWRlIHRoZSBleGlzdGluZyBgdmFsaWRhdGUtZG9jc2AgY2hlY2spIGlzIHdoYXQgcHJvbW90ZXMgdGhpcyBzbGljZSBmcm9tIFNlZWQgdG8gRHJhZnQ6IHRoZSBwYXR0ZXJuIGlzIGJlaW5nIGZvcm1hbGl6ZWQgYmVjYXVzZSBpdCBoYXMgYWxyZWFkeSBiZWVuIG9ic2VydmVkIHR3aWNlLCBub3QgaW52ZW50ZWQgc3BlY3VsYXRpdmVseS4gVGhpcyBmb2xsb3dzIHRoZSBzYW1lIHBhdHRlcm4gQVRMQVMtMjAwIHVzZWQ6IHRyYW5zY3JpYmluZyBhIHByb3ZlbiwgYXJndWVkIHBvbGljeSByYXRoZXIgdGhhbiBkcmFmdGluZyBvbmUgZnJvbSBhIGNoYXB0ZXIgbGlzdC4KCiMjIENoYXB0ZXIgMSAtIFJlcG9zaXRvcnkgYW5kIEJyYW5jaGluZyBNb2RlbAoKQXRsYXMgcmVwb3NpdG9yaWVzIHVzZSB0cnVuay1iYXNlZCBkZXZlbG9wbWVudDogc2hvcnQtbGl2ZWQgYnJhbmNoZXMgY3V0IGZyb20gdGhlIGRlZmF1bHQgYnJhbmNoLCBtZXJnZWQgYmFjayB0aHJvdWdoIHJldmlldywgYW5kIGRlbGV0ZWQuIFRoaXMgaXMgd2hhdCBgQ09OVFJJQlVUSU5HLm1kYCBhbHJlYWR5IGRlc2NyaWJlcyBmb3IgdGhpcyByZXBvc2l0b3J5IC0gdGhpcyBjaGFwdGVyIGdlbmVyYWxpemVzIGl0IGFjcm9zcyBBdGxhcy4KCiMjIyBSZXF1aXJlbWVudHMKCiMjIyMjIEFUTEFTLVRPT0wtMDAwMSAtIFRydW5rLUJhc2VkIERldmVsb3BtZW50CgpBbiBBdGxhcyByZXBvc2l0b3J5IE1VU1QgZGV2ZWxvcCBhZ2FpbnN0IGEgc2luZ2xlIGxvbmctbGl2ZWQgZGVmYXVsdCBicmFuY2guIEl0IE1VU1QgTk9UIG1haW50YWluIGFkZGl0aW9uYWwgbG9uZy1saXZlZCBpbnRlZ3JhdGlvbiBicmFuY2hlcyAoZS5nLiBgZGV2ZWxvcGAsIGByZWxlYXNlLypgKSB1bmxlc3MgYSBjb25jcmV0ZSBmb3JjaW5nIGZ1bmN0aW9uIGlzIGRvY3VtZW50ZWQsIHBlciBgQVRMQVMtREVQLTAwMTBgJ3MgcmVhc29uaW5nIGFwcGxpZWQgdG8gYnJhbmNoIHRvcG9sb2d5IHJhdGhlciB0aGFuIHNlcnZpY2UgZXh0cmFjdGlvbi4KCiMjIyMjIEFUTEFTLVRPT0wtMDAwMiAtIEJyYW5jaCBOYW1pbmcKCkEgd29ya2luZyBicmFuY2ggU0hPVUxEIGJlIG5hbWVkIGA8c2NvcGU-LzxzaG9ydC1kZXNjcmlwdGlvbj5gLCB3aGVyZSBgPHNjb3BlPmAgaWRlbnRpZmllcyB0aGUgYWZmZWN0ZWQgYXJlYSAoZS5nLiBhIHZvbHVtZSBpZGVudGlmaWVyLCBhIGNyYXRlIG5hbWUsIG9yIGBmaXhgL2Bkb2NzYCBmb3Igbm9uLXNjb3BlZCBjaGFuZ2VzKS4gVGhlIG5hbWUgU0hPVUxEIGxldCBhIHJldmlld2VyIGluZmVyIHdoYXQgY2hhbmdlZCBiZWZvcmUgb3BlbmluZyB0aGUgZGlmZi4KCiMjIyMjIEFUTEFTLVRPT0wtMDAwMyAtIFNpbmdsZS1QdXJwb3NlIEJyYW5jaGVzCgpBIGJyYW5jaCBTSE9VTEQgY29ycmVzcG9uZCB0byBvbmUgY29oZXJlbnQgdW5pdCBvZiB3b3JrLiBVbnJlbGF0ZWQgY2hhbmdlcyBhY3Jvc3MgdW5jb25uZWN0ZWQgc2NvcGVzIFNIT1VMRCBOT1QgYmUgYnVuZGxlZCBvbnRvIG9uZSBicmFuY2gsIHBlciB0aGUgUFIgc2NvcGUgcnVsZSBpbiBgQ09OVFJJQlVUSU5HLm1kYC4KCiMjIENoYXB0ZXIgMiAtIEJyYW5jaCBQcm90ZWN0aW9uCgojIyMgUmVxdWlyZW1lbnRzCgojIyMjIyBBVExBUy1UT09MLTAwMTAgLSBQcm90ZWN0ZWQgRGVmYXVsdCBCcmFuY2gKClRoZSBkZWZhdWx0IGJyYW5jaCBvZiBhbiBBdGxhcyByZXBvc2l0b3J5IE1VU1QgYmUgcHJvdGVjdGVkOiBkaXJlY3QgcHVzaGVzIE1VU1QgYmUgYmxvY2tlZCwgZm9yY2UtcHVzaGVzIE1VU1QgYmUgYmxvY2tlZCwgYW5kIGJyYW5jaCBkZWxldGlvbiBNVVNUIGJlIGJsb2NrZWQuIFRoaXMgaXMgdGhlIHJlcG9zaXRvcnktbGV2ZWwgbWVjaGFuaXNtIHRoYXQgZW5mb3JjZXMgYEFUTEFTLUdPVi1SRVZJRVctMDAwMWAuCgojIyMjIyBBVExBUy1UT09MLTAwMTEgLSBSZXF1aXJlZCBTdGF0dXMgQ2hlY2tzCgpNZXJnaW5nIGludG8gdGhlIGRlZmF1bHQgYnJhbmNoIE1VU1QgcmVxdWlyZSBhbnkgYXV0b21hdGVkIGNoZWNrcyBkZWZpbmVkIGZvciB0aGF0IHJlcG9zaXRvcnkgdW5kZXIgYEFUTEFTLUFVVE8tMDAwMWAgdG8gcGFzcyBmaXJzdC4gQSBmYWlsaW5nIHJlcXVpcmVkIGNoZWNrIE1VU1QgYmxvY2sgbWVyZ2UuCgojIyMjIyBBVExBUy1UT09MLTAwMTIgLSBObyBVbmRvY3VtZW50ZWQgQnlwYXNzCgpBbiBhZG1pbmlzdHJhdGl2ZSBvdmVycmlkZSBvZiBicmFuY2ggcHJvdGVjdGlvbiAoYSBmb3JjZS1wdXNoIHRvIHRoZSBkZWZhdWx0IGJyYW5jaCwgYSBtZXJnZSB3aXRoIGZhaWxpbmcgcmVxdWlyZWQgY2hlY2tzKSBNVVNUIE5PVCBvY2N1ciB3aXRob3V0IGEgZG9jdW1lbnRlZCByZWFzb24gaW4gdGhlIHRyaWdnZXJpbmcgcHVsbCByZXF1ZXN0IG9yIGFuIEFEUiwgcGVyIGBBVExBUy1WQUwtMDAxMWAuCgojIyBDaGFwdGVyIDMgLSBDb21taXQgQ29udmVudGlvbnMKCiMjIyBSZXF1aXJlbWVudHMKCiMjIyMjIEFUTEFTLVRPT0wtMDAyMCAtIEludGVudC1EZXNjcmliaW5nIENvbW1pdCBNZXNzYWdlcwoKQSBjb21taXQgbWVzc2FnZSBNVVNUIGRlc2NyaWJlIHRoZSBjaGFuZ2UncyBpbnRlbnQgLSB3aHkgaXQgd2FzIG1hZGUgLSBub3QgbWVyZWx5IHJlc3RhdGUgd2hhdCBsaW5lcyBjaGFuZ2VkLiBBIG1lc3NhZ2Ugc3VjaCBhcyBgdXBkYXRlIGZpbGVgIG9yIGBmaXhgIHdpdGggbm8gZnVydGhlciBjb250ZXh0IGRvZXMgbm90IHNhdGlzZnkgdGhpcyByZXF1aXJlbWVudC4KCiMjIyMjIEFUTEFTLVRPT0wtMDAyMSAtIEF0b21pYyBDb21taXRzCgpBIGNvbW1pdCBTSE9VTEQgcmVwcmVzZW50IG9uZSBsb2dpY2FsIGNoYW5nZS4gVW5yZWxhdGVkIGNoYW5nZXMgU0hPVUxEIE5PVCBiZSBidW5kbGVkIGludG8gYSBzaW5nbGUgY29tbWl0IHdoZXJlIHNwbGl0dGluZyB0aGVtIHdvdWxkIHByZXNlcnZlIHJldmlld2FiaWxpdHkuCgojIyMjIyBBVExBUy1UT09MLTAwMjIgLSBObyBTZWNyZXRzIGluIEhpc3RvcnkKCkEgY29tbWl0IE1VU1QgTk9UIGludHJvZHVjZSBjcmVkZW50aWFscywgdG9rZW5zLCBvciBvdGhlciBzZWNyZXRzIGludG8gcmVwb3NpdG9yeSBoaXN0b3J5LiBJZiBhIHNlY3JldCBpcyBjb21taXR0ZWQsIGl0IE1VU1QgYmUgcm90YXRlZCBhdCB0aGUgc291cmNlIC0gcmVtb3ZpbmcgaXQgaW4gYSBmb2xsb3ctdXAgY29tbWl0IGFsb25lIGRvZXMgTk9UIHNhdGlzZnkgdGhpcyByZXF1aXJlbWVudCwgc2luY2UgaGlzdG9yeSBzdGlsbCBjb250YWlucyBpdC4KCiMjIENoYXB0ZXIgNCAtIFB1bGwgUmVxdWVzdCBhbmQgUmV2aWV3IFdvcmtmbG93CgojIyMgUmVxdWlyZW1lbnRzCgojIyMjIyBBVExBUy1UT09MLTAwMzAgLSBQdWxsIFJlcXVlc3QgUmVxdWlyZWQKCkV2ZXJ5IGNoYW5nZSB0byBhbiBBdGxhcyByZXBvc2l0b3J5J3MgZGVmYXVsdCBicmFuY2ggTVVTVCBsYW5kIHRocm91Z2ggYSBwdWxsIHJlcXVlc3QsIHBlciBgQVRMQVMtR09WLVJFVklFVy0wMDAxYC4KCiMjIyMjIEFUTEFTLVRPT0wtMDAzMSAtIFB1bGwgUmVxdWVzdCBSYXRpb25hbGUKCkEgcHVsbCByZXF1ZXN0IGRlc2NyaXB0aW9uIE1VU1Qgc3RhdGUgd2hhdCBjaGFuZ2VkIGFuZCB3aHkgLSBwZXIgQVRMQVMtMDAwIEFydGljbGUgViAtIGVzcGVjaWFsbHkgZm9yIGFueSBzdWJzdGFudGl2ZSBjaGFuZ2UgdW5kZXIgYEFUTEFTLUdPVi1DSEFOR0UtMDAwMWAuCgojIyMjIyBBVExBUy1UT09MLTAwMzIgLSBSZXZpZXcgRGVwdGggUHJvcG9ydGlvbmFsIHRvIENsYXNzaWZpY2F0aW9uCgpSZXZpZXcgZGVwdGggU0hPVUxEIHNjYWxlIHdpdGggdGhlIGNoYW5nZSBjbGFzc2lmaWNhdGlvbiBmcm9tIGBBVExBUy1HT1YtQ0hBTkdFLTAwMDFgLCBwZXIgYEFUTEFTLUdPVi1SRVZJRVctMDAxMGAuIFRoaXMgYXBwbGllcyB0byBldmVyeSBBdGxhcyByZXBvc2l0b3J5LCBub3Qgb25seSB0aGUgc3RhbmRhcmRzIGxpYnJhcnkuCgojIyMjIyBBVExBUy1UT09MLTAwMzMgLSBGb2N1c2VkIFB1bGwgUmVxdWVzdCBTY29wZQoKQSBwdWxsIHJlcXVlc3QgU0hPVUxEIGJlIHNjb3BlZCB0byBhIHNpbmdsZSBjb2hlcmVudCBjaGFuZ2UuIFVucmVsYXRlZCBjaGFuZ2VzIFNIT1VMRCBiZSBzcGxpdCBpbnRvIHNlcGFyYXRlIHB1bGwgcmVxdWVzdHMgcmF0aGVyIHRoYW4gYnVuZGxlZCBmb3IgY29udmVuaWVuY2UsIHBlciBgQVRMQVMtTk9OR09BTC0wMDQxYC4KCiMjIENoYXB0ZXIgNSAtIE1lcmdlIGFuZCBDbGVhbnVwCgojIyMgUmVxdWlyZW1lbnRzCgojIyMjIyBBVExBUy1UT09MLTAwNDAgLSBEZWNsYXJlZCBNZXJnZSBTdHJhdGVneQoKQW4gQXRsYXMgcmVwb3NpdG9yeSBNVVNUIGRlY2xhcmUgb25lIGRlZmF1bHQgbWVyZ2Ugc3RyYXRlZ3kgKHNxdWFzaCwgbWVyZ2UgY29tbWl0LCBvciByZWJhc2UpIGFuZCBhcHBseSBpdCBjb25zaXN0ZW50bHkgcmF0aGVyIHRoYW4gbWl4aW5nIHN0cmF0ZWdpZXMgYWQgaG9jIHBlciBwdWxsIHJlcXVlc3QuCgojIyMjIyBBVExBUy1UT09MLTAwNDEgLSBCcmFuY2ggQ2xlYW51cCBBZnRlciBNZXJnZQoKQSBtZXJnZWQgYnJhbmNoJ3MgcmVtb3RlIGNvcHkgU0hPVUxEIGJlIGRlbGV0ZWQgYWZ0ZXIgbWVyZ2Ugc28gdGhlIHJlcG9zaXRvcnkncyBicmFuY2ggbGlzdCByZW1haW5zIGFjdGlvbmFibGUuCgojIyMjIyBBVExBUy1UT09MLTAwNDIgLSBObyBSZXdyaXRpbmcgTWVyZ2VkIEhpc3RvcnkKCkNvbW1pdHMgYWxyZWFkeSBtZXJnZWQgaW50byB0aGUgZGVmYXVsdCBicmFuY2ggTVVTVCBOT1QgYmUgcmV3cml0dGVuIChmb3JjZS1wdXNoZWQgb3ZlciwgcmViYXNlZCBhd2F5KSBleGNlcHQgdG8gcmVtZWRpYXRlIGEgbGVha2VkIHNlY3JldCBvciBhIGNyaXRpY2FsIGluY2lkZW50LCBhbmQgb25seSBhcyBhIGRvY3VtZW50ZWQgZXhjZXB0aW9uIHVuZGVyIGBBVExBUy1UT09MLTAwMTJgLgoKIyMgRGVmZXJyZWQKClBlciBgQVRMQVMtR09WLVNURC0wMDAxYCwgdGhlc2Ugc3RheSB1bndyaXR0ZW4gdW50aWwgdGhlaXIgb3duIHRyaWdnZXIgZmlyZXMsIHJhdGhlciB0aGFuIGJlaW5nIGRyYWZ0ZWQgc3BlY3VsYXRpdmVseSBub3c6CgB8IFRvcGljIHwgVHJpZ2dlciB8CnwtLS18LS0tfAp8IENJL0NEIHBpcGVsaW5lIHN0YW5kYXJkcyB8IEEgc2Vjb25kIEF0bGFzIHJlcG9zaXRvcnkgcnVucyBhIENJIHBpcGVsaW5lIGJleW9uZCB0aGlzIGxpYnJhcnkncyBgdmFsaWRhdGUtZG9jc2Agd29ya2Zsb3csIGZvcmNpbmcgYSByZWFsIGNob2ljZSBhYm91dCBzaGFyZWQgcGlwZWxpbmUgc3RydWN0dXJlIHwKfCBMaW50aW5nIC8gc3RhdGljIGFuYWx5c2lzIHRvb2xpbmcgfCBBdGxhcyBoYXMgYSByZWFsIFJ1c3QgY3JhdGUgd2hvc2UgbGludCBjb25maWd1cmF0aW9uIG5lZWRzIHRvIGJlIHNoYXJlZCBhY3Jvc3MgcmVwb3NpdG9yaWVzIHwKfCBSZWxlYXNlIGF1dG9tYXRpb24gfCBBdGxhcyBwdWJsaXNoZXMgYSByZWFsIHJlbGVhc2UgYXJ0aWZhY3QgKGNyYXRlLCBiaW5hcnkpIHRoYXQgbmVlZHMgYSByZXBlYXRhYmxlIHJlbGVhc2UgcHJvY2VzcyB8CnwgQXJ0aWZhY3Qgc2lnbmluZyB8IEF0bGFzIHB1Ymxpc2hlcyBhIHJlbGVhc2UgYXJ0aWZhY3QgdG8gYSByZWdpc3RyeSBvciBkaXN0cmlidXRpb24gY2hhbm5lbCB3aGVyZSBwcm92ZW5hbmNlIChgQVRMQVMtVkFMLTAwMjJgKSBuZWVkcyBjcnlwdG9ncmFwaGljIHZlcmlmaWNhdGlvbiwgbm90IGp1c3QgYSBzdGF0ZW1lbnQgfAp8IERldmVsb3BtZW50IGVudmlyb25tZW50IHN0YW5kYXJkcyB8IEEgc2Vjb25kIEF0bGFzIHJlcG9zaXRvcnkgZXhpc3RzIHdpdGggaXRzIG93biB0b29sY2hhaW4vZW52aXJvbm1lbnQgc2V0dXAgdG8gcmVjb25jaWxlIHdpdGggdGhpcyBvbmUgfAo=
+# ATLAS-600 - Volume VII - Engineering Toolchain
+
+| Field | Value |
+|---|---|
+| Document ID | ATLAS-600 |
+| Title | Volume VII - Engineering Toolchain |
+| Short Name | TOOL |
+| Status | Draft 0.1 |
+| Classification | Normative |
+| Scope | Version control workflow (branching, commits, pull requests, review, merge) across Atlas repositories. Development environments, build systems, testing frameworks, static analysis, CI/CD, release automation, and compliance tooling remain Seed (see Deferred). |
+| Parent | ATLAS-001 |
+
+## Purpose
+
+Volume VII defines the Atlas engineering toolchain - CI/CD, linting, release automation, artifact signing, and version control workflow. This draft covers only the latter: how Atlas repositories use git - branching, commits, pull requests, review, and merge mechanics. It exists as its own chapter group rather than waiting for the rest of the volume because it has its own fired trigger, independent of CI/CD, linting, release automation, or artifact signing.
+
+## Trigger
+
+This standards library's own `CONTRIBUTING.md`, branch protection on `main`, and the `validate-docs` CI check are already a real, working git workflow - not a plausible-sounding proposal. Per `ATLAS-AUTO-0010`, a second real instance of toolchain automation (branch protection enforcing the PR workflow, alongside the existing `validate-docs` check) is what promotes this slice from Seed to Draft: the pattern is being formalized because it has already been observed twice, not invented speculatively. This follows the same pattern ATLAS-200 used: transcribing a proven, argued policy rather than drafting one from a chapter list.
+
+## Chapter 1 - Repository and Branching Model
+
+Atlas repositories use trunk-based development: short-lived branches cut from the default branch, merged back through review, and deleted. This is what `CONTRIBUTING.md` already describes for this repository - this chapter generalizes it across Atlas.
+
+#### Requirements
+
+##### ATLAS-TOOL-0001 - Trunk-Based Development
+
+An Atlas repository MUST develop against a single long-lived default branch. It MUST NOT maintain additional long-lived integration branches (e.g. `develop`, `release/*`) unless a concrete forcing function is documented, per `ATLAS-DEP-0010`'s reasoning applied to branch topology rather than service extraction.
+
+##### ATLAS-TOOL-0002 - Branch Naming
+
+A working branch SHOULD be named `<scope>/<short-description>`, where `<scope>` identifies the affected area (e.g. a volume identifier, a crate name, or `fix`/`docs` for non-scoped changes). The name SHOULD let a reviewer infer what changed before opening the diff.
+
+##### ATLAS-TOOL-0003 - Single-Purpose Branches
+
+A branch SHOULD correspond to one coherent unit of work. Unrelated changes across unconnected scopes SHOULD NOT be bundled onto one branch, per the PR scope rule in `CONTRIBUTING.md`.
+
+## Chapter 2 - Branch Protection
+
+#### Requirements
+
+##### ATLAS-TOOL-0010 - Protected Default Branch
+
+The default branch of an Atlas repository MUST be protected: direct pushes MUST be blocked, force-pushes MUST be blocked, and branch deletion MUST be blocked. This is the repository-level mechanism that enforces `ATLAS-GOV-REVIEW-0001`.
+
+##### ATLAS-TOOL-0011 - Required Status Checks
+
+Merging into the default branch MUST require any automated checks defined for that repository under `ATLAS-AUTO-0001` to pass first. A failing required check MUST block merge.
+
+##### ATLAS-TOOL-0012 - No Undocumented Bypass
+
+An administrative override of branch protection (a force-push to the default branch, a merge with failing required checks) MUST NOT occur without a documented reason in the triggering pull request or an ADR, per `ATLAS-VAL-0011`.
+
+## Chapter 3 - Commit Conventions
+
+#### Requirements
+
+##### ATLAS-TOOL-0020 - Intent-Describing Commit Messages
+
+A commit message MUST describe the change's intent - why it was made - not merely restate what lines changed. A message such as `update file` or `fix` with no further context does not satisfy this requirement.
+
+##### ATLAS-TOOL-0021 - Atomic Commits
+
+A commit SHOULD represent one logical change. Unrelated changes SHOULD NOT be bundled into a single commit where splitting them would preserve reviewability.
+
+##### ATLAS-TOOL-0022 - No Secrets in History
+
+A commit MUST NOT introduce credentials, tokens, or other secrets into repository history. If a secret is committed, it MUST be rotated at the source - removing it in a follow-up commit alone does NOT satisfy this requirement, since history still contains it.
+
+## Chapter 4 - Pull Request and Review Workflow
+
+#### Requirements
+
+##### ATLAS-TOOL-0030 - Pull Request Required
+
+Every change to an Atlas repository's default branch MUST land through a pull request, per `ATLAS-GOV-REVIEW-0001`.
+
+##### ATLAS-TOOL-0031 - Pull Request Rationale
+
+A pull request description MUST state what changed and why - per ATLAS-000 Article V - especially for any substantive change under `ATLAS-GOV-CHANGE-0001`.
+
+##### ATLAS-TOOL-0032 - Review Depth Proportional to Classification
+
+Review depth SHOULD scale with the change classification from `ATLAS-GOV-CHANGE-0001`, per `ATLAS-GOV-REVIEW-0010`. This applies to every Atlas repository, not only the standards library.
+
+##### ATLAS-TOOL-0033 - Focused Pull Request Scope
+
+A pull request SHOULD be scoped to a single coherent change. Unrelated changes SHOULD be split into separate pull requests rather than bundled for convenience, per `ATLAS-NONGOAL-0041`.
+
+## Chapter 5 - Merge and Cleanup
+
+#### Requirements
+
+##### ATLAS-TOOL-0040 - Declared Merge Strategy
+
+An Atlas repository MUST declare one default merge strategy (squash, merge commit, or rebase) and apply it consistently rather than mixing strategies ad hoc per pull request.
+
+##### ATLAS-TOOL-0041 - Branch Cleanup After Merge
+
+A merged branch's remote copy SHOULD be deleted after merge so the repository's branch list remains actionable.
+
+##### ATLAS-TOOL-0042 - No Rewriting Merged History
+
+Commits already merged into the default branch MUST NOT be rewritten (force-pushed over, rebased away) except to remediate a leaked secret or a critical incident, and only as a documented exception under `ATLAS-TOOL-0012`.
+
+## Deferred
+
+Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, rather than being drafted speculatively now:
+
+| Topic | Trigger |
+|---|---|
+| CI/CD pipeline standards | A second Atlas repository runs a CI pipeline beyond this library's `validate-docs` workflow, forcing a real choice about shared pipeline structure |
+| Linting / static analysis tooling | Atlas has a real Rust crate whose lint configuration needs to be shared across repositories |
+| Release automation | Atlas publishes a real release artifact (crate, binary) that needs a repeatable release process |
+| Artifact signing | Atlas publishes a release artifact to a registry or distribution channel where provenance (`ATLAS-VAL-0022`) needs cryptographic verification, not just a statement |
+| Development environment standards | A second Atlas repository exists with its own toolchain/environment setup to reconcile with this one |
