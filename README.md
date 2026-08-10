@@ -15,7 +15,7 @@ Atlas treats engineering standards as first-class artifacts. A standard is not m
 | [ATLAS-300](docs/volumes/ATLAS-300-rust-workspace-cargo.md) | Volume IV - Rust Workspace and Cargo Architecture | Seed |
 | [ATLAS-400](docs/volumes/ATLAS-400-sdk-architecture.md) | Volume V - SDK Architecture | Seed |
 | [ATLAS-500](docs/volumes/ATLAS-500-security-architecture.md) | Volume VI - Security Architecture | Seed |
-| [ATLAS-600](docs/volumes/ATLAS-600-engineering-toolchain.md) | Volume VII - Engineering Toolchain | Seed |
+| [ATLAS-600](docs/volumes/ATLAS-600-engineering-toolchain.md) | Volume VII - Engineering Toolchain | Draft 0.1 |
 | [ATLAS-700](docs/volumes/ATLAS-700-plugin-extension-architecture.md) | Volume VIII - Plugin and Extension Architecture | Seed |
 | [ATLAS-800](docs/volumes/ATLAS-800-ecosystem-standards.md) | Volume IX - Ecosystem Standards | Seed |
 | [ATLAS-900](docs/volumes/ATLAS-900-reference-architectures.md) | Volume X - Reference Architectures | Seed |
@@ -91,4 +91,3 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the PR workflow and authoring convent
 ## License
 
 This library is licensed under [CC BY 4.0](LICENSE) (Creative Commons Attribution 4.0 International). You may use, adapt, and redistribute these standards, including commercially, as long as you give appropriate credit to Atlas.
-
