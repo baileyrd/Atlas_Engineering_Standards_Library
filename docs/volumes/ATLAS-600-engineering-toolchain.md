@@ -18,7 +18,7 @@ Volume VII defines the Atlas engineering toolchain - CI/CD, linting, release aut
 
 This standards library's own `CONTRIBUTING.md`, branch protection on `main`, and the `validate-docs` CI check are already a real, working git workflow - not a plausible-sounding proposal. Per `ATLAS-AUTO-0010`, a second real instance of toolchain automation (branch protection enforcing the PR workflow, alongside the existing `validate-docs` check) is what promotes this slice from Seed to Draft: the pattern is being formalized because it has already been observed twice, not invented speculatively. This follows the same pattern ATLAS-200 used: transcribing a proven, argued policy rather than drafting one from a chapter list.
 
-## Chapter 1 - Repository and Branching Model
+### Chapter 1 - Repository and Branching Model
 
 Atlas repositories use trunk-based development: short-lived branches cut from the default branch, merged back through review, and deleted. This is what `CONTRIBUTING.md` already describes for this repository - this chapter generalizes it across Atlas.
 
@@ -36,7 +36,7 @@ A working branch SHOULD be named `<scope>/<short-description>`, where `<scope>` 
 
 A branch SHOULD correspond to one coherent unit of work. Unrelated changes across unconnected scopes SHOULD NOT be bundled onto one branch, per the PR scope rule in `CONTRIBUTING.md`.
 
-## Chapter 2 - Branch Protection
+### Chapter 2 - Branch Protection
 
 #### Requirements
 
@@ -52,7 +52,7 @@ Merging into the default branch MUST require any automated checks defined for th
 
 An administrative override of branch protection (a force-push to the default branch, a merge with failing required checks) MUST NOT occur without a documented reason in the triggering pull request or an ADR, per `ATLAS-VAL-0011`.
 
-## Chapter 3 - Commit Conventions
+### Chapter 3 - Commit Conventions
 
 #### Requirements
 
@@ -68,7 +68,7 @@ A commit SHOULD represent one logical change. Unrelated changes SHOULD NOT be bu
 
 A commit MUST NOT introduce credentials, tokens, or other secrets into repository history. If a secret is committed, it MUST be rotated at the source - removing it in a follow-up commit alone does NOT satisfy this requirement, since history still contains it.
 
-## Chapter 4 - Pull Request and Review Workflow
+### Chapter 4 - Pull Request and Review Workflow
 
 #### Requirements
 
@@ -88,7 +88,7 @@ Review depth SHOULD scale with the change classification from `ATLAS-GOV-CHANGE-
 
 A pull request SHOULD be scoped to a single coherent change. Unrelated changes SHOULD be split into separate pull requests rather than bundled for convenience, per `ATLAS-NONGOAL-0041`.
 
-## Chapter 5 - Merge and Cleanup
+### Chapter 5 - Merge and Cleanup
 
 #### Requirements
 
