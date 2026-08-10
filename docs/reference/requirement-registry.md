@@ -15,7 +15,7 @@ ATLAS-<DOMAIN>-<SUBDOMAIN>-<NNNN>
 
 ## Active Prefixes
 
-Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md) and [ATLAS-001](../volumes/ATLAS-001-foundation.md).
+Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
 
 | Prefix | Owning Document | Chapter / Topic | Highest Assigned | Next Free Block |
 |---|---|---|---|---|
@@ -59,6 +59,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `DOC` | ATLAS-001 | Ch. 41 — Document Conventions | 0010 | 0020 |
 | `FUTURE` | ATLAS-001 | Ch. 42 — Future Evolution | 0010 | 0020 |
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
+| `TOOL` | ATLAS-600 | Ch. 1-5 — Repository/Branching Model through Merge and Cleanup | 0042 | 0050 |
 
 ## Shared Domain Families
 
@@ -82,7 +83,6 @@ These volumes have no published requirements yet (`Status: Seed` — see `ATLAS-
 | `RWC` | ATLAS-300 | Volume IV — Rust Workspace and Cargo Architecture |
 | `SDK` | ATLAS-400 | Volume V — SDK Architecture |
 | `SEC` | ATLAS-500 | Volume VI — Security Architecture |
-| `TOOL` | ATLAS-600 | Volume VII — Engineering Toolchain |
 | `PLUG` | ATLAS-700 | Volume VIII — Plugin and Extension Architecture |
 | `STD` | ATLAS-800 | Volume IX — Ecosystem Standards |
 | `REF` | ATLAS-900 | Volume X — Reference Architectures |
