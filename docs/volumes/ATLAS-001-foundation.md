@@ -253,6 +253,8 @@ Atlas's engineering philosophy is a direct descendant of Unix design philosophy:
 
 The practical consequence: a specification-driven ecosystem can drift toward the opposite of this heritage if left unchecked, accumulating process and ceremony because a "complete" specification seems to call for it rather than because a real need justifies it. This subsection exists to make that failure mode checkable, not just aspirational.
 
+This subsection carries the principles that have no better home than philosophy itself. The remaining Unix design rules are stated in the chapters that own them — composition format in Chapter 14, uniform interfaces in Chapter 24, fail-fast in Chapter 26, generation in Chapter 29 — rather than being restated here under a `PHIL` identifier. [`docs/reference/unix-philosophy-coverage.md`](../reference/unix-philosophy-coverage.md) maps every element of the source philosophy to the requirement that addresses it, so the claim that Atlas covers it is auditable rather than asserted.
+
 ##### ATLAS-PHIL-0100 - Single Responsibility
 
 Components SHOULD have one clearly stated purpose. New capability SHOULD become a new component composed with existing ones rather than accreted onto an existing component's scope.
@@ -268,6 +270,14 @@ New process, tooling, or abstraction MUST be justified by a demonstrated, curren
 ##### ATLAS-PHIL-0103 - Quiet Success
 
 Components and tools SHOULD produce output only when reporting a requested result or an error. Success that has nothing further to report SHOULD remain silent.
+
+##### ATLAS-PHIL-0104 - Reuse Before Construction
+
+A new component MUST NOT be built where composing existing components satisfies the demonstrated need. Where composition was considered and rejected, the rejection reason MUST be recorded per `ATLAS-VAL-0020`.
+
+##### ATLAS-PHIL-0105 - No Single Prescribed Approach
+
+Atlas standards SHOULD constrain externally observable outcomes rather than prescribe one implementation approach, where more than one approach satisfies the requirement. Deviation from a `SHOULD`-strength requirement is governed by `ATLAS-LANG-0020`.
 
 ### Chapter 7 - Core Values
 
@@ -675,6 +685,10 @@ Specifications MUST resolve behavior that would otherwise be ambiguous to implem
 
 Components SHOULD be designed so that common behavior can be understood without inspecting unrelated subsystems.
 
+##### ATLAS-CLAR-0030 - Knowledge in Data
+
+Where a rule set, mapping, or policy is expected to change independently of the logic that applies it, it SHOULD be represented as data that the logic reads rather than encoded as control flow. Complexity that lives in a table is inspectable, diffable, and testable in a way that the equivalent branching is not.
+
 ### Chapter 12 - Explicitness
 
 Explicitness reduces hidden coupling and unexpected behavior. Atlas prefers visible configuration, declared dependencies, documented capabilities, and stable contracts.
@@ -719,6 +733,8 @@ Components SHOULD NOT expose internal implementation details as public contracts
 
 Composability allows independently useful parts to work together through stable, simple, and well-documented contracts.
 
+Composition needs a shared medium, not just a shared intent. Unix got its leverage from one: every tool read and wrote text, so any tool could be placed after any other without either knowing the other existed. The Atlas equivalent is not literally a byte stream — it is a documented, self-describing, textual format at every point where independently developed components meet. Binary and bespoke formats are permitted, but they are a coupling cost paid deliberately rather than a default.
+
 #### Requirements
 
 ##### ATLAS-COMP-0001 - Stable Composition Contracts
@@ -732,6 +748,10 @@ Interfaces SHOULD expose the minimum surface necessary for intended composition.
 ##### ATLAS-COMP-0020 - Feature Interaction
 
 Specifications SHOULD document meaningful interactions between optional features.
+
+##### ATLAS-COMP-0030 - Universal Interchange Format
+
+A composition point between independently developed components SHOULD exchange data in a documented, self-describing, textual format. Choosing a binary or bespoke format MUST be accompanied by a documented reason a textual format was insufficient.
 
 ### Chapter 15 - Determinism
 
@@ -773,6 +793,10 @@ Observability mechanisms MUST protect secrets and sensitive data.
 
 Distributed or multi-component workflows SHOULD support correlation across component boundaries.
 
+##### ATLAS-OBS-0040 - Design for Inspection
+
+Components SHOULD be designed so that their current state and recent behavior can be inspected through their normal interfaces — without attaching a debugger, rebuilding with different flags, or adding source-level instrumentation. Robustness follows from a system being simple enough to reason about and transparent enough to observe; a component that can only be understood by re-running it under a debugger is neither.
+
 ### Chapter 17 - Security
 
 Security is a foundational engineering concern. Atlas treats security properties as explicit architecture and specification work.
@@ -812,6 +836,10 @@ Performance-driven tradeoffs that affect public behavior, safety, or maintainabi
 ##### ATLAS-PERF-0020 - Efficient Defaults
 
 Atlas components SHOULD provide efficient defaults appropriate to their domain.
+
+##### ATLAS-PERF-0030 - Working Before Optimized
+
+A component SHOULD reach a correct, verified implementation before optimization work begins. Anticipated performance benefit is not sufficient justification for optimizing an implementation whose correctness has not yet been established — `ATLAS-GOAL-0041` already forbids trading the one for the other, and this requirement states the sequencing that keeps that trade from arising.
 
 ### Chapter 19 - Maintainability
 
@@ -911,6 +939,10 @@ A public trait's compatibility MUST be evaluated from both the caller's and the 
 
 Public interfaces SHOULD expose the minimum set of methods and types necessary for their stated purpose.
 
+##### ATLAS-IFACE-0020 - Uniform Resource Abstraction
+
+Where a component handles several kinds of resource that support the same operations, it SHOULD expose them through one uniform interface rather than a separate interface per kind. Unix reached this conclusion as "everything is a file": one set of operations over files, devices, pipes, and sockets is what lets a small tool work on all of them without knowing which it has.
+
 ### Chapter 25 - State Management
 
 #### Requirements
@@ -925,7 +957,9 @@ Atlas designs SHOULD default to immutable data and explicit, narrow mutation poi
 
 ### Chapter 26 - Failure Handling
 
-`ATLAS-CORR-0020` requires that failures be represented explicitly; this chapter states the Rust-specific mechanism for doing so.
+`ATLAS-CORR-0020` requires that failures be represented explicitly; this chapter states the Rust-specific mechanism for doing so, and when a detected fault must surface.
+
+Fail-fast and `ATLAS-PHIL-0103` (Quiet Success) are not in tension, because they govern different cases: silence is the correct output for success that has nothing to report, never for a fault that has been detected. A component that swallows a fault to stay quiet is violating both — it is not being silent, it is being untruthful about its state.
 
 #### Requirements
 
@@ -936,6 +970,10 @@ Atlas Rust library code MUST return `Result` for recoverable failure rather than
 ##### ATLAS-FAIL-0010 - Error Context
 
 Errors MUST be propagated with enough context to diagnose the failure. An error MUST NOT be silently swallowed or flattened to an opaque type that discards its cause.
+
+##### ATLAS-FAIL-0020 - Fail Fast and Loudly
+
+A detected fault MUST surface at the point of detection rather than being deferred, suppressed, or worked around silently. Continuing past a detected fault MUST be an explicit, documented decision, not the default behavior.
 
 ### Chapter 27 - Resource Management
 
@@ -976,6 +1014,10 @@ A published Atlas document set MUST have at least one automated check enforcing 
 ##### ATLAS-AUTO-0010 - Automation Proportionality
 
 Automation SHOULD be added once a rule has demonstrably needed repeated manual checking, not speculatively before it has been checked by hand even once, per `ATLAS-PHIL-0102`.
+
+##### ATLAS-AUTO-0020 - Generation Over Hand-Maintenance
+
+Where an artifact is mechanically derivable from an authoritative source (a schema, specification, manifest, or registry), it SHOULD be generated from that source rather than maintained by hand, subject to the proportionality rule in `ATLAS-AUTO-0010`. Editing a generated artifact in place MUST NOT be the mechanism for changing it; the source is changed and the artifact regenerated.
 
 ### Chapter 30 - Validation
 
@@ -1127,6 +1169,8 @@ Most of what this part governs already exists in practice (the README's normativ
 
 ### Chapter 39 - Requirement Language
 
+Requirement strength carries meaning that a standards library is prone to forget about its own requirements: RFC 2119 defines `SHOULD` as admitting valid exceptions. Atlas takes that literally, per `ATLAS-PHIL-0105` — "distrust all claims of one true way" is not a license to ignore a standard, it is the reason a `SHOULD` is a `SHOULD` and not a `MUST`. What separates a legitimate exception from drift is whether it was written down.
+
 #### Requirements
 
 ##### ATLAS-LANG-0001 - RFC 2119 Baseline
@@ -1136,6 +1180,10 @@ Atlas requirement language follows RFC 2119: `MUST`, `MUST NOT`, `SHOULD`, `SHOU
 ##### ATLAS-LANG-0010 - Single Requirement Per Statement
 
 A requirement statement SHOULD express exactly one constraint. A statement combining multiple unrelated constraints under one identifier SHOULD be split.
+
+##### ATLAS-LANG-0020 - Documented Deviation
+
+A component MAY deviate from a `SHOULD`- or `SHOULD NOT`-strength Atlas requirement where its context makes the requirement counterproductive, provided the deviation and its justification are recorded in a durable artifact per `ATLAS-VAL-0020`. An undocumented deviation MUST NOT be treated as an exercise of this allowance.
 
 ### Chapter 40 - Terminology
 

@@ -16,4 +16,5 @@
 - [Volume Template](templates/volume-template.md)
 - [Terminology](reference/terminology.md)
 - [Requirement ID Registry](reference/requirement-registry.md)
+- [Unix Philosophy Coverage](reference/unix-philosophy-coverage.md)
 - [Architecture Decision Records](decisions/README.md)

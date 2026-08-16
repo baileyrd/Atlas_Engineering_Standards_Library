@@ -18,3 +18,4 @@ Each ADR states:
 | ID | Title | Status |
 |---|---|---|
 | [0001](0001-unix-philosophy-as-foundational.md) | Unix Philosophy as a Foundational Principle, Not an Addendum | Accepted |
+| [0002](0002-unix-philosophy-coverage-distributed.md) | Distribute Unix Philosophy Coverage Into Owning Chapters, Audited by a Matrix | Accepted |
