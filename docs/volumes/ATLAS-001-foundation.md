@@ -625,6 +625,12 @@ struct AuthenticatedUser {
 
 The preferred design makes invalid states harder to represent. Atlas Rust code should use the type system to encode important invariants where doing so improves clarity and correctness.
 
+#### Robustness
+
+Robustness is what correctness degrades into at the edge of the specification. `ATLAS-CORR-0010` requires validating external input, but validation presumes the valid set was enumerated correctly; robustness governs the residue — the inputs, orderings, and environmental conditions nobody thought to enumerate.
+
+Raymond frames robustness as a derived property, "the child of transparency and simplicity," and that derivation holds: a component simple enough to reason about (`ATLAS-PHIL-0030`, `ATLAS-CORR-0070`) and transparent enough to observe (`ATLAS-OBS-0040`) is the kind that survives contact with the unanticipated. It carries its own requirement anyway, because knowing where robustness comes from does not state what a component must actually do when the unanticipated arrives.
+
 #### Requirements
 
 ##### ATLAS-CORR-0001 - Invalid State Prevention
@@ -662,6 +668,10 @@ Systems with high correctness requirements SHOULD consider formal verification t
 ##### ATLAS-CORR-0070 - Complexity Risk
 
 Designs SHOULD minimize unnecessary complexity that increases correctness risk.
+
+##### ATLAS-CORR-0080 - Robustness Under Unanticipated Conditions
+
+A component MUST remain in a defined state when it encounters input, orderings, or environmental conditions its specification did not anticipate — continuing correctly where it can, and failing per `ATLAS-FAIL-0020` where it cannot. An indeterminate state is not an acceptable response to an unanticipated condition.
 
 ### Chapter 11 - Clarity
 

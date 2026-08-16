@@ -25,7 +25,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `VAL` | ATLAS-001 | Ch. 7 — Core Values | 0091 | 0100 |
 | `GOAL` | ATLAS-001 | Ch. 8 — Design Goals | 0111 | 0120 |
 | `NONGOAL` | ATLAS-001 | Ch. 9 — Non-Goals | 0090 | 0100 |
-| `CORR` | ATLAS-001 | Ch. 10 — Correctness | 0070 | 0080 |
+| `CORR` | ATLAS-001 | Ch. 10 — Correctness | 0080 | 0090 |
 | `CLAR` | ATLAS-001 | Ch. 11 — Clarity | 0030 | 0040 |
 | `EXPL` | ATLAS-001 | Ch. 12 — Explicitness | 0030 | 0040 |
 | `MOD` | ATLAS-001 | Ch. 13 — Modularity | 0020 | 0030 |

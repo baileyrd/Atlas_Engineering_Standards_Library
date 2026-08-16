@@ -36,7 +36,7 @@ Requirements referenced here live in [ATLAS-000](../ATLAS-000-foundation-charter
 | Simplicity | Add complexity only where you must | `ATLAS-PHIL-0030`, `ATLAS-CORR-0070`, `ATLAS-NONGOAL-0060` |
 | Parsimony | Write a big program only when nothing else will do | `ATLAS-PHIL-0104`, `ATLAS-DEP-0010`, `ATLAS-NONGOAL-0031` |
 | Transparency | Design for visibility — make inspection and debugging easy | `ATLAS-OBS-0040`, `ATLAS-OBS-0001`, `ATLAS-GOAL-0070` |
-| Robustness | Robustness is the child of transparency and simplicity | Derived — see [Derived Coverage](#derived-coverage) |
+| Robustness | Robustness is the child of transparency and simplicity | `ATLAS-CORR-0080`; derived in turn from `ATLAS-PHIL-0030`, `ATLAS-CORR-0070`, `ATLAS-OBS-0040` |
 | Representation | Fold knowledge into data so program logic can be dumb | `ATLAS-CLAR-0030` |
 | Least Surprise | Do the least surprising thing | `ATLAS-PHIL-0080` |
 | Silence | When a program has nothing surprising to say, say nothing | `ATLAS-PHIL-0103` |
@@ -58,16 +58,10 @@ The four properties the source philosophy attributes to small, sharp tools are t
 | Recombinable — utility compounds as the toolset grows | `ATLAS-COMP-0010`, `ATLAS-COMP-0030`, `ATLAS-IFACE-0020` |
 | Comprehensible — each piece fits in one head | `ATLAS-CLAR-0020`, `ATLAS-PHIL-0060`, `ATLAS-MAINT-0001` |
 
-## Derived Coverage
-
-One rule is deliberately carried by other requirements rather than its own.
-
-**Robustness.** Raymond states robustness as a *consequence* — "the child of transparency and simplicity" — not an independent practice. Giving it a dedicated requirement would restate `ATLAS-PHIL-0030` (complexity management), `ATLAS-CORR-0070` (complexity risk), and `ATLAS-OBS-0040` (design for inspection) under a fourth identifier, which `ATLAS-PHIL-0102` and `ATLAS-LANG-0010` both argue against. Its two behavioral halves are already required directly: surviving unexpected input is `ATLAS-CORR-0010`, and failing predictably when survival isn't possible is `ATLAS-FAIL-0001`, `ATLAS-FAIL-0010`, and `ATLAS-FAIL-0020`.
-
-This is the only derived row. Any future rule mapped this way MUST be listed here with its reasoning rather than left with an empty cell in the tables above.
-
 ## Maintenance Rule
 
-This document is the audit trail for a foundational claim, so it goes stale in exactly one way: a requirement named here gets retired, renumbered in effect (superseded), or reworded such that it no longer carries the rule mapped to it.
+Every element of the source philosophy maps to at least one requirement. There are no derived-only rows: Robustness was the last one, and [ADR-0003](../decisions/0003-robustness-gets-its-own-requirement.md) closed it with `ATLAS-CORR-0080`. A rule being *explained* by other requirements is not the same as being *required* by them, and only the second counts as coverage here.
 
-A pull request that retires or supersedes any requirement cited above MUST update the corresponding row in the same pull request, per the same rule that governs [the requirement registry](requirement-registry.md). A row whose requirement is retired without a replacement is a coverage gap and MUST be treated as a defect against ADR-0001, not as an accepted loss.
+This document is the audit trail for a foundational claim, so it goes stale in exactly one way: a requirement named here gets retired, superseded, or reworded such that it no longer carries the rule mapped to it.
+
+A pull request that retires or supersedes any requirement cited above MUST update the corresponding row in the same pull request, per the same rule that governs [the requirement registry](requirement-registry.md). A row left without a live requirement is a coverage gap and MUST be treated as a defect against ADR-0001, not as an accepted loss.

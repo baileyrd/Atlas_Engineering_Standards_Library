@@ -1,6 +1,6 @@
 # 0002 - Distribute Unix Philosophy Coverage Into Owning Chapters, Audited by a Matrix
 
-**Status:** Accepted
+**Status:** Accepted. The Robustness sub-decision below is superseded by [ADR-0003](0003-robustness-gets-its-own-requirement.md); everything else stands.
 
 ## Context
 
@@ -25,6 +25,8 @@ A foundational principle that half the library doesn't implement is decoration, 
 Close all nine gaps, but place each requirement in the chapter that already owns its subject matter rather than growing Chapter 6's heritage subsection into a parallel philosophy library. Chapter 6 keeps only what has no better home: `ATLAS-PHIL-0104` (Reuse Before Construction) and `ATLAS-PHIL-0105` (No Single Prescribed Approach). The rest land in Chapters 11, 14, 16, 18, 24, 26, 29, and 39.
 
 Add [`docs/reference/unix-philosophy-coverage.md`](../reference/unix-philosophy-coverage.md) as the audit artifact: every element of the source philosophy in one column, the requirement carrying it in the other. Robustness is recorded there as deliberately derived — Raymond states it as a consequence of transparency and simplicity, and giving it a fourth identifier alongside `ATLAS-PHIL-0030`, `ATLAS-CORR-0070`, and `ATLAS-OBS-0040` would be the restatement `ATLAS-LANG-0010` argues against.
+
+> **Superseded by [ADR-0003](0003-robustness-gets-its-own-requirement.md).** This paragraph's reasoning is preserved as written, per `ATLAS-GOV-ADR-0010`. It was reversed on review: the derivation explains where robustness comes from, but nothing in the library stated what a component must *do* under conditions its specification never modeled. `ATLAS-CORR-0080` now states it.
 
 ## Consequences
 
