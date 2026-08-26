@@ -17,4 +17,5 @@
 - [Terminology](reference/terminology.md)
 - [Requirement ID Registry](reference/requirement-registry.md)
 - [Unix Philosophy Coverage](reference/unix-philosophy-coverage.md)
+- [Project Development Governance Lessons](reference/project-development-governance-lessons.md)
 - [Architecture Decision Records](decisions/README.md)
