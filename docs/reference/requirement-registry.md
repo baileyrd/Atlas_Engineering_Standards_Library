@@ -34,7 +34,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `OBS` | ATLAS-001 | Ch. 16 — Observability | 0040 | 0050 |
 | `SEC-FND` | ATLAS-001 | Ch. 17 — Security (foundational tenet) | 0030 | 0040 |
 | `PERF` | ATLAS-001 | Ch. 18 — Performance | 0030 | 0040 |
-| `MAINT` | ATLAS-001 | Ch. 19 — Maintainability | 0020 | 0030 |
+| `MAINT` | ATLAS-001 | Ch. 19 — Maintainability | 0030 | 0040 |
 | `EVOL` | ATLAS-001 | Ch. 20 — Evolvability | 0020 | 0030 |
 | `LAYER` | ATLAS-001 | Ch. 21 — Layered Architecture | 0010 | 0020 |
 | `BOUND` | ATLAS-001 | Ch. 22 — Boundary Design | 0010 | 0020 |
@@ -43,17 +43,17 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `STATE` | ATLAS-001 | Ch. 25 — State Management | 0010 | 0020 |
 | `FAIL` | ATLAS-001 | Ch. 26 — Failure Handling | 0020 | 0030 |
 | `RES` | ATLAS-001 | Ch. 27 — Resource Management | 0010 | 0020 |
-| `SPEC` | ATLAS-001 | Ch. 28 — Specification-Driven Development | 0010 | 0020 |
+| `SPEC` | ATLAS-001 | Ch. 28 — Specification-Driven Development | 0030 | 0040 |
 | `AUTO` | ATLAS-001 | Ch. 29 — Automation | 0020 | 0030 |
 | `VERIFY` | ATLAS-001 | Ch. 30 — Validation | 0010 | 0020 |
 | `COMPAT` | ATLAS-001 | Ch. 31 — Compatibility | 0010 | 0020 |
-| `LIFE` | ATLAS-001 | Ch. 32 — Lifecycle Management | 0010 | 0020 |
+| `LIFE` | ATLAS-001 | Ch. 32 — Lifecycle Management | 0031 | 0040 |
 | `KNOW` | ATLAS-001 | Ch. 33 — Knowledge Preservation | 0010 | 0020 |
 | `GOV-STD` | ATLAS-001 | Ch. 34 — Standards Process | 0020 | 0030 |
 | `GOV-RFC` | ATLAS-001 | Ch. 35 — RFC Process | 0020 | 0030 |
 | `GOV-ADR` | ATLAS-001 | Ch. 36 — Architecture Decision Records | 0010 | 0020 |
 | `GOV-CHANGE` | ATLAS-001 | Ch. 37 — Change Management | 0010 | 0020 |
-| `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0010 | 0020 |
+| `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0063 | 0070 |
 | `LANG` | ATLAS-001 | Ch. 39 — Requirement Language | 0020 | 0030 |
 | `TERM` | ATLAS-001 | Ch. 40 — Terminology | 0010 | 0020 |
 | `DOC` | ATLAS-001 | Ch. 41 — Document Conventions | 0010 | 0020 |
