@@ -10,7 +10,7 @@ Atlas treats engineering standards as first-class artifacts. A standard is not m
 |---|---|---|
 | [ATLAS-000](docs/ATLAS-000-foundation-charter.md) | Foundation Charter | Draft 0.1 |
 | [ATLAS-001](docs/volumes/ATLAS-001-foundation.md) | Volume I - Foundation | Draft 0.1 |
-| [ATLAS-100](docs/volumes/ATLAS-100-architecture.md) | Volume II - Architecture | Seed |
+| [ATLAS-100](docs/volumes/ATLAS-100-architecture.md) | Volume II - Architecture | Draft 0.1 |
 | [ATLAS-200](docs/volumes/ATLAS-200-versioning.md) | Volume III - Ecosystem Versioning Standard | Draft 0.1 |
 | [ATLAS-300](docs/volumes/ATLAS-300-rust-workspace-cargo.md) | Volume IV - Rust Workspace and Cargo Architecture | Seed |
 | [ATLAS-400](docs/volumes/ATLAS-400-sdk-architecture.md) | Volume V - SDK Architecture | Seed |
