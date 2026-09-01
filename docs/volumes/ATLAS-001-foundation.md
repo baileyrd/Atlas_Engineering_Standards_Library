@@ -869,6 +869,10 @@ Components SHOULD be designed so common changes remain localized.
 
 Known significant technical debt SHOULD be recorded with ownership and remediation expectations.
 
+##### ATLAS-MAINT-0030 - Controlled Deferrals
+
+An intentional deferral that can affect architecture, required capability maturity, or release readiness MUST record its owning responsibility, rationale, milestone introduced, earliest milestone where the deferred work becomes required, consequence of continued deferral, and mandatory review gate. At that gate, the deferral MUST be implemented, retired, superseded, or explicitly re-approved with updated rationale and a next review gate; it MUST NOT roll forward silently.
+
 ### Chapter 20 - Evolvability
 
 Evolvability is the ability to change without fragmentation. Atlas evolves through compatibility rules, lifecycle states, deprecation policy, migration paths, and versioned contracts.
@@ -1001,7 +1005,7 @@ Where a resource's ownership can transfer between components, the transfer point
 
 ### Chapter 28 - Specification-Driven Development
 
-`ATLAS-FND-0001` requires a governing specification to exist before a capability becomes official. This chapter states what that specification must actually contain, and what happens when it and the implementation disagree.
+`ATLAS-FND-0001` requires a governing specification to exist before a capability becomes official. This chapter states what that specification must actually contain, how governing maturity constrains implementation maturity, and when the architecture must be exercised through a real end-to-end path.
 
 #### Requirements
 
@@ -1012,6 +1016,14 @@ A governing specification MUST state the capability's externally observable beha
 ##### ATLAS-SPEC-0010 - Specification Authority Over Implementation
 
 Where a specification and its implementation disagree, the specification is authoritative until formally amended. The implementation MUST be corrected, not the specification silently reinterpreted to match it.
+
+##### ATLAS-SPEC-0020 - Parent Authority Readiness
+
+A capability MUST NOT be accepted as `Runtime Integrated` or a later Capability Maturity state while a governing parent architecture or specification needed to determine its boundaries, behavior, compatibility, or acceptance criteria remains unresolved or below the project's required approval gate. Lower-level specification or implementation work MAY proceed earlier if the unresolved parent dependency and resulting uncertainty are recorded.
+
+##### ATLAS-SPEC-0030 - Early Walking Skeleton
+
+Once the architecture and minimum contracts needed for the release-critical path are defined, a project MUST establish and exercise a Walking Skeleton before substantial horizontal hardening of individual layers. Missing concrete dependencies MAY be substituted temporarily only when the substitution is recorded as a controlled deferral under `ATLAS-MAINT-0030`.
 
 ### Chapter 29 - Automation
 
@@ -1055,7 +1067,9 @@ Compatibility classification MUST consider every consumer role a surface has, pe
 
 ### Chapter 32 - Lifecycle Management
 
-Atlas has three independent lifecycle vocabularies, deliberately not conflated: a governing *document's* `Status` field (see `docs/templates/volume-template.md`), an individual *requirement's* `Status` field (see `docs/templates/requirement-template.md`), and — defined here — a shipped *artifact's* lifecycle state. A crate can be `Released` while the specification governing it is still `Draft`; the two track different things.
+Atlas has four independent lifecycle or maturity vocabularies, deliberately not conflated: a governing *document's* `Status` field (see `docs/templates/volume-template.md`), an individual *requirement's* `Status` field (see `docs/templates/requirement-template.md`), a shipped *artifact's* lifecycle state, and a *capability's* evidence-backed maturity state. A crate can be `Released` while a capability inside it is only `Contract Implemented`, and the specification governing both can still be `Draft`; each vocabulary answers a different question.
+
+Artifact lifecycle states are:
 
 ```text
 Planning
@@ -1069,6 +1083,20 @@ Retired
 Archived
 ```
 
+Capability Maturity uses the following ordered reference states. A state describes evidence demonstrated, not work planned or percentage complete.
+
+| State | Evidence represented |
+|---|---|
+| Concept | Intended outcome and system relevance are identified. |
+| Architecture Defined | Governing boundaries, dependencies, and the release-critical path are defined sufficiently to direct specification work. |
+| Specification Approved | Governing specifications have passed the approval gate required by the project. |
+| Contract Implemented | Required interfaces, contracts, or conformance behavior are implemented; this state makes no claim of real runtime integration. |
+| Runtime Integrated | The capability executes through its intended runtime composition across required system boundaries. |
+| Concrete Dependencies Exercised | Required production or concrete adapters/dependencies are exercised where applicable rather than represented only by mocks or substitutes. |
+| System Verified | System-level evidence satisfies the capability's specified verification and acceptance criteria. |
+| User Accepted | Applicable user or stakeholder acceptance outcomes have been demonstrated. |
+| Release Ready | All criteria required by the First Release Definition for this capability have been satisfied. |
+
 #### Requirements
 
 ##### ATLAS-LIFE-0001 - Lifecycle State Declaration
@@ -1077,7 +1105,27 @@ A released Atlas artifact (crate, service, protocol, schema) MUST declare its cu
 
 ##### ATLAS-LIFE-0010 - Lifecycle Distinctness
 
-An artifact's lifecycle state, its governing document's `Status`, and any individual requirement's `Status` are independent and MUST NOT be conflated.
+An artifact's lifecycle state, its governing document's `Status`, an individual requirement's `Status`, and Capability Maturity are independent and MUST NOT be conflated.
+
+##### ATLAS-LIFE-0020 - Capability Maturity Reporting
+
+When project status reports progress or completion of a capability, it MUST state the highest Capability Maturity state supported by current evidence. A generic `Complete` status MUST NOT substitute for a maturity state where doing so could imply evidence belonging to a later state.
+
+##### ATLAS-LIFE-0021 - Maturity Evidence Is Non-Transitive
+
+Evidence establishing one Capability Maturity state MUST NOT be treated as evidence for a later state without satisfying that later state's own criteria. In particular, contract or conformance evidence alone does not establish runtime integration, system verification, user acceptance, or release readiness.
+
+##### ATLAS-LIFE-0022 - Inapplicable Maturity States
+
+A capability MAY mark a Capability Maturity state not applicable when the state genuinely does not apply to that capability, provided the rationale is recorded. Marking a state not applicable MUST NOT bypass evidence required by any later applicable state.
+
+##### ATLAS-LIFE-0030 - First Release Definition
+
+An Atlas project intended to produce a releasable system or artifact MUST maintain a finite First Release Definition identifying the first releasable boundary, observable user or system acceptance outcomes, required Capability Maturity, explicitly optional or post-release capabilities, and evidence required to make the release decision.
+
+##### ATLAS-LIFE-0031 - Roadmap-to-Release Traceability
+
+Technical roadmap milestones and gates MUST trace to one or more elements of the First Release Definition. Completion of local technical work MUST NOT be reported as release progress when it does not advance the required capability maturity, acceptance outcomes, or release evidence.
 
 ### Chapter 33 - Knowledge Preservation
 
@@ -1163,6 +1211,17 @@ A substantive change MUST be identifiable from the pull request title or descrip
 
 This chapter states, as a specification, the review mechanism CONTRIBUTING.md already describes and this repository's branch protection already enforces — closing the loop D1 (Specification Before Implementation) requires, applied to the standards library's own tooling.
 
+Ordinary change review answers whether a particular change is correct within its approved scope. Program-integrity review answers a different question: whether the approved scopes, governing authorities, accumulated deferrals, and current work still form a credible route to the intended system and release. Passing the first does not imply passing the second.
+
+Atlas distinguishes four review mechanisms because they provide different kinds of evidence:
+
+| Mechanism | What it establishes |
+|---|---|
+| Author Self-Review | The author deliberately checked the work against governing requirements and acceptance criteria. |
+| Automated verification | Mechanically checkable properties passed their configured checks or tests. |
+| Program-Integrity Review | The system was deliberately re-evaluated outside the normal implementation/change-review cadence for architecture and release convergence. |
+| Independent Human Review | A person other than the author supplied a separate judgment. |
+
 #### Requirements
 
 ##### ATLAS-GOV-REVIEW-0001 - Minimum Review Gate
@@ -1172,6 +1231,42 @@ A normative change MUST pass the repository's automated structural checks (Chapt
 ##### ATLAS-GOV-REVIEW-0010 - Review Depth Proportional to Classification
 
 Review depth SHOULD scale with the change classification from `ATLAS-GOV-CHANGE-0001`: editorial changes need a light pass; substantive changes need the full review named in ATLAS-000 Article V (correctness, security, compatibility, maintainability, ecosystem impact).
+
+##### ATLAS-GOV-REVIEW-0020 - Program-Integrity Review
+
+An Atlas project governed by a First Release Definition MUST perform Program-Integrity Reviews independently of the normal implementation and change-review cadence. The review MUST evaluate at least parent architecture/specification maturity, reported Capability Maturity, Walking Skeleton evidence, controlled deferrals, architecture coherence, and roadmap traceability to release outcomes.
+
+##### ATLAS-GOV-REVIEW-0030 - Architecture Rebaseline Triggers
+
+A Program-Integrity Review MUST occur at major phase or milestone boundaries and when any of these conditions arises: a major subsystem is activated; a material architecture change occurs; a controlled deferral reaches its mandatory review gate; repeated horizontal increments occur without vertical capability progress; governing documentation and implementation present materially different system states; or the project can no longer state a finite credible route to its First Release Definition.
+
+##### ATLAS-GOV-REVIEW-0040 - Rebaseline Disposition
+
+Each Program-Integrity Review MUST record one disposition — `Continue`, `Redirect`, or `Tactical Pause` — with the evidence considered, rationale, required follow-up actions, and the next planned or triggered review point.
+
+##### ATLAS-GOV-REVIEW-0050 - Architecture Authority for Program Integrity
+
+An Atlas project governed by a First Release Definition MUST assign an Architecture Authority accountable for program integrity and empowered to require an architecture rebaseline, redirect work, or call a Tactical Pause when locally valid work is no longer converging on the governed system and release outcome.
+
+##### ATLAS-GOV-REVIEW-0060 - Roles Are Responsibilities, Not Headcount
+
+Atlas governance roles define responsibilities and decision authority, not mandatory organizational separation. One individual MAY fulfill multiple governance roles, including implementation and Architecture Authority, unless `ATLAS-GOV-REVIEW-0063` or another binding obligation requires separation of duties.
+
+##### ATLAS-GOV-REVIEW-0061 - Review Mechanisms Are Distinct
+
+Author Self-Review, automated verification, Program-Integrity Review, and Independent Human Review MUST NOT be represented as interchangeable. A review record MUST identify which mechanism or mechanisms actually occurred.
+
+##### ATLAS-GOV-REVIEW-0062 - Independent Review for High-Risk Decisions
+
+Independent Human Review SHOULD be obtained when reasonably available for security-sensitive, safety-critical, irreversible, or ecosystem-breaking decisions.
+
+##### ATLAS-GOV-REVIEW-0063 - Mandatory Separation of Duties
+
+Separation of duties MUST be used where required by law, regulation, contractual obligation, or a documented risk control governing the work.
+
+##### ATLAS-GOV-REVIEW-0064 - Unavailable Independent Review
+
+When Independent Human Review is not required by `ATLAS-GOV-REVIEW-0063` and no independent reviewer is reasonably available, its absence and the reason for unavailability MUST be stated explicitly rather than represented as peer or independent review. Applicable Author Self-Review, automated verification, and Program-Integrity Review requirements still apply.
 
 ## Part VII - Reference
 
@@ -1230,4 +1325,3 @@ Amendments to ATLAS-000 or ATLAS-001 follow the RFC process in Chapter 35 regard
 ##### ATLAS-FUTURE-0010 - Reserved Future Volumes
 
 Volumes reserved at `ATLAS-1000` and above (see [`docs/library-map.md`](../library-map.md)) are subject to the same Seed discipline as ATLAS-100 through ATLAS-900. Reserving a number is not drafting.
-
