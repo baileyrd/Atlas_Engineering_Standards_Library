@@ -14,7 +14,7 @@ Atlas treats engineering standards as first-class artifacts. A standard is not m
 | [ATLAS-200](docs/volumes/ATLAS-200-versioning.md) | Volume III - Ecosystem Versioning Standard | Draft 0.1 |
 | [ATLAS-300](docs/volumes/ATLAS-300-rust-workspace-cargo.md) | Volume IV - Rust Workspace and Cargo Architecture | Draft 0.1 |
 | [ATLAS-400](docs/volumes/ATLAS-400-sdk-architecture.md) | Volume V - SDK Architecture | Seed |
-| [ATLAS-500](docs/volumes/ATLAS-500-security-architecture.md) | Volume VI - Security Architecture | Seed |
+| [ATLAS-500](docs/volumes/ATLAS-500-security-architecture.md) | Volume VI - Security Architecture | Draft 0.1 |
 | [ATLAS-600](docs/volumes/ATLAS-600-engineering-toolchain.md) | Volume VII - Engineering Toolchain | Draft 0.1 |
 | [ATLAS-700](docs/volumes/ATLAS-700-plugin-extension-architecture.md) | Volume VIII - Plugin and Extension Architecture | Seed |
 | [ATLAS-800](docs/volumes/ATLAS-800-ecosystem-standards.md) | Volume IX - Ecosystem Standards | Seed |

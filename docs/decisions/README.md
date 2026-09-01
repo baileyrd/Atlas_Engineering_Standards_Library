@@ -23,3 +23,4 @@ Each ADR states:
 | [0004](0004-program-integrity-governance-scales-by-responsibility.md) | Program-Integrity Governance Scales by Responsibility, Not Headcount | Accepted |
 | [0005](0005-promote-atlas-100-from-exercised-architecture-evidence.md) | Promote ATLAS-100 from Exercised Architecture Evidence | Accepted |
 | [0006](0006-promote-atlas-300-from-exercised-rust-workspace-evidence.md) | Promote ATLAS-300 from Exercised Rust Workspace Evidence | Accepted |
+| [0007](0007-promote-atlas-500-from-exercised-trust-boundary-evidence.md) | Promote ATLAS-500 from Exercised Trust-Boundary Evidence | Accepted |
