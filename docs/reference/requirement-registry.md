@@ -60,6 +60,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `FUTURE` | ATLAS-001 | Ch. 42 — Future Evolution | 0010 | 0020 |
 | `ARCH` | ATLAS-100 | Ch. 1-6 — Runtime/Domain Authority through Backend/Platform Adapters | 0110 | 0120 |
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
+| `EVS-PROTOCOL` | ATLAS-200 | Ch. 7 — Protocol Versioning | 0060 | 0070 |
 | `TOOL` | ATLAS-600 | Ch. 1-5 — Repository/Branching Model through Merge and Cleanup | 0042 | 0050 |
 
 ## Shared Domain Families
@@ -70,7 +71,8 @@ A shared family is a prefix that multiple documents allocate under, each with it
 |---|---|---|---|
 | `SEC` | `SEC-FND` | ATLAS-001 Ch. 17 | Active |
 | `SEC` | `SEC-CRYPTO`, `SEC-AUTH`, `SEC-IDENTITY`, `SEC-KEY`, `SEC-SUPPLY` | ATLAS-500 (planned) | Reserved, not yet in use |
-| `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA`, `EVS-PROTOCOL` | ATLAS-200 (Draft — see its Deferred section) | Reserved, not yet in use |
+| `EVS` | `EVS-PROTOCOL` | ATLAS-200 Ch. 7 | Active |
+| `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA` | ATLAS-200 (Draft — see its Deferred section) | Reserved, not yet in use |
 
 When a new volume needs a security- or versioning-adjacent requirement group, it MUST extend the `SEC` or `EVS` family with a new subdomain registered here rather than inventing an unrelated prefix.
 
