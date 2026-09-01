@@ -12,7 +12,9 @@
 
 ## Purpose
 
-Volume IV defines how Atlas uses Cargo workspaces and manifests once a Rust repository contains multiple cooperating packages. ATLAS-001 owns general dependency and reproducibility doctrine, ATLAS-100 owns architectural dependency direction, ATLAS-200 owns version-group semantics, and ATLAS-600 owns CI/toolchain workflow. This volume defines the Cargo-specific representation that keeps those decisions coherent across a real multi-crate workspace.
+Volume IV defines how Atlas uses Cargo workspaces and manifests once a Rust repository contains multiple cooperating packages. ATLAS-001 owns general dependency and reproducibility doctrine, ATLAS-100 owns architectural dependency direction, ATLAS-200 owns version-group semantics, and ATLAS-600 owns repository/monorepo and CI/toolchain workflow. This volume defines the Cargo-specific representation that keeps those decisions coherent across a real multi-crate workspace.
+
+A Cargo workspace and a Monorepo are related but distinct coordination boundaries. A Monorepo is the repository-level governance boundary defined by ATLAS-600; one Monorepo MAY contain one Cargo workspace, multiple Cargo workspaces, non-Cargo projects, governed documentation/assets, or other independently built areas where justified. This volume MUST NOT be read as requiring every first-party area in one repository to share a single Cargo workspace.
 
 This first draft is intentionally narrower than the volume's eventual scope. The original Seed trigger has fired through exercised multi-crate workspace evidence recorded in ADR-0006, but feature strategy, build-profile policy, unsafe Rust, publishing, cross-compilation, native build integration, and exact toolchain pinning remain deferred until real work forces those decisions.
 
@@ -24,11 +26,11 @@ The Seed trigger is satisfied by a real Rust workspace containing applications, 
 
 - ATLAS-100 determines which dependency directions and ownership boundaries are architecturally valid; this volume governs how Cargo manifests express and mechanically expose them.
 - ATLAS-200 determines which crates belong to the same version group; this volume governs when Cargo workspace-version inheritance expresses that decision.
-- ATLAS-600 determines how CI invokes Cargo and other tools; this volume defines the workspace and manifest properties those tools validate.
+- ATLAS-600 determines repository/Monorepo coordination and how CI invokes Cargo and other tools; this volume defines the workspace and manifest properties those repository-level rules validate.
 
 ### Chapter 1 - Workspace Coordination Boundary
 
-A Cargo workspace is a coordination boundary: packages inside it share dependency resolution, a lockfile, target output, root-level commands, and workspace metadata. It should therefore contain packages that are intentionally developed and validated together, not merely packages that happen to live in the same repository.
+A Cargo workspace is a build and dependency-resolution coordination boundary: packages inside it share dependency resolution, a lockfile, target output, root-level commands, and workspace metadata. It should therefore contain packages that are intentionally developed and validated together, not merely packages that happen to live in the same Monorepo. Monorepo membership alone is not sufficient reason to place a package in a Cargo workspace.
 
 #### Requirements
 
