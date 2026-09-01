@@ -15,7 +15,7 @@ ATLAS-<DOMAIN>-<SUBDOMAIN>-<NNNN>
 
 ## Active Prefixes
 
-Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
+Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), [ATLAS-300](../volumes/ATLAS-300-rust-workspace-cargo.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
 
 | Prefix | Owning Document | Chapter / Topic | Highest Assigned | Next Free Block |
 |---|---|---|---|---|
@@ -61,6 +61,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `ARCH` | ATLAS-100 | Ch. 1-6 — Runtime/Domain Authority through Backend/Platform Adapters | 0110 | 0120 |
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
 | `EVS-PROTOCOL` | ATLAS-200 | Ch. 7 — Protocol Versioning | 0060 | 0070 |
+| `RWC` | ATLAS-300 | Ch. 1-6 — Workspace Coordination through Lockfile/Resolved Dependency State | 0130 | 0140 |
 | `TOOL` | ATLAS-600 | Ch. 1-5 — Repository/Branching Model through Merge and Cleanup | 0042 | 0050 |
 
 ## Shared Domain Families
@@ -82,7 +83,6 @@ These volumes have no published requirements yet (`Status: Seed` — see `ATLAS-
 
 | Prefix | Volume | Title |
 |---|---|---|
-| `RWC` | ATLAS-300 | Volume IV — Rust Workspace and Cargo Architecture |
 | `SDK` | ATLAS-400 | Volume V — SDK Architecture |
 | `SEC` | ATLAS-500 | Volume VI — Security Architecture |
 | `PLUG` | ATLAS-700 | Volume VIII — Plugin and Extension Architecture |
