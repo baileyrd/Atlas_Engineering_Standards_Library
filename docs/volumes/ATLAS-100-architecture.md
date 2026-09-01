@@ -71,9 +71,9 @@ A process boundary turns an internal call into a compatibility and failure bound
 
 When multiple clients, shells, or host environments expose the same business capability, they SHOULD converge on one authoritative logical business interface rather than maintain parallel business APIs with independently evolving semantics. Platform-specific IPC or shell commands MUST NOT silently become a second business contract.
 
-##### ATLAS-ARCH-0050 - Cross-Process Interface Is a Versioned Contract
+##### ATLAS-ARCH-0050 - Cross-Process Interface Is a Compatibility Contract
 
-A business interface that crosses a process boundary MUST be treated as an explicitly versioned compatibility contract with documented request, response, event, failure, and lifecycle semantics. The concrete transport MAY vary; transport choice MUST NOT be used as a substitute for compatibility definition. Detailed protocol-versioning rules belong to ATLAS-200.
+A business interface that crosses a process boundary MUST define an explicit compatibility contract covering its request, response, event, failure, and lifecycle semantics. The concrete transport MAY vary; transport choice MUST NOT be used as a substitute for compatibility definition. Protocol-versioning mechanics belong to ATLAS-200.
 
 ### Chapter 4 - Data Ownership and Persistence
 
