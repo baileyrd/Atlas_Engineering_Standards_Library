@@ -16,7 +16,7 @@ Volume IV defines how Atlas uses Cargo workspaces and manifests once a Rust repo
 
 A Cargo workspace and a Monorepo are related but distinct coordination boundaries. A Monorepo is the repository-level governance boundary defined by ATLAS-600; one Monorepo MAY contain one Cargo workspace, multiple Cargo workspaces, non-Cargo projects, governed documentation/assets, or other independently built areas where justified. This volume MUST NOT be read as requiring every first-party area in one repository to share a single Cargo workspace.
 
-This first draft is intentionally narrower than the volume's eventual scope. The original Seed trigger has fired through exercised multi-crate workspace evidence recorded in ADR-0006, but feature strategy, build-profile policy, unsafe Rust, publishing, cross-compilation, native build integration, and exact toolchain pinning remain deferred until real work forces those decisions.
+This first draft is intentionally narrower than the volume's eventual scope. The original Seed trigger has fired through exercised multi-crate workspace evidence recorded in ADR-0006, but feature strategy, build-profile policy, unsafe Rust, publishing, cross-compilation, and native build integration remain deferred until real work forces those decisions. Exact developer and CI toolchain selection is active under ATLAS-600 Chapter 10; this volume retains Cargo and MSRV ownership as described below.
 
 ## Trigger Evidence
 
