@@ -22,3 +22,4 @@ Each ADR states:
 | [0003](0003-robustness-gets-its-own-requirement.md) | Robustness Gets Its Own Requirement | Accepted |
 | [0004](0004-program-integrity-governance-scales-by-responsibility.md) | Program-Integrity Governance Scales by Responsibility, Not Headcount | Accepted |
 | [0005](0005-promote-atlas-100-from-exercised-architecture-evidence.md) | Promote ATLAS-100 from Exercised Architecture Evidence | Accepted |
+| [0006](0006-promote-atlas-300-from-exercised-rust-workspace-evidence.md) | Promote ATLAS-300 from Exercised Rust Workspace Evidence | Accepted |
