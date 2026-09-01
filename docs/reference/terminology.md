@@ -22,6 +22,8 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Contract`: A documented commitment about externally observable behavior.
 
+`Diagnostic Correlation Context`: Operational metadata propagated across participating components so diagnostics from one governed workflow or causal operation can be associated using applicable canonical identities, causal relationships, classifications, versions, or other content-safe references. It is not authoritative domain state.
+
 `Ecosystem`: The complete system of standards, code, tools, processes, artifacts, registries, documentation, and governance.
 
 `First Release Definition`: The finite system or artifact boundary, observable acceptance outcomes, required capability maturity, explicitly deferred scope, and evidence required to decide that a first release is ready.
@@ -33,6 +35,8 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 `Monorepo`: A single version-control repository used as a deliberate coordination boundary for multiple first-party components, packages, tools, applications, documents, assets, experiments, or other governed areas. Monorepo membership does not by itself imply shared architecture, ownership, versioning, release cadence, deployment, lifecycle, or build/workspace membership.
 
 `Normative`: Binding for official Atlas work.
+
+`Operational Telemetry`: Non-authoritative diagnostic or operational evidence such as logs, traces, metrics, health signals, timings, counts, lifecycle observations, and related metadata. Operational Telemetry may describe domain activity but does not become authoritative domain state unless a governing domain contract explicitly records the fact through its authoritative path.
 
 `Part`: A numbered subdivision of a Volume that groups related Chapters (e.g. "Part II - Philosophy").
 
