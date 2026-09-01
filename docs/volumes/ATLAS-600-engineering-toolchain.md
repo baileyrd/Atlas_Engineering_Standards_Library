@@ -7,25 +7,22 @@
 | Short Name | TOOL |
 | Status | Draft 0.1 |
 | Classification | Normative |
-| Scope | Version-control workflow, evidence-backed CI validation, and development-environment setup policy across Atlas repositories. Lint/static-analysis policy, exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
+| Scope | Version-control workflow, evidence-backed CI validation, development-environment setup, and Rust formatting/lint validation policy across Atlas repositories. Exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The initial draft standardized version-control workflow, then added cross-repository CI validation once a second exercised pipeline created a real reconciliation need. A second repository now also provides a materially different local development environment, so this draft defines the portable setup rules common to both without requiring identical tools.
+Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The draft now covers version-control workflow, cross-repository CI validation, portable development-environment setup, and the Rust formatting/lint contract demonstrated independently by more than one real Rust repository.
 
-The volume does not prescribe a universal CI provider, editor, development-container technology, Rust lint configuration, exact compiler pin, release system, or signing mechanism. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
+The volume does not prescribe a universal CI provider, editor, development-container technology, exact compiler pin, release system, signing mechanism, or third-party static-analysis suite. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
 
 ## Trigger Evidence
 
-The version-control chapters are grounded in this standards library's own protected-branch and pull-request workflow. The CI chapter is grounded in two exercised repositories with distinct validation needs:
+The version-control chapters are grounded in this standards library's own protected-branch and pull-request workflow. The CI chapter is grounded in exercised repositories with distinct validation needs: this standards library validates documentation structure and identifiers, while the Nexa Rust repository validates a coordinated Rust workspace plus repository-specific dependency boundaries.
 
-- this standards library validates requirement identifiers, documentation reachability, and internal links on pull requests and on the default branch; and
-- the Nexa Rust repository validates its coordinated workspace through build/test gates plus repository-specific dependency-boundary enforcement, also on pull requests and on the default branch.
+The development-environment chapter is grounded in the standards library and Nexa having different but real setup models. The shared policy is that prerequisites and validation capability are durable and reproducible; a particular editor, container provider, or language toolchain is not an Atlas-wide requirement merely because one repository uses it.
 
-The two pipelines use different languages and checks but share the same engineering shape: governing rules have machine-checkable evidence, pull requests cannot rely on manual review alone, and repository-specific structural checks are first-class CI inputs rather than optional local conventions.
-
-The development-environment chapter is grounded in the same two repositories having different but real setup models. The standards library documents Python-based local validation and mdBook usage without requiring a container. Nexa documents Rust/Cargo validation and also carries repository-owned development-container configuration. The shared policy is therefore that setup prerequisites and validation capability are durable and reproducible; a particular editor, container provider, or language toolchain is not an Atlas-wide requirement merely because one repository uses it.
+The Rust formatting/lint chapter is grounded in two independent Rust repositories, Nexa and `rusty_data_os`. Both use `rustfmt` in check mode and Clippy over their governed package/target scope, and both reject Clippy warnings in required validation. Their toolchain strategies differ — one follows stable while the other uses a frozen compiler — demonstrating that the lint contract is independent from exact toolchain selection under `ATLAS-TOOL-0150`.
 
 ### Chapter 1 - Repository and Branching Model
 
@@ -185,15 +182,39 @@ Repository-owned development-environment configuration MUST NOT embed credential
 
 When a required validation or acceptance result can be produced only on a particular operating system, architecture, device class, or other environment, the repository MUST document that prerequisite and distinguish the platform-specific evidence from checks that can run in a general development environment. Passing a portable local or CI setup MUST NOT be represented as evidence for an unexecuted platform-specific requirement.
 
+### Chapter 8 - Rust Formatting and Lint Validation
+
+Atlas is a Rust-based ecosystem, so repeated Rust repository evidence can justify a shared Rust quality gate without requiring identical toolchain versions. `rustfmt` and Clippy are the exercised baseline: formatting is checked rather than mutated during validation, lint coverage follows the governed package/target scope, and accepted warnings do not silently accumulate.
+
+This chapter owns the shared formatter/lint execution policy. It does not replace ATLAS-300's Cargo architecture, Chapter 6's CI semantics, or Chapter 7's toolchain-selection rules.
+
+#### Requirements
+
+##### ATLAS-TOOL-0190 - Rustfmt Is the Canonical Rust Formatter
+
+An official Atlas Rust repository MUST use `rustfmt` as the canonical formatter for governed Rust source and MUST include a non-mutating formatting check in required validation. CI MUST report formatting drift as a failure rather than silently rewriting source and accepting the rewritten result.
+
+##### ATLAS-TOOL-0200 - Clippy Covers the Governed Rust Scope
+
+An official Atlas Rust repository MUST run Clippy in required validation across the workspace or other governed first-party package set and across all targets applicable to that validation environment. Linting only one convenience crate or target MUST NOT substitute for the governed repository scope.
+
+##### ATLAS-TOOL-0210 - Clippy Warnings Fail Required Validation
+
+Clippy warnings in the governed validation scope MUST fail required validation. A project MAY intentionally allow or configure a specific lint, but the exception MUST be explicit in version-controlled source or configuration rather than implemented by ignoring the required lint result in CI.
+
+##### ATLAS-TOOL-0220 - Lint Scope Exceptions Are Explicit
+
+A package or target MAY be excluded from the general Clippy gate when it genuinely requires a different platform, toolchain, generated-code treatment, or other separately governed validation environment. The exclusion and its required alternate evidence MUST be documented; a silently omitted package or target MUST NOT be treated as lint-validated. Platform-specific exclusions MUST remain consistent with `ATLAS-TOOL-0180`.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, rather than being drafted speculatively now:
 
 | Topic | Trigger |
 |---|---|
-| Linting / static analysis tooling | Atlas has a real Rust crate whose lint configuration needs to be shared across repositories — trigger review tracked in Issue #30 |
 | Exact toolchain pinning | Reproducibility or tool behavior demonstrates that a repository must use an exact toolchain rather than a documented compatibility floor |
 | Release automation | Atlas publishes a real release artifact (crate, binary) that needs a repeatable release process |
 | Artifact signing | Atlas publishes a release artifact to a registry or distribution channel where provenance (`ATLAS-VAL-0022`) needs cryptographic verification, not just a statement |
+| Additional static analyzers | Two or more real repositories require the same analyzer beyond compiler/Clippy diagnostics, forcing a shared configuration or suppression policy |
 
 The existence of a tool, editor extension, environment file, CI feature, or provider capability is not itself a trigger for another toolchain chapter. Atlas standardizes additional tooling when real repository evidence requires a shared policy decision.
