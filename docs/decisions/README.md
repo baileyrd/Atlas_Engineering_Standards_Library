@@ -21,3 +21,4 @@ Each ADR states:
 | [0002](0002-unix-philosophy-coverage-distributed.md) | Distribute Unix Philosophy Coverage Into Owning Chapters, Audited by a Matrix | Accepted (Robustness sub-decision superseded by 0003) |
 | [0003](0003-robustness-gets-its-own-requirement.md) | Robustness Gets Its Own Requirement | Accepted |
 | [0004](0004-program-integrity-governance-scales-by-responsibility.md) | Program-Integrity Governance Scales by Responsibility, Not Headcount | Accepted |
+| [0005](0005-promote-atlas-100-from-exercised-architecture-evidence.md) | Promote ATLAS-100 from Exercised Architecture Evidence | Accepted |
