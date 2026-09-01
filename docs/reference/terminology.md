@@ -38,6 +38,10 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Program-Integrity Review`: A deliberate whole-system architecture and convergence review performed independently of the normal implementation/change-review cadence. Independence here is procedural; the review does not require a different person unless another requirement or external obligation requires separation of duties.
 
+`Protocol Compatibility`: The defined relation under which peers using identified Protocol Versions can interact correctly for the applicable request, response, event or stream, and failure semantics.
+
+`Protocol Version`: An explicit identifier for one revision of a cross-process business protocol contract. It is distinct from the version of the transport, framework, executable, package, or library carrying or implementing that protocol unless the governing specification explicitly defines them as one version domain.
+
 `Public Interface`: An interface intended for use outside its defining component, crate, process, service, or administrative boundary.
 
 `Requirement`: A specific statement that constrains or permits behavior.
