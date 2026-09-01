@@ -56,7 +56,7 @@ Package metadata that is intentionally common across workspace members — inclu
 
 ##### ATLAS-RWC-0040 - Shared Third-Party Dependency Policy
 
-When multiple workspace members intentionally share the same third-party dependency baseline, the dependency SHOULD be declared under `[workspace.dependencies]` and inherited by those members. A member that requires a materially different version, feature set, source, or compatibility policy SHOULD declare that requirement locally instead of distorting the workspace-wide declaration for unrelated members.
+When multiple workspace members intentionally share the same third-party dependency source and version baseline, the dependency SHOULD be declared under `[workspace.dependencies]` and inherited by those members. A member MAY add member-specific features or other compatible dependency options at its own declaration. A member that requires a different source, incompatible version baseline, or otherwise independent compatibility policy SHOULD declare that requirement locally instead of distorting the workspace-wide baseline for unrelated members.
 
 ##### ATLAS-RWC-0050 - Workspace-Local First-Party Resolution
 
