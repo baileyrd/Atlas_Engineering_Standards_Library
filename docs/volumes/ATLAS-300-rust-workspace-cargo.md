@@ -104,7 +104,7 @@ An official multi-package Atlas Rust workspace MUST declare the minimum supporte
 
 ##### ATLAS-RWC-0110 - MSRV Is Not a Toolchain Pin
 
-Cargo `rust-version` MUST be treated as a minimum compatibility floor, not as an exact developer or CI toolchain pin. Exact toolchain selection, when required, MUST be governed separately so that using a newer supported compiler does not falsely imply the declared MSRV has changed.
+Cargo `rust-version` MUST be treated as a minimum compatibility floor, not as an exact developer or CI toolchain pin. Exact developer and CI toolchain selection, when required, MUST be governed by ATLAS-600 Chapter 10 so that using a newer supported compiler does not falsely imply the declared MSRV has changed.
 
 ### Chapter 6 - Lockfile and Resolved Dependency State
 
@@ -132,7 +132,8 @@ Per `ATLAS-GOV-STD-0001`, the following topics remain unwritten until exercised 
 | Cross-compilation and target matrices | A release must support more than one materially different Rust target or target-specific dependency graph |
 | Crate publishing mechanics | An Atlas crate is actually published to crates.io or another registry and needs workspace publication rules |
 | Native dependencies and build scripts | A release-critical package introduces `build.rs`, native linking, generated bindings, or system-library discovery |
-| Exact toolchain pinning | Reproducibility or tool-specific behavior requires developers/CI to use an exact Rust toolchain; workflow ownership belongs with ATLAS-600 |
 | Workspace build-profile sharing | Multiple packages need coordinated non-default Cargo profiles based on measured evidence |
+
+Exact developer and CI toolchain selection is no longer deferred: ATLAS-600 Chapter 10 owns that activated workflow and environment policy. This volume continues to own Cargo `rust-version`, MSRV, workspace metadata, dependency resolution, and Cargo-specific compatibility semantics.
 
 The existence of a Cargo mechanism is not itself a trigger. Atlas standardizes it when a real workspace has demonstrated a policy decision that needs to remain coherent across packages or repositories.

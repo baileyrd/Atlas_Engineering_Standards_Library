@@ -7,14 +7,14 @@
 | Short Name | TOOL |
 | Status | Draft 0.1 |
 | Classification | Normative |
-| Scope | Version-control workflow, evidence-backed CI validation, development-environment setup, Rust formatting/lint validation, and monorepo management policy across Atlas repositories. Exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
+| Scope | Version-control workflow, evidence-backed CI validation, development-environment setup, Rust formatting/lint validation, monorepo management, and evidence-driven exact Rust toolchain selection across Atlas repositories. Release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The draft now covers version-control workflow, cross-repository CI validation, portable development-environment setup, the Rust formatting/lint contract demonstrated independently by more than one real Rust repository, and monorepo management demonstrated by repositories containing multiple governed first-party areas under one review and authority boundary.
+Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The draft now covers version-control workflow, cross-repository CI validation, portable development-environment setup, the Rust formatting/lint contract demonstrated independently by more than one real Rust repository, monorepo management demonstrated by repositories containing multiple governed first-party areas under one review and authority boundary, and exact Rust toolchain selection when a documented evidence need makes a moving compatible toolchain insufficient.
 
-The volume does not prescribe a universal CI provider, editor, development-container technology, exact compiler pin, release system, signing mechanism, third-party static-analysis suite, directory layout, CODEOWNERS implementation, or monorepo product. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
+The volume does not prescribe a universal CI provider, editor, development-container technology, Rust version, toolchain installer, release system, signing mechanism, third-party static-analysis suite, directory layout, CODEOWNERS implementation, or monorepo product. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
 
 ## Trigger Evidence
 
@@ -25,6 +25,8 @@ The development-environment chapter is grounded in the standards library and Nex
 The Rust formatting/lint chapter is grounded in two independent Rust repositories, Nexa and `rusty_data_os`. Both use `rustfmt` in check mode and Clippy over their governed package/target scope, and both reject Clippy warnings in required validation. Their toolchain strategies differ — one follows stable while the other uses a frozen compiler — demonstrating that the lint contract is independent from exact toolchain selection under `ATLAS-TOOL-0150`.
 
 The monorepo chapter is grounded in those same two repositories as repository-management evidence rather than only Cargo evidence. Nexa governs applications, reusable crates, tools, content, assets, documentation, scripts, and spikes in one repository with explicit component boundaries, authority entry points, root validation, and focused-change rules. `rusty_data_os` separately governs experiments, reusable crates, tools, documentation, research evidence, and authority artifacts in one repository, with explicit graduation and synchronization rules between those areas. Both demonstrate that repository co-location is useful only when component authority, change impact, and evidence boundaries remain explicit.
+
+The exact Rust toolchain-selection chapter is grounded in contrasting exercised strategies. The bounded `rusty_data_os` EXP-0001 evidence contract freezes Rust `1.89.0`, the required `rustfmt` and Clippy components, and target `x86_64-unknown-linux-gnu`; its governing record rejects moving `stable`, requires CI to expose the exact tool identity, and makes selection changes reviewable because they change the reproducibility basis. Nexa, by contrast, validly follows stable. The evidence therefore justifies a conditional selection policy, not an Atlas-wide version pin. See [ADR-0009](../decisions/0009-govern-exact-rust-toolchain-selection-by-evidence-need.md).
 
 ### Chapter 1 - Repository and Branching Model
 
@@ -248,13 +250,52 @@ Moving a component out of a Monorepo, or creating a separately governed reposito
 
 A change that materially alters Monorepo component ownership, repository split/join boundaries, major dependency boundaries, validation authority, or release coordination MUST be reviewed as a substantive architecture/toolchain change. The review MUST identify the affected ATLAS-100 architecture, ATLAS-200 versioning, ATLAS-300 workspace, and ATLAS-600 workflow requirements that remain applicable after the topology change.
 
+### Chapter 10 - Exact Rust Toolchain Selection
+
+Exact selection is a repository-level developer and CI environment decision, not a universal Rust policy. It is warranted when a documented reproducibility, compatibility, validation, or tool-behavior requirement cannot be satisfied reliably by a moving compatible toolchain. It is not warranted merely to make repositories look uniform.
+
+This chapter owns exact developer/CI toolchain identity, reproducible realization, required component and target identity, evidence reporting, and selection change control. ATLAS-300 continues to own Cargo `rust-version`, MSRV semantics, workspace metadata, dependency resolution, and other Cargo-specific compatibility rules. An exact selection is also only environment identity: it does not expand the platforms or behaviors actually validated.
+
+#### Requirements
+
+##### ATLAS-TOOL-0310 - Exact Selection Requires a Forcing Requirement
+
+An Atlas Rust repository MUST select an exact Rust toolchain only when a documented reproducibility, compatibility, validation, or tool-behavior requirement makes a moving compatible toolchain insufficient. Exact selection MUST NOT be required merely for repository uniformity. A repository without such a forcing requirement MAY use a moving stable or otherwise compatible toolchain subject to its documented MSRV and validation rules.
+
+##### ATLAS-TOOL-0320 - Exact Selection Is Repository-Owned and Machine-Readable
+
+When exact selection is required, the authoritative toolchain identity MUST be version-controlled and machine-readable where the ecosystem provides a suitable mechanism. A Rust repository SHOULD use `rust-toolchain.toml` or an equivalent repository-owned declaration; it MUST NOT require one particular installer when another mechanism can faithfully realize the governed selection.
+
+##### ATLAS-TOOL-0330 - MSRV and Exact Selection Remain Distinct
+
+Cargo `rust-version` and the governed MSRV remain compatibility floors under ATLAS-300 and MUST NOT be treated as the exact developer or CI toolchain selection unless the project explicitly and deliberately makes the values identical. Changing an exact selection MUST NOT implicitly change the declared MSRV, and changing an MSRV MUST NOT implicitly authorize a different exact selection.
+
+##### ATLAS-TOOL-0340 - Reproducibility Components and Targets Are Durable
+
+Toolchain components and compilation targets that form part of the forcing reproducibility or validation contract MUST be declared with the exact toolchain selection or otherwise durably specified in version-controlled repository authority. Incidental installed components or targets that are outside that contract MUST NOT be represented as governed merely because they were present on one machine.
+
+##### ATLAS-TOOL-0350 - Governed Selection Applies to Required Validation
+
+Required CI and documented local validation that produce evidence under an exact-selection contract MUST use the governed selection. The required validation MUST expose enough compiler and tool identity to determine which governed toolchain produced the result; CI-provider-specific reporting syntax remains an implementation choice.
+
+##### ATLAS-TOOL-0360 - Selection Changes Revisit the Evidence Basis
+
+A change to the exact compiler version, required component set, required target set, or equivalent selection metadata MUST be deliberate and reviewable and MUST revisit the documented reason the exact selection exists. Automated maintenance MAY propose such a change, but MUST NOT silently advance the governed selection or its evidence basis without review.
+
+##### ATLAS-TOOL-0370 - Compatible Moving Toolchains Remain Permitted
+
+An Atlas Rust repository without a forcing exact-version requirement MAY continue to use a moving stable or otherwise compatible toolchain. Such a repository MUST still satisfy its ATLAS-300 MSRV obligations and applicable ATLAS-600 validation requirements; absence of an exact pin MUST NOT be represented as absence of toolchain governance.
+
+##### ATLAS-TOOL-0380 - Toolchain Identity Does Not Expand Validation Evidence
+
+Selecting or reporting an exact Rust toolchain MUST NOT by itself be represented as evidence that runtime behavior, performance, portability, cross-compilation, or target-specific acceptance was validated outside the environments and targets actually exercised. Platform- and target-specific evidence remains governed by `ATLAS-TOOL-0180` and any later independently triggered policy.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, rather than being drafted speculatively now:
 
 | Topic | Trigger |
 |---|---|
-| Exact toolchain pinning | Reproducibility or tool behavior demonstrates that a repository must use an exact toolchain rather than a documented compatibility floor |
 | Release automation | Atlas publishes a real release artifact (crate, binary) that needs a repeatable release process |
 | Artifact signing | Atlas publishes a release artifact to a registry or distribution channel where provenance (`ATLAS-VAL-0022`) needs cryptographic verification, not just a statement |
 | Additional static analyzers | Two or more real repositories require the same analyzer beyond compiler/Clippy diagnostics, forcing a shared configuration or suppression policy |

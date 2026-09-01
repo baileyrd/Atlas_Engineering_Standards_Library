@@ -64,7 +64,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `RWC` | ATLAS-300 | Ch. 1-6 — Workspace Coordination through Lockfile/Resolved Dependency State | 0130 | 0140 |
 | `SEC-THREAT` | ATLAS-500 | Ch. 1 — Threat Modeling | 0020 | 0030 |
 | `SEC-BOUNDARY` | ATLAS-500 | Ch. 2 — Trust Boundaries, Untrusted Data, and Zero Trust | 0080 | 0090 |
-| `TOOL` | ATLAS-600 | Ch. 1-9 — Repository/Branching Model through Monorepo Management | 0300 | 0310 |
+| `TOOL` | ATLAS-600 | Ch. 1-10 — Repository/Branching Model through Exact Rust Toolchain Selection | 0380 | 0390 |
 | `STD-DIAG` | ATLAS-800 | Ch. 1 — Diagnostic Correlation | 0070 | 0080 |
 
 ## Shared Domain Families
