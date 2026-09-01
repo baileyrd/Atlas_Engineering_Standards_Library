@@ -7,14 +7,14 @@
 | Short Name | TOOL |
 | Status | Draft 0.1 |
 | Classification | Normative |
-| Scope | Version-control workflow and evidence-backed CI validation pipeline policy across Atlas repositories. Development environments, lint/static-analysis policy, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
+| Scope | Version-control workflow, evidence-backed CI validation, and development-environment setup policy across Atlas repositories. Lint/static-analysis policy, exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The initial draft standardized version-control workflow: branching, commits, pull requests, review, and merge mechanics. A second repository now exercises a materially different automated validation pipeline, so this draft also defines the cross-repository CI principles supported by that evidence.
+Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The initial draft standardized version-control workflow, then added cross-repository CI validation once a second exercised pipeline created a real reconciliation need. A second repository now also provides a materially different local development environment, so this draft defines the portable setup rules common to both without requiring identical tools.
 
-The volume still does not prescribe a universal CI provider, Rust lint configuration, exact compiler pin, release system, or signing mechanism. Those remain separate concerns whose own triggers must fire before they become normative.
+The volume does not prescribe a universal CI provider, editor, development-container technology, Rust lint configuration, exact compiler pin, release system, or signing mechanism. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
 
 ## Trigger Evidence
 
@@ -24,6 +24,8 @@ The version-control chapters are grounded in this standards library's own protec
 - the Nexa Rust repository validates its coordinated workspace through build/test gates plus repository-specific dependency-boundary enforcement, also on pull requests and on the default branch.
 
 The two pipelines use different languages and checks but share the same engineering shape: governing rules have machine-checkable evidence, pull requests cannot rely on manual review alone, and repository-specific structural checks are first-class CI inputs rather than optional local conventions.
+
+The development-environment chapter is grounded in the same two repositories having different but real setup models. The standards library documents Python-based local validation and mdBook usage without requiring a container. Nexa documents Rust/Cargo validation and also carries repository-owned development-container configuration. The shared policy is therefore that setup prerequisites and validation capability are durable and reproducible; a particular editor, container provider, or language toolchain is not an Atlas-wide requirement merely because one repository uses it.
 
 ### Chapter 1 - Repository and Branching Model
 
@@ -151,15 +153,47 @@ A repository SHOULD run its governing validation pipeline, or the applicable equ
 
 A change that removes, disables, bypasses, or materially weakens a required CI validation MUST state which assurance is being removed and what, if anything, replaces it. Such a change MUST be reviewed as a substantive toolchain/governance change rather than treated as routine pipeline maintenance.
 
+### Chapter 7 - Development Environment and Toolchain Setup
+
+A development environment is successful when a maintainer can establish the prerequisites needed to build, inspect, and validate the repository from durable project information. Atlas does not require every repository to use the same editor, container, operating system, or language toolchain; repositories have different legitimate needs.
+
+Environment automation is therefore a portability aid, not a ceremony requirement. A repository may use a development container, bootstrap script, package manager manifest, toolchain file, manual prerequisite list, or a combination. The governing requirement is that the setup model is explicit enough to reproduce the repository's required validation and does not hide compatibility assumptions in one maintainer's machine.
+
+#### Requirements
+
+##### ATLAS-TOOL-0130 - Documented Development Prerequisites
+
+An Atlas repository MUST document the tools, runtimes, platform prerequisites, and setup steps required to perform its normal local build and required validation. Version constraints or compatibility floors that affect whether the repository can be built or validated correctly MUST be discoverable from repository documentation or version-controlled configuration.
+
+##### ATLAS-TOOL-0140 - Clean-Checkout Validation Path
+
+A repository MUST document a path from a clean checkout on a supported development platform to an environment capable of running the substantive local validation required by `ATLAS-TOOL-0100`. The path MAY contain manual steps, but it MUST NOT depend on undocumented institutional knowledge or machine-local configuration known only to an existing maintainer.
+
+##### ATLAS-TOOL-0150 - Compatibility Floor Is Distinct From Toolchain Selection
+
+A language or package compatibility floor, such as Cargo `rust-version`, MUST NOT be represented as an exact developer-toolchain selection unless the project deliberately makes those concerns identical. Requiring an exact toolchain version SHOULD have a documented reproducibility, compatibility, or tool-behavior reason; otherwise a toolchain satisfying the documented compatibility requirements MAY be used.
+
+##### ATLAS-TOOL-0160 - Repository-Owned Environment Automation
+
+Development-environment automation such as a container definition, bootstrap script, package-manager environment, or toolchain manifest MAY be provided when it reduces setup drift. If such automation is required for normal development or validation, its authoritative configuration MUST be version-controlled and the repository MUST document that it is required. Optional automation MUST NOT be presented as the only supported setup path unless the project has explicitly chosen it as a required environment boundary.
+
+##### ATLAS-TOOL-0170 - Environment Configuration Does Not Embed Secrets
+
+Repository-owned development-environment configuration MUST NOT embed credentials, access tokens, private keys, or machine-specific secret values. A workflow requiring a secret MUST obtain it through a documented external injection or credential mechanism rather than committing the secret as environment setup data.
+
+##### ATLAS-TOOL-0180 - Platform-Specific Evidence Is Explicit
+
+When a required validation or acceptance result can be produced only on a particular operating system, architecture, device class, or other environment, the repository MUST document that prerequisite and distinguish the platform-specific evidence from checks that can run in a general development environment. Passing a portable local or CI setup MUST NOT be represented as evidence for an unexecuted platform-specific requirement.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, rather than being drafted speculatively now:
 
 | Topic | Trigger |
 |---|---|
-| Linting / static analysis tooling | Atlas has a real Rust crate whose lint configuration needs to be shared across repositories |
+| Linting / static analysis tooling | Atlas has a real Rust crate whose lint configuration needs to be shared across repositories — trigger review tracked in Issue #30 |
+| Exact toolchain pinning | Reproducibility or tool behavior demonstrates that a repository must use an exact toolchain rather than a documented compatibility floor |
 | Release automation | Atlas publishes a real release artifact (crate, binary) that needs a repeatable release process |
 | Artifact signing | Atlas publishes a release artifact to a registry or distribution channel where provenance (`ATLAS-VAL-0022`) needs cryptographic verification, not just a statement |
-| Development environment standards | A second Atlas repository exists with its own toolchain/environment setup to reconcile with this one — trigger under review in Issue #29 |
 
-The existence of a CI feature or provider capability is not itself a trigger for another toolchain chapter. Atlas standardizes additional tooling when real repository evidence requires a shared policy decision.
+The existence of a tool, editor extension, environment file, CI feature, or provider capability is not itself a trigger for another toolchain chapter. Atlas standardizes additional tooling when real repository evidence requires a shared policy decision.
