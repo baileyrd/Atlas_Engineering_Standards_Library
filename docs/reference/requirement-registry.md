@@ -53,7 +53,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `GOV-RFC` | ATLAS-001 | Ch. 35 — RFC Process | 0020 | 0030 |
 | `GOV-ADR` | ATLAS-001 | Ch. 36 — Architecture Decision Records | 0010 | 0020 |
 | `GOV-CHANGE` | ATLAS-001 | Ch. 37 — Change Management | 0010 | 0020 |
-| `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0063 | 0070 |
+| `GOV-REVIEW` | ATLAS-001 | Ch. 38 — Review Process | 0064 | 0070 |
 | `LANG` | ATLAS-001 | Ch. 39 — Requirement Language | 0020 | 0030 |
 | `TERM` | ATLAS-001 | Ch. 40 — Terminology | 0010 | 0020 |
 | `DOC` | ATLAS-001 | Ch. 41 — Document Conventions | 0010 | 0020 |
