@@ -1019,7 +1019,7 @@ Where a specification and its implementation disagree, the specification is auth
 
 ##### ATLAS-SPEC-0020 - Parent Authority Readiness
 
-A lower-level specification or implementation MUST NOT be accepted as `Runtime Integrated` or a later Capability Maturity state while a governing parent architecture or specification needed to determine its boundaries, behavior, compatibility, or acceptance criteria remains unresolved or below the project's required approval gate. Exploratory or contract-level work MAY proceed earlier if the unresolved parent dependency and resulting uncertainty are recorded.
+A capability MUST NOT be accepted as `Runtime Integrated` or a later Capability Maturity state while a governing parent architecture or specification needed to determine its boundaries, behavior, compatibility, or acceptance criteria remains unresolved or below the project's required approval gate. Lower-level specification or implementation work MAY proceed earlier if the unresolved parent dependency and resulting uncertainty are recorded.
 
 ##### ATLAS-SPEC-0030 - Early Walking Skeleton
 
@@ -1266,7 +1266,7 @@ Separation of duties MUST be used where required by law, regulation, contractual
 
 ##### ATLAS-GOV-REVIEW-0064 - Unavailable Independent Review
 
-When Independent Human Review is not required by `ATLAS-GOV-REVIEW-0063` and no independent reviewer is reasonably available, its absence MUST be stated explicitly rather than represented as peer or independent review. Applicable Author Self-Review, automated verification, and Program-Integrity Review requirements still apply.
+When Independent Human Review is not required by `ATLAS-GOV-REVIEW-0063` and no independent reviewer is reasonably available, its absence and the reason for unavailability MUST be stated explicitly rather than represented as peer or independent review. Applicable Author Self-Review, automated verification, and Program-Integrity Review requirements still apply.
 
 ## Part VII - Reference
 
