@@ -30,6 +30,8 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Lifecycle State`: The current release or support state of a shipped artifact, as defined by ATLAS-001 Chapter 32. It is distinct from capability maturity and from document or requirement status.
 
+`Monorepo`: A single version-control repository used as a deliberate coordination boundary for multiple first-party components, packages, tools, applications, documents, assets, experiments, or other governed areas. Monorepo membership does not by itself imply shared architecture, ownership, versioning, release cadence, deployment, lifecycle, or build/workspace membership.
+
 `Normative`: Binding for official Atlas work.
 
 `Part`: A numbered subdivision of a Volume that groups related Chapters (e.g. "Part II - Philosophy").
