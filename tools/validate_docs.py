@@ -11,19 +11,29 @@ Checks:
      deliberately outside the mdBook (see docs/SUMMARY.md) and are excluded
      from this check.
   4. Every relative Markdown link in a tracked .md file resolves to a file
-     that exists.
+     that exists and, when present, to a rendered Markdown heading anchor.
 
 Exits non-zero (and prints every violation) on any failure.
 """
 
 import re
 import sys
+from collections import Counter
+from html import unescape
 from pathlib import Path
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIREMENT_ID = re.compile(r"ATLAS-([A-Z]+(?:-[A-Z]+)*)-(\d{4})\b")
 BACKTICK_TOKEN = re.compile(r"`([A-Z]+(?:-[A-Z]+)*)`")
 MD_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+MARKDOWN_HEADING = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$")
+SETEXT_UNDERLINE = re.compile(r"^ {0,3}(?:=+|-+)\s*$")
+FENCED_CODE = re.compile(r"^\s*(`{3,}|~{3,})")
+HTML_ANCHOR = re.compile(r"<(?:a\s+(?:name|id)|[^>]+\sid)=[\"']([^\"']+)[\"']", re.IGNORECASE)
+INLINE_LINK = re.compile(r"\[([^\]]+)\]\([^)]+\)")
+HTML_TAG = re.compile(r"<[^>]+>")
+MARKDOWN_FORMATTING = re.compile(r"[*_~`]")
 
 EXCLUDED_DIRS = {".git", ".github", ".claude", ".agents", "book", "node_modules"}
 
@@ -114,20 +124,104 @@ def check_summary_reachability(files):
     return errors
 
 
+def heading_slug(heading: str) -> str:
+    """Return the GitHub/mdBook-compatible base anchor for a Markdown heading."""
+    text = INLINE_LINK.sub(r"\1", heading)
+    text = HTML_TAG.sub("", text)
+    text = unescape(MARKDOWN_FORMATTING.sub("", text)).strip().lower()
+    slug: list[str] = []
+    for character in text:
+        if character.isalnum() or character in {"_", "-"}:
+            slug.append(character)
+        elif character.isspace():
+            slug.append("-")
+    return "".join(slug)
+
+
+def headings_and_explicit_anchors(path: Path) -> tuple[list[str], set[str]]:
+    """Extract rendered headings and explicit HTML anchors outside fenced code blocks."""
+    headings: list[str] = []
+    explicit_anchors: set[str] = set()
+    previous_line = ""
+    fence_character: str | None = None
+    fence_length = 0
+
+    for line in path.read_text(encoding="utf-8").splitlines():
+        fence = FENCED_CODE.match(line)
+        if fence:
+            marker = fence.group(1)
+            if fence_character is None:
+                fence_character = marker[0]
+                fence_length = len(marker)
+            elif marker[0] == fence_character and len(marker) >= fence_length:
+                fence_character = None
+                fence_length = 0
+            previous_line = ""
+            continue
+
+        if fence_character is not None:
+            continue
+
+        explicit_anchors.update(HTML_ANCHOR.findall(line))
+        atx_heading = MARKDOWN_HEADING.match(line)
+        if atx_heading:
+            headings.append(atx_heading.group(1))
+            previous_line = ""
+            continue
+
+        if previous_line and SETEXT_UNDERLINE.match(line):
+            headings.append(previous_line.strip())
+            previous_line = ""
+            continue
+
+        previous_line = line if line.strip() else ""
+
+    return headings, explicit_anchors
+
+
+def anchors_for(path: Path) -> set[str]:
+    """Collect generated heading anchors and explicit HTML anchors from a Markdown file."""
+    headings, anchors = headings_and_explicit_anchors(path)
+    generated_counts: Counter[str] = Counter()
+    used_generated: set[str] = set()
+    for heading in headings:
+        base = heading_slug(heading)
+        anchor = base
+        while anchor in used_generated:
+            generated_counts[base] += 1
+            anchor = f"{base}-{generated_counts[base]}"
+        used_generated.add(anchor)
+        anchors.add(anchor)
+    return anchors
+
+
 def check_internal_links(files):
     errors = []
+    anchor_cache: dict[Path, set[str]] = {}
     for path in files:
         text = path.read_text(encoding="utf-8")
         for target in MD_LINK.findall(text):
             if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*://", target) or target.startswith("mailto:"):
                 continue
-            clean_target = target.split("#")[0].strip()
-            if not clean_target:
-                continue
-            resolved = (path.parent / clean_target).resolve()
+            clean_target, separator, raw_fragment = target.partition("#")
+            clean_target = clean_target.strip()
+            resolved = (path.parent / clean_target).resolve() if clean_target else path.resolve()
             if not resolved.exists():
                 errors.append(
                     f"{path.relative_to(ROOT)} links to '{target}', which does not resolve to an existing file"
+                )
+                continue
+
+            if not separator or not raw_fragment or resolved.suffix.lower() != ".md":
+                continue
+
+            fragment = unquote(raw_fragment)
+            if resolved not in anchor_cache:
+                anchor_cache[resolved] = anchors_for(resolved)
+            if fragment not in anchor_cache[resolved]:
+                errors.append(
+                    f"{path.relative_to(ROOT)} links to '{target}', but heading anchor "
+                    f"'#{fragment}' does not exist in {resolved.relative_to(ROOT)}"
                 )
     return errors
 

@@ -57,7 +57,7 @@ Atlas uses RFC-style requirement language:
 
 ## Documentation Site
 
-[`docs/SUMMARY.md`](docs/SUMMARY.md) is an [mdBook](https://rust-lang.github.io/mdBook/) table of contents covering everything under `docs/`. Preview it locally with:
+[`docs/SUMMARY.md`](docs/SUMMARY.md) is an [mdBook](https://rust-lang.github.io/mdBook/) table of contents covering everything under `docs/`. Required CI builds it with mdBook `0.5.4`. Preview the same source locally with that version:
 
 ```sh
 mdbook serve

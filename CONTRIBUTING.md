@@ -8,13 +8,21 @@ Atlas standards are durable engineering artifacts. Changes to them should be del
 
 - Changes land only through pull requests. Direct pushes to `main` are blocked.
 - Force-pushes and branch deletion are blocked on `main`.
-- A `validate-docs` CI check runs on every PR (requirement-ID uniqueness and prefix registration, SUMMARY.md reachability, internal link validity — see `tools/validate_docs.py`) and **must pass before a PR can merge**.
+- A `validate-docs` CI check runs on every PR (validator unit tests, requirement-ID uniqueness and prefix registration, SUMMARY.md reachability, internal file and heading-anchor validity, and a pinned mdBook build — see `tools/validate_docs.py` and `.github/workflows/validate-docs.yml`) and **must pass before a PR can merge**.
 
 ## Workflow
 
 1. **Branch from `main`.** Use a short, descriptive branch name, e.g. `atlas-500/crypto-requirements` or `fix/terminology-typo`.
 2. **Make your change.** See [Authoring Conventions](#authoring-conventions) below for document- and requirement-level rules.
-3. **Run `python tools/validate_docs.py` locally** before opening the PR — it catches duplicate/unregistered requirement IDs and broken internal links.
+3. **Run the required documentation checks locally** before opening the PR:
+
+   ```sh
+   python -m unittest discover -s tests -v
+   python tools/validate_docs.py
+   mdbook build
+   ```
+
+   CI uses mdBook `0.5.4`; use that version when reproducing a rendering failure. The generated `book/` directory is ignored and MUST NOT be committed.
 4. **Open a pull request into `main`.** Describe *what* changed and, per Article V (Governance Principles) of [ATLAS-000](docs/ATLAS-000-foundation-charter.md), the rationale — especially for anything touching a normative requirement.
 5. **Review.** Changes to normative requirements require review for correctness, security, compatibility, maintainability, and ecosystem impact (ATLAS-000, Article V). For editorial or structural changes (typos, formatting, non-normative prose), a lighter pass is sufficient.
 6. **Merge.** This repository merges via merge commit only (squash and rebase are disabled), per `ATLAS-TOOL-0040` — merge once the PR reflects the intended change and any review feedback is addressed. Delete the branch after merge.
