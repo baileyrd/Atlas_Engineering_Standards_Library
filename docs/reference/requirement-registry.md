@@ -15,7 +15,7 @@ ATLAS-<DOMAIN>-<SUBDOMAIN>-<NNNN>
 
 ## Active Prefixes
 
-Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), [ATLAS-300](../volumes/ATLAS-300-rust-workspace-cargo.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
+Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), [ATLAS-300](../volumes/ATLAS-300-rust-workspace-cargo.md), [ATLAS-500](../volumes/ATLAS-500-security-architecture.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
 
 | Prefix | Owning Document | Chapter / Topic | Highest Assigned | Next Free Block |
 |---|---|---|---|---|
@@ -62,6 +62,8 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
 | `EVS-PROTOCOL` | ATLAS-200 | Ch. 7 — Protocol Versioning | 0060 | 0070 |
 | `RWC` | ATLAS-300 | Ch. 1-6 — Workspace Coordination through Lockfile/Resolved Dependency State | 0130 | 0140 |
+| `SEC-THREAT` | ATLAS-500 | Ch. 1 — Threat Modeling | 0020 | 0030 |
+| `SEC-BOUNDARY` | ATLAS-500 | Ch. 2 — Trust Boundaries, Untrusted Data, and Zero Trust | 0080 | 0090 |
 | `TOOL` | ATLAS-600 | Ch. 1-9 — Repository/Branching Model through Monorepo Management | 0300 | 0310 |
 
 ## Shared Domain Families
@@ -71,7 +73,9 @@ A shared family is a prefix that multiple documents allocate under, each with it
 | Family | Subdomain | Reserved By | Status |
 |---|---|---|---|
 | `SEC` | `SEC-FND` | ATLAS-001 Ch. 17 | Active |
-| `SEC` | `SEC-CRYPTO`, `SEC-AUTH`, `SEC-IDENTITY`, `SEC-KEY`, `SEC-SUPPLY` | ATLAS-500 (planned) | Reserved, not yet in use |
+| `SEC` | `SEC-THREAT` | ATLAS-500 Ch. 1 | Active |
+| `SEC` | `SEC-BOUNDARY` | ATLAS-500 Ch. 2 | Active |
+| `SEC` | `SEC-CRYPTO`, `SEC-AUTH`, `SEC-IDENTITY`, `SEC-KEY`, `SEC-SUPPLY` | ATLAS-500 (Draft — see its Deferred section) | Reserved, not yet in use |
 | `EVS` | `EVS-PROTOCOL` | ATLAS-200 Ch. 7 | Active |
 | `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA` | ATLAS-200 (Draft — see its Deferred section) | Reserved, not yet in use |
 
@@ -84,7 +88,6 @@ These volumes have no published requirements yet (`Status: Seed` — see `ATLAS-
 | Prefix | Volume | Title |
 |---|---|---|
 | `SDK` | ATLAS-400 | Volume V — SDK Architecture |
-| `SEC` | ATLAS-500 | Volume VI — Security Architecture |
 | `PLUG` | ATLAS-700 | Volume VIII — Plugin and Extension Architecture |
 | `STD` | ATLAS-800 | Volume IX — Ecosystem Standards |
 | `REF` | ATLAS-900 | Volume X — Reference Architectures |
