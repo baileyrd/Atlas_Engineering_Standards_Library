@@ -7,14 +7,14 @@
 | Short Name | TOOL |
 | Status | Draft 0.1 |
 | Classification | Normative |
-| Scope | Version-control workflow, evidence-backed CI validation, development-environment setup, and Rust formatting/lint validation policy across Atlas repositories. Exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
+| Scope | Version-control workflow, evidence-backed CI validation, development-environment setup, Rust formatting/lint validation, and monorepo management policy across Atlas repositories. Exact toolchain pinning, release automation, artifact signing, and broader compliance tooling remain deferred (see Deferred). |
 | Parent | ATLAS-001 |
 
 ## Purpose
 
-Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The draft now covers version-control workflow, cross-repository CI validation, portable development-environment setup, and the Rust formatting/lint contract demonstrated independently by more than one real Rust repository.
+Volume VII defines the Atlas engineering toolchain where real repository workflows have already forced durable policy. The draft now covers version-control workflow, cross-repository CI validation, portable development-environment setup, the Rust formatting/lint contract demonstrated independently by more than one real Rust repository, and monorepo management demonstrated by repositories containing multiple governed first-party areas under one review and authority boundary.
 
-The volume does not prescribe a universal CI provider, editor, development-container technology, exact compiler pin, release system, signing mechanism, or third-party static-analysis suite. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
+The volume does not prescribe a universal CI provider, editor, development-container technology, exact compiler pin, release system, signing mechanism, third-party static-analysis suite, directory layout, CODEOWNERS implementation, or monorepo product. Those remain implementation choices or separate concerns whose own triggers must fire before becoming normative.
 
 ## Trigger Evidence
 
@@ -23,6 +23,8 @@ The version-control chapters are grounded in this standards library's own protec
 The development-environment chapter is grounded in the standards library and Nexa having different but real setup models. The shared policy is that prerequisites and validation capability are durable and reproducible; a particular editor, container provider, or language toolchain is not an Atlas-wide requirement merely because one repository uses it.
 
 The Rust formatting/lint chapter is grounded in two independent Rust repositories, Nexa and `rusty_data_os`. Both use `rustfmt` in check mode and Clippy over their governed package/target scope, and both reject Clippy warnings in required validation. Their toolchain strategies differ — one follows stable while the other uses a frozen compiler — demonstrating that the lint contract is independent from exact toolchain selection under `ATLAS-TOOL-0150`.
+
+The monorepo chapter is grounded in those same two repositories as repository-management evidence rather than only Cargo evidence. Nexa governs applications, reusable crates, tools, content, assets, documentation, scripts, and spikes in one repository with explicit component boundaries, authority entry points, root validation, and focused-change rules. `rusty_data_os` separately governs experiments, reusable crates, tools, documentation, research evidence, and authority artifacts in one repository, with explicit graduation and synchronization rules between those areas. Both demonstrate that repository co-location is useful only when component authority, change impact, and evidence boundaries remain explicit.
 
 ### Chapter 1 - Repository and Branching Model
 
@@ -206,6 +208,46 @@ Clippy warnings in the governed validation scope MUST fail required validation. 
 
 A package or target MAY be excluded from the general Clippy gate when it genuinely requires a different platform, toolchain, generated-code treatment, or other separately governed validation environment. The exclusion and its required alternate evidence MUST be documented; a silently omitted package or target MUST NOT be treated as lint-validated. Platform-specific exclusions MUST remain consistent with `ATLAS-TOOL-0180`.
 
+### Chapter 9 - Monorepo Management
+
+A Monorepo is a repository coordination boundary, not an architectural promise that every contained component shares one owner, version, release cadence, build graph, or lifecycle. Co-location is valuable when it makes related changes atomic, repository authority discoverable, shared policy maintainable, and cross-component validation practical. It becomes harmful when physical proximity is allowed to erase component contracts or create accidental lockstep.
+
+ATLAS-600 owns repository-level monorepo management. ATLAS-300 owns Cargo-workspace mechanics inside Rust monorepos; ATLAS-100 owns architectural boundaries and dependency direction; ATLAS-200 owns version domains and version groups.
+
+#### Requirements
+
+##### ATLAS-TOOL-0230 - Monorepo Is a Deliberate Coordination Boundary
+
+A Monorepo MUST define what classes of first-party artifacts or components are intentionally coordinated through the repository and what important lifecycle, architecture, versioning, build, or release concerns remain independently governed. Repository co-location MUST NOT by itself be treated as evidence that all contained components share one version, release, deployment, owner, or Cargo workspace.
+
+##### ATLAS-TOOL-0240 - Repository Map and Authority Entry Points
+
+A Monorepo MUST provide a durable, discoverable map of its major first-party areas and the governing authority or starting documents a maintainer should consult before changing them. The map MAY be implemented through a README, contributor/agent guide, specification registry, generated catalog, or equivalent repository-owned artifact; a particular directory naming scheme is not required.
+
+##### ATLAS-TOOL-0250 - Component Responsibility Boundaries Remain Explicit
+
+Significant components or governed areas within a Monorepo MUST have explicit responsibility boundaries sufficient to determine which contract, specification, or project authority governs a proposed change. A single person MAY hold multiple responsibilities; this requirement does not mandate CODEOWNERS, separate teams, or separation of duties unless another requirement does.
+
+##### ATLAS-TOOL-0260 - Cross-Component Contract Changes Are Atomic When Coordinated
+
+When a contract change requires coordinated updates to multiple in-repository producers, consumers, tests, specifications, or traceability artifacts for the repository to remain coherent, those required updates SHOULD land in one reviewable change. Splitting a required coordinated update across separate merges MUST have a documented reason and MUST NOT leave the default branch knowingly inconsistent with the governing contract.
+
+##### ATLAS-TOOL-0270 - Shared Policy Without False Uniformity
+
+Repository-level policy, tooling, configuration, or metadata that is genuinely shared across multiple Monorepo areas SHOULD have one authoritative version-controlled source. A component with a real independent requirement MAY diverge, but the divergence MUST remain explicit rather than forcing unrelated components into a false common baseline or silently overriding the shared policy.
+
+##### ATLAS-TOOL-0280 - Monorepo Validation Preserves Evidence Boundaries
+
+Repository-level validation MUST preserve the applicability and evidence boundaries of the components it covers. A green root pipeline MUST NOT be represented as evidence for an excluded platform, component, lifecycle state, or separately governed acceptance gate that did not run. Impact-aware or path-scoped validation MAY be used, but skipped validation MUST satisfy the explicit applicability and fail-closed rules of `ATLAS-TOOL-0080` and applicable platform-evidence rules such as `ATLAS-TOOL-0180`.
+
+##### ATLAS-TOOL-0290 - Repository Extraction Requires a Forcing Function
+
+Moving a component out of a Monorepo, or creating a separately governed repository for a component that could remain inside it, SHOULD have a documented forcing function such as an independent release or dependency-resolution lifecycle, access/security boundary, ownership boundary, operational isolation need, external distribution boundary, or materially different toolchain/build governance. Repository separation SHOULD NOT be introduced solely for aesthetic directory organization or speculative future independence.
+
+##### ATLAS-TOOL-0300 - Monorepo Topology Changes Are Substantive
+
+A change that materially alters Monorepo component ownership, repository split/join boundaries, major dependency boundaries, validation authority, or release coordination MUST be reviewed as a substantive architecture/toolchain change. The review MUST identify the affected ATLAS-100 architecture, ATLAS-200 versioning, ATLAS-300 workspace, and ATLAS-600 workflow requirements that remain applicable after the topology change.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, rather than being drafted speculatively now:
@@ -217,4 +259,4 @@ Per `ATLAS-GOV-STD-0001`, these stay unwritten until their own trigger fires, ra
 | Artifact signing | Atlas publishes a release artifact to a registry or distribution channel where provenance (`ATLAS-VAL-0022`) needs cryptographic verification, not just a statement |
 | Additional static analyzers | Two or more real repositories require the same analyzer beyond compiler/Clippy diagnostics, forcing a shared configuration or suppression policy |
 
-The existence of a tool, editor extension, environment file, CI feature, or provider capability is not itself a trigger for another toolchain chapter. Atlas standardizes additional tooling when real repository evidence requires a shared policy decision.
+The existence of a tool, editor extension, environment file, CI feature, provider capability, or monorepo product is not itself a trigger for another toolchain chapter. Atlas standardizes additional tooling when real repository evidence requires a shared policy decision.
