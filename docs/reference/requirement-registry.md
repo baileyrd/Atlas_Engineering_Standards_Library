@@ -15,7 +15,7 @@ ATLAS-<DOMAIN>-<SUBDOMAIN>-<NNNN>
 
 ## Active Prefixes
 
-Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), [ATLAS-300](../volumes/ATLAS-300-rust-workspace-cargo.md), [ATLAS-500](../volumes/ATLAS-500-security-architecture.md), and [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md).
+Derived directly from requirements currently published in [ATLAS-000](../ATLAS-000-foundation-charter.md), [ATLAS-001](../volumes/ATLAS-001-foundation.md), [ATLAS-100](../volumes/ATLAS-100-architecture.md), [ATLAS-200](../volumes/ATLAS-200-versioning.md), [ATLAS-300](../volumes/ATLAS-300-rust-workspace-cargo.md), [ATLAS-500](../volumes/ATLAS-500-security-architecture.md), [ATLAS-600](../volumes/ATLAS-600-engineering-toolchain.md), and [ATLAS-800](../volumes/ATLAS-800-ecosystem-standards.md).
 
 | Prefix | Owning Document | Chapter / Topic | Highest Assigned | Next Free Block |
 |---|---|---|---|---|
@@ -65,6 +65,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `SEC-THREAT` | ATLAS-500 | Ch. 1 — Threat Modeling | 0020 | 0030 |
 | `SEC-BOUNDARY` | ATLAS-500 | Ch. 2 — Trust Boundaries, Untrusted Data, and Zero Trust | 0080 | 0090 |
 | `TOOL` | ATLAS-600 | Ch. 1-9 — Repository/Branching Model through Monorepo Management | 0300 | 0310 |
+| `STD-DIAG` | ATLAS-800 | Ch. 1 — Diagnostic Correlation | 0070 | 0080 |
 
 ## Shared Domain Families
 
@@ -78,8 +79,9 @@ A shared family is a prefix that multiple documents allocate under, each with it
 | `SEC` | `SEC-CRYPTO`, `SEC-AUTH`, `SEC-IDENTITY`, `SEC-KEY`, `SEC-SUPPLY` | ATLAS-500 (Draft — see its Deferred section) | Reserved, not yet in use |
 | `EVS` | `EVS-PROTOCOL` | ATLAS-200 Ch. 7 | Active |
 | `EVS` | `EVS-API`, `EVS-ABI`, `EVS-SCHEMA` | ATLAS-200 (Draft — see its Deferred section) | Reserved, not yet in use |
+| `STD` | `STD-DIAG` | ATLAS-800 Ch. 1 | Active |
 
-When a new volume needs a security- or versioning-adjacent requirement group, it MUST extend the `SEC` or `EVS` family with a new subdomain registered here rather than inventing an unrelated prefix.
+When a new volume needs a security-, versioning-, or ecosystem-standard-adjacent requirement group, it MUST extend the applicable `SEC`, `EVS`, or `STD` family with a new subdomain registered here rather than inventing an unrelated prefix.
 
 ## Reserved Prefixes for Seed Volumes
 
@@ -89,7 +91,6 @@ These volumes have no published requirements yet (`Status: Seed` — see `ATLAS-
 |---|---|---|
 | `SDK` | ATLAS-400 | Volume V — SDK Architecture |
 | `PLUG` | ATLAS-700 | Volume VIII — Plugin and Extension Architecture |
-| `STD` | ATLAS-800 | Volume IX — Ecosystem Standards |
 | `REF` | ATLAS-900 | Volume X — Reference Architectures |
 
 ## Maintenance Rule

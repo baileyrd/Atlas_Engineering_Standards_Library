@@ -24,3 +24,4 @@ Each ADR states:
 | [0005](0005-promote-atlas-100-from-exercised-architecture-evidence.md) | Promote ATLAS-100 from Exercised Architecture Evidence | Accepted |
 | [0006](0006-promote-atlas-300-from-exercised-rust-workspace-evidence.md) | Promote ATLAS-300 from Exercised Rust Workspace Evidence | Accepted |
 | [0007](0007-promote-atlas-500-from-exercised-trust-boundary-evidence.md) | Promote ATLAS-500 from Exercised Trust-Boundary Evidence | Accepted |
+| [0008](0008-promote-atlas-800-from-exercised-diagnostic-correlation-evidence.md) | Promote ATLAS-800 from Exercised Diagnostic-Correlation Evidence | Accepted |
