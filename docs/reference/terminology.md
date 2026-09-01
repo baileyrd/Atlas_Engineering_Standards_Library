@@ -54,8 +54,16 @@ This reference defines initial Atlas terms. Later volumes may extend this glossa
 
 `Specification`: A document that defines behavior, structure, interfaces, processes, or governance rules.
 
+`Threat Model`: A documented security analysis of a bounded system or capability that identifies protected assets, Trust Boundaries, untrusted actors or inputs, privileges, assumptions, plausible abuse or failure modes, controls, and residual risks.
+
 `Traceability`: The ability to connect requirements, decisions, implementations, tests, artifacts, and releases.
 
+`Trust Boundary`: A boundary at which the security assumptions, authority, privilege, provenance, or validation requirements applicable to data, callers, components, or resources change. Crossing a Trust Boundary requires the receiving authority to apply the security decision appropriate to the protected resource rather than inheriting trust from the source location.
+
+`Untrusted Data`: Data or content whose provenance, correctness, intent, or authority is insufficient to permit it to directly control privileged, irreversible, or policy-owning behavior without explicit validation or admission by the receiving authority. Untrusted does not necessarily mean malicious.
+
 `Walking Skeleton`: A thin end-to-end implementation path through the release-critical system boundaries, using concrete dependencies where practical, whose purpose is to validate architecture and integration assumptions before substantial horizontal hardening.
+
+`Zero Trust`: A security principle, used by Atlas consistently with NIST SP 800-207, under which trust is not granted implicitly solely because a caller, component, asset, or data path is local, first-party, internally networked, organizationally owned, or previously accepted. Security authority is explicitly evaluated for the protected resource and narrowly scoped to the operation or capability being granted.
 
 `Volume`: A top-level, independently numbered division of the Atlas Engineering Standards Library (e.g. ATLAS-001 Volume I - Foundation), composed of Parts and Chapters.
