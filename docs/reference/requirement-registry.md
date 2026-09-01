@@ -62,7 +62,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
 | `EVS-PROTOCOL` | ATLAS-200 | Ch. 7 — Protocol Versioning | 0060 | 0070 |
 | `RWC` | ATLAS-300 | Ch. 1-6 — Workspace Coordination through Lockfile/Resolved Dependency State | 0130 | 0140 |
-| `TOOL` | ATLAS-600 | Ch. 1-5 — Repository/Branching Model through Merge and Cleanup | 0042 | 0050 |
+| `TOOL` | ATLAS-600 | Ch. 1-6 — Repository/Branching Model through Continuous Integration Validation | 0120 | 0130 |
 
 ## Shared Domain Families
 
