@@ -27,7 +27,7 @@ The initial draft will standardize only architectural rules directly supported b
 1. domain policy remains owned by domain components rather than being duplicated in presentation, orchestration, persistence, or adapters;
 2. orchestration coordinates workflows without absorbing domain reasoning;
 3. multiple clients or platform shells exposing the same capability converge on one authoritative logical business interface;
-4. a cross-process business interface is an explicit versioned compatibility contract;
+4. a cross-process business interface is an explicit compatibility contract, while its protocol-versioning mechanics remain owned by ATLAS-200;
 5. persistence preserves domain identifiers, invariants, ownership, and atomicity rather than redefining them;
 6. authoritative domain facts remain distinct from operational telemetry;
 7. durable messaging infrastructure is justified by a real durable asynchronous consumer and correctness need;
