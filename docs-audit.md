@@ -1,6 +1,6 @@
 # Documentation Audit
 
-Audit date: 2026-09-01
+Audit date: 2026-09-01; post-PR #49 reconciliation: 2026-09-02
 Scope: all tracked Markdown documentation, repository validation, documentation workflow, ADR index, requirement registry, and declared volume status/deferred areas. Public API doc-comments and generated documentation are not applicable to this documentation-only repository.
 
 The auditor had read portions of the standards earlier in the session. To reduce confirmation bias, this pass re-derived ground truth from `git ls-files`, the GitHub workflow, `tools/validate_docs.py`, the ADR file set, requirement headings, status metadata, and immutable source evidence before classifying claims.
@@ -18,6 +18,7 @@ The auditor had read portions of the standards earlier in the session. To reduce
 | DOC-007 | Documentation validation | Whole repository | Heading fragments and prose claims are protected from drift | missing | Before Issue #46, `tools/validate_docs.py` checked target files but not Markdown heading fragments or semantic claims | PR #47 added tested anchor validation; semantic prose remains review-owned | M |
 | DOC-008 | `README.md` | Documentation Site | `mdbook serve` is the local preview path | unverifiable | Before Issue #46, `book.toml` was coherent but CI did not build the book | PR #47 pinned mdBook `0.5.4`, verified its release digest, and added the book build to required CI | M |
 | DOC-009 | `docs/reference/project-development-governance-lessons.md` | Recommended normative follow-up | Seven program-integrity controls still require a future ATLAS-001 amendment | stale | ATLAS-001 already owns all seven controls through `ATLAS-SPEC-0020`, `ATLAS-SPEC-0030`, `ATLAS-MAINT-0030`, `ATLAS-LIFE-0010`/`0020`-`0031`, and `ATLAS-GOV-REVIEW-0020`-`0060` | Replace the obsolete future-work section with an exact control-to-requirement map | S |
+| DOC-010 | `docs/volumes/ATLAS-300-rust-workspace-cargo.md` | Deferred Cargo feature strategy | Multiple supported feature combinations create real compatibility, dependency, or validation differences requiring shared policy | resolved trigger | Rusty Mill evidence record `EVID-RM-FEATURES-2026-09-02` demonstrates materially different isolated-package and unified-workspace feature graphs. ADR-0010 accepted that evidence and PR #49 added the bounded feature-strategy requirements `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. | Resolved by PR #49. Keep the remaining deferred topics explicit; the evidence does not currently justify a broader feature-strategy amendment. | M |
 
 ## Counts
 
@@ -76,6 +77,20 @@ After DOC-009 is resolved by replacing the obsolete future-work statement with t
 | unverifiable | 0 |
 | accurate | 9 |
 
+Post-PR #49 state (current; prior tables remain historical snapshots):
+
+| Classification | Count |
+|---|---:|
+| stale | 0 |
+| missing | 0 |
+| orphaned | 0 |
+| aspirational | 0 |
+| unverifiable | 0 |
+| accurate | 9 |
+| resolved trigger | 1 |
+
+PR #49 resolved DOC-010 by accepting ADR-0010, recording `EVID-RM-FEATURES-2026-09-02`, and adding `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. The current registry contains 337 requirement IDs, and the ADR inventory contains 10 files with 10 index entries. The Rusty Mill trigger is resolved; its bounded evidence does not currently justify a broader feature-strategy amendment.
+
 ## Mechanical Checks
 
 - Baseline `tools/validate_docs.py`: passed — 31 files, 330 unique requirement IDs.
@@ -84,10 +99,13 @@ After DOC-009 is resolved by replacing the obsolete future-work statement with t
 - Issue #46 anchor-aware `tools/validate_docs.py`: passed against the full repository.
 - PR #47 mdBook `0.5.4` build: passed in required CI using the official release asset and published SHA-256 digest.
 - DOC-009 ownership map: checked against the current ATLAS-001 requirement headings and text.
-- ADR inventory: 9 files, 9 index entries.
+- Pre-PR #49 ADR inventory snapshot: 9 files, 9 index entries.
 - README status table: matches volume metadata.
 - Docs-loop reference scan: no confirmed broken relative Markdown file links; unresolved inline-code candidates were examples or external-repository paths, not broken Atlas links.
 - `mdbook serve`: not executed because mdBook was unavailable on the audit host.
+- Post-PR #49 `tools/validate_docs.py`: passed — 34 Markdown files, 337 unique registered requirement IDs.
+- Post-PR #49 ADR inventory: 10 files, 10 index entries.
+- Post-PR #49 mdBook `0.5.4` build: not executed because the audit host received HTTP 403 while downloading the pinned, digest-verified release asset with the documented CI procedure.
 
 ## Intentional Incompleteness
 
@@ -96,3 +114,5 @@ Atlas is not a finished universal standards catalog. Three volumes remain Seed a
 ## Approval Boundary
 
 DOC-001 and DOC-002 were documentation corrections approved and merged in PR #45. DOC-007 and DOC-008 were separated into Issue #46 because docs-loop does not edit validation code or silently expand automation policy; Issue #46 now owns their tested tooling and CI resolution.
+
+DOC-010's trigger was resolved by PR #49 within the approved evidence boundary: ADR-0010 and `EVID-RM-FEATURES-2026-09-02` support the bounded `ATLAS-RWC-0140` through `ATLAS-RWC-0200` amendment. No normative, ADR, evidence, registry, validation, CI, or unrelated finding change is part of this reconciliation, and no broader feature-strategy amendment is currently justified.
