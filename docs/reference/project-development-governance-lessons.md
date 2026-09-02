@@ -6,7 +6,9 @@ Source case study: Nexa tactical-pause assessment, August 2026
 
 ## Purpose
 
-This reference captures general engineering-process lessons derived from a real project in which local implementation quality remained strong while system-level documentation maturity and product convergence lagged. It is intended as input to future Atlas normative requirements, not as a substitute for ATLAS-001.
+This reference captures general engineering-process lessons derived from a real project in which local implementation quality remained strong while system-level documentation maturity and product convergence lagged. It records the case-study reasoning that informed the program-integrity requirements now incorporated into ATLAS-001; it is not a substitute for those normative requirements.
+
+The “Proposed Atlas control” text below preserves the evidence-to-policy reasoning from the original assessment. The current normative disposition of each proposal is mapped under [Normative incorporation](#normative-incorporation).
 
 ## Central lesson
 
@@ -181,18 +183,18 @@ These lessons extend rather than replace existing Atlas rules:
 - `ATLAS-LIFE-0010` already warns against conflating independent lifecycle vocabularies.
 - `ATLAS-GOV-REVIEW-0010` already scales review depth to change classification.
 
-The missing control is explicit **program-convergence governance**: parent maturity, vertical-progress evidence, deferral review, periodic rebaseline, and architecture authority to stop locally correct but systemically low-leverage work.
+The assessment identified the missing control as explicit **program-convergence governance**: parent maturity, vertical-progress evidence, deferral review, periodic rebaseline, and architecture authority to stop locally correct but systemically low-leverage work. The requirements mapped below now supply that control.
 
-## Recommended normative follow-up
+## Normative incorporation
 
-A future focused Atlas PR should evaluate amendments to ATLAS-001 covering:
+ATLAS-001 incorporates all seven controls into the chapters that already own specification-driven development, lifecycle, technical debt, and review. This avoids a parallel governance hierarchy while keeping each control under one normative owner.
 
-1. Parent specification maturity before implementation depth.
-2. Explicit capability maturity terminology.
-3. Early vertical walking-skeleton requirement.
-4. Mandatory deferral disposition gates.
-5. Periodic architecture rebaseline triggers.
-6. Program-integrity responsibility of the architecture authority.
-7. Release-definition traceability for roadmaps.
-
-Those requirements should be incorporated into the chapters that already own specification-driven development, lifecycle, technical debt, and review rather than creating a parallel governance hierarchy.
+| Case-study control | Normative owner in ATLAS-001 |
+|---|---|
+| Parent specification maturity before implementation depth | [`ATLAS-SPEC-0020`](../volumes/ATLAS-001-foundation.md#atlas-spec-0020---parent-authority-readiness) |
+| Explicit capability maturity terminology and evidence boundaries | [`ATLAS-LIFE-0010`](../volumes/ATLAS-001-foundation.md#atlas-life-0010---lifecycle-distinctness), [`ATLAS-LIFE-0020`](../volumes/ATLAS-001-foundation.md#atlas-life-0020---capability-maturity-reporting), [`ATLAS-LIFE-0021`](../volumes/ATLAS-001-foundation.md#atlas-life-0021---maturity-evidence-is-non-transitive), and [`ATLAS-LIFE-0022`](../volumes/ATLAS-001-foundation.md#atlas-life-0022---inapplicable-maturity-states) |
+| Early vertical Walking Skeleton | [`ATLAS-SPEC-0030`](../volumes/ATLAS-001-foundation.md#atlas-spec-0030---early-walking-skeleton) |
+| Mandatory deferral disposition gates | [`ATLAS-MAINT-0030`](../volumes/ATLAS-001-foundation.md#atlas-maint-0030---controlled-deferrals) |
+| Periodic architecture rebaseline triggers and recorded disposition | [`ATLAS-GOV-REVIEW-0020`](../volumes/ATLAS-001-foundation.md#atlas-gov-review-0020---program-integrity-review), [`ATLAS-GOV-REVIEW-0030`](../volumes/ATLAS-001-foundation.md#atlas-gov-review-0030---architecture-rebaseline-triggers), and [`ATLAS-GOV-REVIEW-0040`](../volumes/ATLAS-001-foundation.md#atlas-gov-review-0040---rebaseline-disposition) |
+| Program-integrity responsibility and authority | [`ATLAS-GOV-REVIEW-0050`](../volumes/ATLAS-001-foundation.md#atlas-gov-review-0050---architecture-authority-for-program-integrity) and [`ATLAS-GOV-REVIEW-0060`](../volumes/ATLAS-001-foundation.md#atlas-gov-review-0060---roles-are-responsibilities-not-headcount) |
+| Release-definition traceability for roadmaps | [`ATLAS-LIFE-0030`](../volumes/ATLAS-001-foundation.md#atlas-life-0030---first-release-definition) and [`ATLAS-LIFE-0031`](../volumes/ATLAS-001-foundation.md#atlas-life-0031---roadmap-to-release-traceability) |
