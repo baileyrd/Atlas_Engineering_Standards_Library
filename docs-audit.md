@@ -18,7 +18,7 @@ The auditor had read portions of the standards earlier in the session. To reduce
 | DOC-007 | Documentation validation | Whole repository | Heading fragments and prose claims are protected from drift | missing | Before Issue #46, `tools/validate_docs.py` checked target files but not Markdown heading fragments or semantic claims | PR #47 added tested anchor validation; semantic prose remains review-owned | M |
 | DOC-008 | `README.md` | Documentation Site | `mdbook serve` is the local preview path | unverifiable | Before Issue #46, `book.toml` was coherent but CI did not build the book | PR #47 pinned mdBook `0.5.4`, verified its release digest, and added the book build to required CI | M |
 | DOC-009 | `docs/reference/project-development-governance-lessons.md` | Recommended normative follow-up | Seven program-integrity controls still require a future ATLAS-001 amendment | stale | ATLAS-001 already owns all seven controls through `ATLAS-SPEC-0020`, `ATLAS-SPEC-0030`, `ATLAS-MAINT-0030`, `ATLAS-LIFE-0010`/`0020`-`0031`, and `ATLAS-GOV-REVIEW-0020`-`0060` | Replace the obsolete future-work section with an exact control-to-requirement map | S |
-| DOC-010 | `docs/volumes/ATLAS-300-rust-workspace-cargo.md` | Deferred Cargo feature strategy | Multiple supported feature combinations create real compatibility, dependency, or validation differences requiring shared policy | resolved trigger | Rusty Mill evidence record `EVID-RM-FEATURES-2026-09-02` demonstrates materially different isolated-package and unified-workspace feature graphs. ADR-0010 accepted that evidence and PR #49 added the bounded feature-strategy requirements `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. | Resolved by PR #49. Keep the remaining deferred topics explicit; the evidence does not currently justify a broader feature-strategy amendment. | M |
+| DOC-010 | `docs/volumes/ATLAS-300-rust-workspace-cargo.md` | Deferred Cargo feature strategy | Multiple supported feature combinations create real compatibility, dependency, or validation differences requiring shared policy | accurate | Rusty Mill evidence record `EVID-RM-FEATURES-2026-09-02` demonstrates materially different isolated-package and unified-workspace feature graphs. ADR-0010 accepted that evidence and PR #49 added the bounded feature-strategy requirements `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. | Resolved by PR #49. Keep the remaining deferred topics explicit; the evidence does not currently justify a broader feature-strategy amendment. | M |
 
 ## Counts
 
@@ -86,8 +86,7 @@ Post-PR #49 state (current; prior tables remain historical snapshots):
 | orphaned | 0 |
 | aspirational | 0 |
 | unverifiable | 0 |
-| accurate | 9 |
-| resolved trigger | 1 |
+| accurate | 10 |
 
 PR #49 resolved DOC-010 by accepting ADR-0010, recording `EVID-RM-FEATURES-2026-09-02`, and adding `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. The current registry contains 337 requirement IDs, and the ADR inventory contains 10 files with 10 index entries. The Rusty Mill trigger is resolved; its bounded evidence does not currently justify a broader feature-strategy amendment.
 
@@ -105,7 +104,7 @@ PR #49 resolved DOC-010 by accepting ADR-0010, recording `EVID-RM-FEATURES-2026-
 - `mdbook serve`: not executed because mdBook was unavailable on the audit host.
 - Post-PR #49 `tools/validate_docs.py`: passed — 34 Markdown files, 337 unique registered requirement IDs.
 - Post-PR #49 ADR inventory: 10 files, 10 index entries.
-- Post-PR #49 mdBook `0.5.4` build: not executed because the audit host received HTTP 403 while downloading the pinned, digest-verified release asset with the documented CI procedure.
+- Post-PR #49 required CI: Validate docs run 33672685856 passed, including “Install pinned mdBook release” and “Build documentation book.” The local audit host separately received HTTP 403 while downloading the pinned, digest-verified release asset, so it did not repeat the mdBook build locally.
 
 ## Intentional Incompleteness
 
