@@ -15,8 +15,9 @@ The auditor had read portions of the standards earlier in the session. To reduce
 | DOC-004 | `docs/reference/requirement-registry.md` | Active Prefixes | Prefix ownership and next-free blocks reflect published requirements | accurate | `tools/validate_docs.py` reports 330 unique registered requirement IDs; manual highest-ID review matches the registry | None | — |
 | DOC-005 | `docs/decisions/README.md` | Index | ADR index covers the decision record set | accurate | ADR files 0001-0009 each have an index row | None | — |
 | DOC-006 | `CONTRIBUTING.md` / CI | Validation description | `validate-docs` checks IDs, SUMMARY reachability, and internal file links | accurate | `.github/workflows/validate-docs.yml` runs `tools/validate_docs.py`, which implements those checks | None | — |
-| DOC-007 | Documentation validation | Whole repository | Heading fragments and prose claims are protected from drift | missing | Before Issue #46, `tools/validate_docs.py` checked target files but not Markdown heading fragments or semantic claims | Issue #46 adds tested anchor validation; semantic prose remains review-owned | M |
-| DOC-008 | `README.md` | Documentation Site | `mdbook serve` is the local preview path | unverifiable | Before Issue #46, `book.toml` was coherent but CI did not build the book | Issue #46 pins mdBook `0.5.4`, verifies its release digest, and builds the book in required CI | M |
+| DOC-007 | Documentation validation | Whole repository | Heading fragments and prose claims are protected from drift | missing | Before Issue #46, `tools/validate_docs.py` checked target files but not Markdown heading fragments or semantic claims | PR #47 added tested anchor validation; semantic prose remains review-owned | M |
+| DOC-008 | `README.md` | Documentation Site | `mdbook serve` is the local preview path | unverifiable | Before Issue #46, `book.toml` was coherent but CI did not build the book | PR #47 pinned mdBook `0.5.4`, verified its release digest, and added the book build to required CI | M |
+| DOC-009 | `docs/reference/project-development-governance-lessons.md` | Recommended normative follow-up | Seven program-integrity controls still require a future ATLAS-001 amendment | stale | ATLAS-001 already owns all seven controls through `ATLAS-SPEC-0020`, `ATLAS-SPEC-0030`, `ATLAS-MAINT-0030`, `ATLAS-LIFE-0010`/`0020`-`0031`, and `ATLAS-GOV-REVIEW-0020`-`0060` | Replace the obsolete future-work section with an exact control-to-requirement map | S |
 
 ## Counts
 
@@ -42,7 +43,7 @@ After DOC-001 and DOC-002 were resolved by PR #45:
 | unverifiable | 1 |
 | accurate | 6 |
 
-After DOC-007 and DOC-008 are resolved by Issue #46:
+After DOC-007 and DOC-008 were resolved by PR #47:
 
 | Classification | Count |
 |---|---:|
@@ -53,13 +54,36 @@ After DOC-007 and DOC-008 are resolved by Issue #46:
 | unverifiable | 0 |
 | accurate | 8 |
 
+Continuation re-audit before resolving DOC-009:
+
+| Classification | Count |
+|---|---:|
+| stale | 1 |
+| missing | 0 |
+| orphaned | 0 |
+| aspirational | 0 |
+| unverifiable | 0 |
+| accurate | 8 |
+
+After DOC-009 is resolved by replacing the obsolete future-work statement with the normative ownership map:
+
+| Classification | Count |
+|---|---:|
+| stale | 0 |
+| missing | 0 |
+| orphaned | 0 |
+| aspirational | 0 |
+| unverifiable | 0 |
+| accurate | 9 |
+
 ## Mechanical Checks
 
 - Baseline `tools/validate_docs.py`: passed — 31 files, 330 unique requirement IDs.
 - Post-correction `tools/validate_docs.py`: passed — 33 files, 330 unique requirement IDs.
 - Issue #46 validator unit tests: passed, including duplicate, punctuation/Unicode, percent-encoded, explicit-anchor, file-only, and missing-fragment cases.
 - Issue #46 anchor-aware `tools/validate_docs.py`: passed against the full repository.
-- Issue #46 mdBook `0.5.4` build: required in CI using the official release asset and published SHA-256 digest.
+- PR #47 mdBook `0.5.4` build: passed in required CI using the official release asset and published SHA-256 digest.
+- DOC-009 ownership map: checked against the current ATLAS-001 requirement headings and text.
 - ADR inventory: 9 files, 9 index entries.
 - README status table: matches volume metadata.
 - Docs-loop reference scan: no confirmed broken relative Markdown file links; unresolved inline-code candidates were examples or external-repository paths, not broken Atlas links.
