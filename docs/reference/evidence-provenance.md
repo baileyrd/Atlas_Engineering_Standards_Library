@@ -43,6 +43,27 @@ Authoritative source artifacts reviewed at that revision:
 
 Limitations: Rust `1.89.0`, the named target, EXP-0001 boundaries, and its workflow are source evidence only. They are not Atlas-wide version, platform, installer, database, or release mandates. The snapshot does not convert validation into benchmark, durability, portability, or production-readiness evidence.
 
+### EVID-RM-FEATURES-2026-09-02
+
+| Field | Value |
+|---|---|
+| Source repository | [`Rusty-Mill/rusty_mill`](https://github.com/Rusty-Mill/rusty_mill) |
+| Immutable revision | [`06ca8669f38f80291a63308de7563bfea43caab5`](https://github.com/Rusty-Mill/rusty_mill/tree/06ca8669f38f80291a63308de7563bfea43caab5) |
+| Verified | 2026-09-02 |
+| Atlas decision and chapters supported | ADR-0010; exercised feature-graph evidence used by ATLAS-300 Chapter 7, at its boundaries with ATLAS-100 compatibility architecture, ATLAS-200 version/compatibility domains, and ATLAS-600 validation |
+
+Authoritative source artifacts reviewed at that revision:
+
+- [Root Cargo workspace manifest](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/Cargo.toml) — the 174-member workspace and its Cargo resolution boundary.
+- [CI workflow](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/.github/workflows/ci.yml) — scoped and workspace-wide validation, including all-features use.
+- [Affected-crate analysis](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/.github/scripts/affected_crates.py) — transitive-dependent calculation using `cargo metadata --all-features`.
+- [Architecture](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/ARCHITECTURE.md) and [workspace ADR](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/docs/adr/0001-consolidate-crates-into-workspace.md) — component boundaries, workspace consolidation, and validation context.
+- [Feature-unification decision request](https://github.com/Rusty-Mill/rusty_mill/blob/06ca8669f38f80291a63308de7563bfea43caab5/crates/rusty_tokio/docs/decision-request-real-tokio-interop-bridge.md) — the optional `rusty_request` behavior, unified all-features graph, scoped-graph difference, reactor panic, capability-manifest boundary, and proposed bridge whose correctness remains undecided.
+
+The related [workspace migration PR](https://github.com/Rusty-Mill/rusty_mill/pull/131) and [decision-request PR](https://github.com/Rusty-Mill/rusty_mill/pull/132) supplied review history; the immutable revision and blob links above are the evidence snapshot used for the Atlas decision.
+
+Limitations: this evidence does not certify every Rusty Mill crate or target. It does not make Rusty Mill, Tokio, `rusty_tokio`, `--all-features`, GitHub Actions, or Rusty Mill's CI design mandatory for Atlas. It does not prove that the proposed bridge is correct. It does not turn capability-manifest closure into runtime, system, user-acceptance, or release-readiness evidence.
+
 ## Maintenance
 
 - Evidence links MUST use immutable revisions rather than moving branches.

@@ -16,7 +16,7 @@ Volume IV defines how Atlas uses Cargo workspaces and manifests once a Rust repo
 
 A Cargo workspace and a Monorepo are related but distinct coordination boundaries. A Monorepo is the repository-level governance boundary defined by ATLAS-600; one Monorepo MAY contain one Cargo workspace, multiple Cargo workspaces, non-Cargo projects, governed documentation/assets, or other independently built areas where justified. This volume MUST NOT be read as requiring every first-party area in one repository to share a single Cargo workspace.
 
-This first draft is intentionally narrower than the volume's eventual scope. The original Seed trigger has fired through exercised multi-crate workspace evidence recorded in ADR-0006, but feature strategy, build-profile policy, unsafe Rust, publishing, cross-compilation, and native build integration remain deferred until real work forces those decisions. Exact developer and CI toolchain selection is active under ATLAS-600 Chapter 10; this volume retains Cargo and MSRV ownership as described below.
+This draft is intentionally narrower than the volume's eventual scope. The original Seed trigger fired through exercised multi-crate workspace evidence recorded in ADR-0006. Cargo feature strategy is now also active: workspace feature unification has demonstrated cross-package runtime and validation consequences recorded in [ADR-0010](../decisions/0010-activate-cargo-feature-strategy-from-unified-workspace-evidence.md). Build-profile policy, unsafe Rust, publishing, cross-compilation, and native build integration remain deferred until real work forces those decisions. Exact developer and CI toolchain selection is active under ATLAS-600 Chapter 10; this volume retains Cargo and MSRV ownership as described below.
 
 ## Trigger Evidence
 
@@ -120,13 +120,46 @@ A Cargo workspace that produces an application, executable tool, or other reposi
 
 A `Cargo.lock` change MUST be attributable to an intended dependency-resolution change, manifest change, or tool-supported lockfile maintenance action. Unexplained or unrelated lockfile churn MUST NOT be accepted merely because the workspace still builds.
 
+### Chapter 7 - Cargo Feature Architecture
+
+Cargo features participate in dependency resolution across a graph. Their effective behavior can therefore differ between an isolated package command and a supported workspace or cross-package composition. A maximal feature combination is valuable stress evidence, but support commitments belong to explicitly defined profiles and their compatibility and runtime preconditions. This chapter defines those Cargo-specific invariants; ATLAS-100 remains authoritative for architectural boundaries, ATLAS-200 for version and compatibility domains, and ATLAS-600 for CI orchestration and validation workflow.
+
+#### Requirements
+
+##### ATLAS-RWC-0140 - Effective Features Are Graph-Resolved
+
+The effective feature set for a Cargo build MUST be determined from the resolved dependency graph for the applicable build context. It MUST NOT be inferred solely from a consumer's or dependency's local manifest, because other graph participants can enable additional features through feature unification.
+
+##### ATLAS-RWC-0150 - Supported Feature Profiles Are Explicit
+
+Materially distinct feature profiles that a package, workspace, or product supports MUST be explicitly identified. Each such profile MUST document its compatibility expectations and any runtime, configuration, platform, provider, or integration preconditions needed for correct operation.
+
+##### ATLAS-RWC-0160 - All-Features Evidence Is Bounded
+
+Validation with Cargo's `--all-features` option MAY be designated as a stress profile, but MUST NOT be treated as proof of every supported feature profile unless those profiles are demonstrably equivalent. An all-features check MUST NOT replace validation required for default, minimal, or other explicitly supported profiles.
+
+##### ATLAS-RWC-0170 - Behavior-Changing Features Affect Compatibility
+
+A feature that changes runtime or executor assumptions, I/O traits, provider selection, serialization, wire behavior, persistence, or a comparable operating precondition MUST be documented as affecting the applicable compatibility surface. Ownership and versioning of that surface MUST follow ATLAS-100 and the applicable ATLAS-200 compatibility domain rather than being hidden as a manifest-only implementation detail.
+
+##### ATLAS-RWC-0180 - Unified Supported Graphs Are Validated
+
+When feature unification can produce a supported cross-package graph with materially different behavior, required validation MUST exercise that resolved graph or enforce an equivalent automated incompatibility check. Validation of an isolated package graph MUST NOT substitute for the materially different supported graph.
+
+##### ATLAS-RWC-0190 - Impact Analysis Uses Compatible Feature Assumptions
+
+Impact-aware package selection and the validation selected from it MUST use compatible feature-graph assumptions. If impact calculation uses a broader or different feature graph than the selected validation, the repository MUST document and enforce why that difference cannot omit affected behavior.
+
+##### ATLAS-RWC-0200 - Incompatible Assumptions Fail Clearly
+
+Incompatible feature and runtime assumptions MUST produce a clear failure. Compile-time or configuration-time rejection SHOULD be used where practical; otherwise the required adapter, bridge, or runtime precondition MUST be documented and automatically tested in every supported graph that depends on it.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, the following topics remain unwritten until exercised evidence requires a concrete rule:
 
 | Topic | Trigger |
 |---|---|
-| Feature-flag architecture | Multiple supported feature combinations create real compatibility, dependency, or validation differences that require a shared policy |
 | Build-profile policy | Measured release/debug behavior requires deliberate profile settings beyond Cargo defaults |
 | Unsafe Rust policy | Nontrivial `unsafe` Rust or FFI enters an official Atlas implementation and requires ecosystem-wide review/containment rules |
 | Cross-compilation and target matrices | A release must support more than one materially different Rust target or target-specific dependency graph |
