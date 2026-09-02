@@ -61,7 +61,7 @@ Derived directly from requirements currently published in [ATLAS-000](../ATLAS-0
 | `ARCH` | ATLAS-100 | Ch. 1-6 — Runtime/Domain Authority through Backend/Platform Adapters | 0110 | 0120 |
 | `EVS` | ATLAS-200 | Ch. 1-6 — Versioning Philosophy through Release Mechanics | 0051 | 0060 |
 | `EVS-PROTOCOL` | ATLAS-200 | Ch. 7 — Protocol Versioning | 0060 | 0070 |
-| `RWC` | ATLAS-300 | Ch. 1-6 — Workspace Coordination through Lockfile/Resolved Dependency State | 0130 | 0140 |
+| `RWC` | ATLAS-300 | Ch. 1-7 — Workspace Coordination through Cargo Feature Architecture | 0200 | 0210 |
 | `SEC-THREAT` | ATLAS-500 | Ch. 1 — Threat Modeling | 0020 | 0030 |
 | `SEC-BOUNDARY` | ATLAS-500 | Ch. 2 — Trust Boundaries, Untrusted Data, and Zero Trust | 0080 | 0090 |
 | `TOOL` | ATLAS-600 | Ch. 1-10 — Repository/Branching Model through Exact Rust Toolchain Selection | 0380 | 0390 |
