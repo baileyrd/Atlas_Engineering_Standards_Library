@@ -7,7 +7,7 @@
 | Short Name | RWC |
 | Status | Draft 0.1 |
 | Classification | Normative |
-| Scope | Rust workspace coordination, Cargo manifest inheritance, dependency-graph policy, version expression, MSRV declaration, and lockfile reproducibility |
+| Scope | Rust workspace coordination, Cargo manifest inheritance, dependency-graph and artifact-reachability policy, version expression, MSRV declaration, lockfile reproducibility, and native/build-input governance |
 | Parent | ATLAS-001 |
 
 ## Purpose
@@ -16,11 +16,13 @@ Volume IV defines how Atlas uses Cargo workspaces and manifests once a Rust repo
 
 A Cargo workspace and a Monorepo are related but distinct coordination boundaries. A Monorepo is the repository-level governance boundary defined by ATLAS-600; one Monorepo MAY contain one Cargo workspace, multiple Cargo workspaces, non-Cargo projects, governed documentation/assets, or other independently built areas where justified. This volume MUST NOT be read as requiring every first-party area in one repository to share a single Cargo workspace.
 
-This draft is intentionally narrower than the volume's eventual scope. The original Seed trigger fired through exercised multi-crate workspace evidence recorded in ADR-0006. Cargo feature strategy is now also active: workspace feature unification has demonstrated cross-package runtime and validation consequences recorded in [ADR-0010](../decisions/0010-activate-cargo-feature-strategy-from-unified-workspace-evidence.md). Build-profile policy, unsafe Rust, publishing, cross-compilation, and native build integration remain deferred until real work forces those decisions. Exact developer and CI toolchain selection is active under ATLAS-600 Chapter 10; this volume retains Cargo and MSRV ownership as described below.
+This draft is intentionally narrower than the volume's eventual scope. The original Seed trigger fired through exercised multi-crate workspace evidence recorded in ADR-0006. Cargo feature strategy is active through [ADR-0010](../decisions/0010-activate-cargo-feature-strategy-from-unified-workspace-evidence.md). Dependency-role, artifact-reachability, and native/build-input governance are now active through [ADR-0011](../decisions/0011-activate-dependency-role-artifact-reachability-and-native-build-input-governance.md). Build-profile policy, unsafe Rust, publishing, cross-compilation, and workspace profile sharing remain deferred. Exact developer and CI toolchain selection is active under ATLAS-600 Chapter 10; this volume retains Cargo and MSRV ownership as described below.
 
 ## Trigger Evidence
 
 The Seed trigger is satisfied by a real Rust workspace containing applications, tools, and numerous cooperating crates. That workspace already makes concrete choices about explicit membership, a virtual-workspace resolver, inherited edition/license/MSRV metadata, shared third-party dependencies, local path dependencies, workspace-version inheritance, a committed lockfile, and automated Cargo dependency-boundary checks. See [ADR-0006](../decisions/0006-promote-atlas-300-from-exercised-rust-workspace-evidence.md).
+
+The previously deferred native-dependency and build-script trigger has also fired. Rusty Mill's immutable exercised evidence contains materially different normal, development, and build dependency roles; registry, git, native-library, generated-binding, and system-integration dependencies; and five tracked build scripts. In the release-critical case, the `sessionmgr-daemon` manifest declares the shipped `sessionmgr` binary and its build script embeds the Windows manifest into that artifact. Rusty Mill also states a repository-specific dependency-sovereignty objective, while detectable source-policy gaps demonstrate the need for scoped mechanical enforcement rather than establish that the repository already provides it. Its whole-workspace lockfile demonstrates why workspace inventory is not automatically an artifact's shipping graph, and its repository CI workflow provides graph-aware affected-package validation without substantiating dependency-source enforcement or required-branch status. See [ADR-0011](../decisions/0011-activate-dependency-role-artifact-reachability-and-native-build-input-governance.md) and [EVID-RM-DEPS-2026-09-03](../reference/evidence-provenance.md#evid-rm-deps-2026-09-03).
 
 ## Relationship to Other Volumes
 
@@ -154,6 +156,32 @@ Impact-aware package selection and the validation selected from it MUST use comp
 
 Incompatible feature and runtime assumptions MUST produce a clear failure. Compile-time or configuration-time rejection SHOULD be used where practical; otherwise the required adapter, bridge, or runtime precondition MUST be documented and automatically tested in every supported graph that depends on it.
 
+### Chapter 8 - Cargo Dependency Roles, Artifact Reachability, and Native Build Inputs
+
+Cargo records several kinds of dependency edges, while a workspace may produce many artifacts from different packages, targets, and feature profiles. Reviewable dependency claims must therefore describe the applicable artifact graph rather than transfer whole-workspace inventory to every output. Build scripts, generated code, native libraries, system discovery, and target-specific inputs are part of the supported build realization when an artifact relies on them. This chapter governs their discoverability and reproducibility without prescribing a dependency vendor, directory layout, or named validation tool.
+
+#### Requirements
+
+##### ATLAS-RWC-0210 - Dependency Roles Are Distinguished
+
+Dependency policy, inventory, and evidence MUST distinguish normal, development, and build dependencies when that distinction affects production reachability, validation, distribution, or architectural claims.
+
+##### ATLAS-RWC-0220 - Artifact Dependency Claims Are Bounded
+
+A claim about an artifact's dependency footprint MUST identify the applicable package or product, target, supported feature profile, and dependency roles. A complete workspace lockfile or all-features graph MUST NOT be represented as the dependency footprint of every produced artifact.
+
+##### ATLAS-RWC-0230 - Dependency Constraints Are Explicit and Enforced
+
+When a project imposes dependency-source, provenance, sovereignty, or external-dependency restrictions, it MUST define the scope, permitted exceptions, and affected artifact profiles. Mechanically detectable violations MUST be enforced automatically in the required validation path.
+
+##### ATLAS-RWC-0240 - Native and Build Inputs Are Discoverable
+
+Release-critical build scripts, native libraries, generated bindings, system-library discovery, required tools, and target-specific build inputs MUST be discoverable for every supported artifact to which they apply.
+
+##### ATLAS-RWC-0250 - Generated and Native Build Realization Is Reproducible
+
+Generated or native build behavior required for a supported artifact MUST identify its controlled inputs, tools, target assumptions, and required environment sufficiently to reproduce and review the supported build.
+
 ## Deferred
 
 Per `ATLAS-GOV-STD-0001`, the following topics remain unwritten until exercised evidence requires a concrete rule:
@@ -164,9 +192,8 @@ Per `ATLAS-GOV-STD-0001`, the following topics remain unwritten until exercised 
 | Unsafe Rust policy | Nontrivial `unsafe` Rust or FFI enters an official Atlas implementation and requires ecosystem-wide review/containment rules |
 | Cross-compilation and target matrices | A release must support more than one materially different Rust target or target-specific dependency graph |
 | Crate publishing mechanics | An Atlas crate is actually published to crates.io or another registry and needs workspace publication rules |
-| Native dependencies and build scripts | A release-critical package introduces `build.rs`, native linking, generated bindings, or system-library discovery |
 | Workspace build-profile sharing | Multiple packages need coordinated non-default Cargo profiles based on measured evidence |
 
-Exact developer and CI toolchain selection is no longer deferred: ATLAS-600 Chapter 10 owns that activated workflow and environment policy. This volume continues to own Cargo `rust-version`, MSRV, workspace metadata, dependency resolution, and Cargo-specific compatibility semantics.
+Native dependencies and build scripts are no longer deferred: Chapter 8 owns their Cargo dependency-role, artifact-reachability, discoverability, and reproducible-build-input semantics. Exact developer and CI toolchain selection is also no longer deferred: ATLAS-600 Chapter 10 owns that activated workflow and environment policy. This volume continues to own Cargo `rust-version`, MSRV, workspace metadata, dependency resolution, and Cargo-specific compatibility semantics.
 
 The existence of a Cargo mechanism is not itself a trigger. Atlas standardizes it when a real workspace has demonstrated a policy decision that needs to remain coherent across packages or repositories.

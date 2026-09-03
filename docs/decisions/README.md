@@ -27,3 +27,4 @@ Each ADR states:
 | [0008](0008-promote-atlas-800-from-exercised-diagnostic-correlation-evidence.md) | Promote ATLAS-800 from Exercised Diagnostic-Correlation Evidence | Accepted |
 | [0009](0009-govern-exact-rust-toolchain-selection-by-evidence-need.md) | Govern Exact Rust Toolchain Selection by Evidence Need | Accepted |
 | [0010](0010-activate-cargo-feature-strategy-from-unified-workspace-evidence.md) | Activate Cargo Feature Strategy from Unified Workspace Evidence | Accepted |
+| [0011](0011-activate-dependency-role-artifact-reachability-and-native-build-input-governance.md) | Activate Dependency-Role, Artifact-Reachability, and Native Build-Input Governance | Accepted |

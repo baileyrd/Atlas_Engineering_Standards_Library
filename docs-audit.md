@@ -1,6 +1,6 @@
 # Documentation Audit
 
-Audit date: 2026-09-01; post-PR #49 reconciliation: 2026-09-02
+Audit date: 2026-09-01; post-PR #49 reconciliation: 2026-09-02; post-amendment reconciliation: 2026-09-03
 Scope: all tracked Markdown documentation, repository validation, documentation workflow, ADR index, requirement registry, and declared volume status/deferred areas. Public API doc-comments and generated documentation are not applicable to this documentation-only repository.
 
 The auditor had read portions of the standards earlier in the session. To reduce confirmation bias, this pass re-derived ground truth from `git ls-files`, the GitHub workflow, `tools/validate_docs.py`, the ADR file set, requirement headings, status metadata, and immutable source evidence before classifying claims.
@@ -19,6 +19,7 @@ The auditor had read portions of the standards earlier in the session. To reduce
 | DOC-008 | `README.md` | Documentation Site | `mdbook serve` is the local preview path | unverifiable | Before Issue #46, `book.toml` was coherent but CI did not build the book | PR #47 pinned mdBook `0.5.4`, verified its release digest, and added the book build to required CI | M |
 | DOC-009 | `docs/reference/project-development-governance-lessons.md` | Recommended normative follow-up | Seven program-integrity controls still require a future ATLAS-001 amendment | stale | ATLAS-001 already owns all seven controls through `ATLAS-SPEC-0020`, `ATLAS-SPEC-0030`, `ATLAS-MAINT-0030`, `ATLAS-LIFE-0010`/`0020`-`0031`, and `ATLAS-GOV-REVIEW-0020`-`0060` | Replace the obsolete future-work section with an exact control-to-requirement map | S |
 | DOC-010 | `docs/volumes/ATLAS-300-rust-workspace-cargo.md` | Deferred Cargo feature strategy | Multiple supported feature combinations create real compatibility, dependency, or validation differences requiring shared policy | accurate | Rusty Mill evidence record `EVID-RM-FEATURES-2026-09-02` demonstrates materially different isolated-package and unified-workspace feature graphs. ADR-0010 accepted that evidence and PR #49 added the bounded feature-strategy requirements `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. | Resolved by PR #49. Keep the remaining deferred topics explicit; the evidence does not currently justify a broader feature-strategy amendment. | M |
+| DOC-011 | `docs/volumes/ATLAS-300-rust-workspace-cargo.md` | Deferred native dependencies and build scripts | A release-critical package introduces build scripts, native linking, generated bindings, or system-library discovery | accurate | Rusty Mill evidence record `EVID-RM-DEPS-2026-09-03` verifies role-distinct dependencies, five exact tracked build scripts, native/generated/system inputs, and artifact-boundary limits at immutable revision `77df1d62e0d328a86f54dedb226e5204a0e42fad`. Specifically, the `sessionmgr-daemon` manifest declares the shipped `sessionmgr` binary and its build script embeds the Windows manifest into that artifact. The repository states a dependency-sovereignty objective, but detectable source-policy gaps and the absence of enforcement in the cited repository CI workflow demonstrate the need for scoped mechanical enforcement rather than existing enforcement. ADR-0011 accepts that evidence and adds the bounded Chapter 8 requirements `ATLAS-RWC-0210` through `ATLAS-RWC-0250`. | Resolved by the 2026-09-03 amendment. Keep build profiles, unsafe Rust, publishing, cross-compilation, workspace profile sharing, and ATLAS-500 supply-chain security deferred. | M |
 
 ## Counts
 
@@ -90,6 +91,19 @@ Post-PR #49 state (current; prior tables remain historical snapshots):
 
 PR #49 resolved DOC-010 by accepting ADR-0010, recording `EVID-RM-FEATURES-2026-09-02`, and adding `ATLAS-RWC-0140` through `ATLAS-RWC-0200`. The current registry contains 337 requirement IDs, and the ADR inventory contains 10 files with 10 index entries. The Rusty Mill trigger is resolved; its bounded evidence does not currently justify a broader feature-strategy amendment.
 
+Post-amendment state (current; all preceding tables remain historical snapshots):
+
+| Classification | Count |
+|---|---:|
+| stale | 0 |
+| missing | 0 |
+| orphaned | 0 |
+| aspirational | 0 |
+| unverifiable | 0 |
+| accurate | 11 |
+
+The 2026-09-03 amendment resolves DOC-011 through ADR-0011, `EVID-RM-DEPS-2026-09-03`, and the bounded requirements `ATLAS-RWC-0210` through `ATLAS-RWC-0250`. The current registry contains 342 requirement IDs, and the ADR inventory contains 11 files with 11 index entries. This activation distinguishes dependency roles, bounds artifact-reachability claims, governs project-selected dependency restrictions, and makes release-critical native/generated build inputs discoverable and reproducible. It does not activate ATLAS-500 supply-chain security or the other ATLAS-300 deferred topics.
+
 ## Mechanical Checks
 
 - Baseline `tools/validate_docs.py`: passed — 31 files, 330 unique requirement IDs.
@@ -105,6 +119,8 @@ PR #49 resolved DOC-010 by accepting ADR-0010, recording `EVID-RM-FEATURES-2026-
 - Post-PR #49 `tools/validate_docs.py`: passed — 34 Markdown files, 337 unique registered requirement IDs.
 - Post-PR #49 ADR inventory: 10 files, 10 index entries.
 - Post-PR #49 required CI: Validate docs run 33672685856 passed, including “Install pinned mdBook release” and “Build documentation book.” The local audit host separately received HTTP 403 while downloading the pinned, digest-verified release asset, so it did not repeat the mdBook build locally.
+- Post-amendment requirement inventory: 342 unique registered requirement IDs; highest `RWC` identifier `0250`, next free block `0260`.
+- Post-amendment ADR inventory: 11 files, 11 index entries.
 
 ## Intentional Incompleteness
 
@@ -115,3 +131,5 @@ Atlas is not a finished universal standards catalog. Three volumes remain Seed a
 DOC-001 and DOC-002 were documentation corrections approved and merged in PR #45. DOC-007 and DOC-008 were separated into Issue #46 because docs-loop does not edit validation code or silently expand automation policy; Issue #46 now owns their tested tooling and CI resolution.
 
 DOC-010's trigger was resolved by PR #49 within the approved evidence boundary: ADR-0010 and `EVID-RM-FEATURES-2026-09-02` support the bounded `ATLAS-RWC-0140` through `ATLAS-RWC-0200` amendment. No normative, ADR, evidence, registry, validation, CI, or unrelated finding change is part of this reconciliation, and no broader feature-strategy amendment is currently justified.
+
+DOC-011's trigger is resolved by the 2026-09-03 bounded ATLAS-300 amendment. Its evidence supports dependency-role, artifact-reachability, constraint-enforcement, and native/generated build-input governance only. It does not support a universal zero-external-dependency rule, a named-tool mandate, exhaustive feature enumeration, an ATLAS-500 supply-chain activation, or activation of the other deferred ATLAS-300 topics.
