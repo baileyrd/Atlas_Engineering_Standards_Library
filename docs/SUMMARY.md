@@ -20,3 +20,4 @@
 - [Unix Philosophy Coverage](reference/unix-philosophy-coverage.md)
 - [Project Development Governance Lessons](reference/project-development-governance-lessons.md)
 - [Architecture Decision Records](decisions/README.md)
+  - [ADR-0011 - Dependency Roles, Artifact Reachability, and Native Build Inputs](decisions/0011-activate-dependency-role-artifact-reachability-and-native-build-input-governance.md)

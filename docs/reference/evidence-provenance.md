@@ -64,6 +64,27 @@ The related [workspace migration PR](https://github.com/Rusty-Mill/rusty_mill/pu
 
 Limitations: this evidence does not certify every Rusty Mill crate or target. It does not make Rusty Mill, Tokio, `rusty_tokio`, `--all-features`, GitHub Actions, or Rusty Mill's CI design mandatory for Atlas. It does not prove that the proposed bridge is correct. It does not turn capability-manifest closure into runtime, system, user-acceptance, or release-readiness evidence.
 
+### EVID-RM-DEPS-2026-09-03
+
+| Field | Value |
+|---|---|
+| Source repository | [`Rusty-Mill/rusty_mill`](https://github.com/Rusty-Mill/rusty_mill) |
+| Immutable revision | [`77df1d62e0d328a86f54dedb226e5204a0e42fad`](https://github.com/Rusty-Mill/rusty_mill/tree/77df1d62e0d328a86f54dedb226e5204a0e42fad) |
+| Verified | 2026-09-03 |
+| Atlas decision and chapter supported | ADR-0011; exercised dependency-role, artifact-reachability, and native/build-input evidence used by ATLAS-300 Chapter 8 |
+
+Authoritative source artifacts reviewed at that revision:
+
+- [Immutable repository tree](https://github.com/Rusty-Mill/rusty_mill/tree/77df1d62e0d328a86f54dedb226e5204a0e42fad), [root Cargo workspace manifest](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/Cargo.toml), and the exact path-qualified `Cargo.toml` files in that tree, including [`rusty_request`](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/crates/rusty_request/Cargo.toml) and [`rusty_tokio`](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/crates/rusty_tokio/Cargo.toml) — the approximately 183 declared workspace members, 199 tracked manifests, and manifest-level normal, development, build, source, target, and feature distinctions. The immutable tree is the authoritative enumeration of all 199 exact manifest paths rather than a moving search result.
+- [Root lockfile](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/Cargo.lock) — the whole-workspace resolved state, including registry and git sources and packages associated with native libraries, generated bindings, and system integration. Its breadth supports inventory analysis but not a claim that every artifact reaches every package.
+- The exact path-qualified `build.rs` files enumerated in the [immutable repository tree](https://github.com/Rusty-Mill/rusty_mill/tree/77df1d62e0d328a86f54dedb226e5204a0e42fad) — multiple tracked build scripts whose manifest associations and source make generated, native, system-discovery, and target-conditioned build inputs inspectable. The tree at the recorded revision, not a branch listing, is the authoritative build-script path set.
+- [Required CI workflow](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/.github/workflows/ci.yml) and [affected-crate analysis](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/.github/scripts/affected_crates.py) — required validation, repository-specific dependency-source enforcement, and graph-aware package selection.
+- [Architecture](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/ARCHITECTURE.md), [repository README](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/README.md), [workspace ADR](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/docs/adr/0001-consolidate-crates-into-workspace.md), and [`rusty_tokio` feature decision request](https://github.com/Rusty-Mill/rusty_mill/blob/77df1d62e0d328a86f54dedb226e5204a0e42fad/crates/rusty_tokio/docs/decision-request-real-tokio-interop-bridge.md) — component and artifact boundaries, workspace intent, dependency-sovereignty context, and why graph-wide evidence requires a bounded interpretation.
+
+Independent review counted workspace-member entries and tracked manifest/build-script paths from the immutable tree, classified dependency tables in those manifests, and compared those static declarations with source kinds and package metadata in the lockfile and the required CI path.
+
+Limitations: static dependency evidence is not runtime or release certification. The workspace lockfile does not prove every artifact ships every package. Rusty Mill's dependency-sovereignty objective is not an Atlas-wide rule. Counts are revision-specific. External development dependencies may serve as non-shipping test oracles. This record does not certify native tool availability, generated output correctness, platform portability, vulnerability status, or supply-chain integrity, and it does not activate ATLAS-500.
+
 ## Maintenance
 
 - Evidence links MUST use immutable revisions rather than moving branches.
